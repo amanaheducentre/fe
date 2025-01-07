@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   basePath: basePath,
   assetPrefix: assetPrefix,
+  images: {
+    unoptimized: hostingEnv == "GH_PAGES" ? true : false,
+  },
 };
 
 export default nextConfig;
