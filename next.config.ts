@@ -1,23 +1,15 @@
 import type { NextConfig } from "next";
-import pj from "./package.json";
 
-const hostingEnv = process.env.HOSTING_ENV;
-let basePath = "";
-let assetPrefix = "";
-
-if (hostingEnv == "GH_PAGES") {
-  basePath = `/${pj.name}`;
-  assetPrefix = `/${pj.name}`;
-}
+const isDev = process.env.NODE_ENV !== "production";
 
 const nextConfig: NextConfig = {
   /* config options here */
   output: "export",
   reactStrictMode: true,
-  basePath: basePath,
-  assetPrefix: assetPrefix,
+  basePath: isDev ? "" : "/fe",
+  assetPrefix: isDev ? "" : "/fe",
   images: {
-    unoptimized: hostingEnv == "GH_PAGES" ? true : false,
+    unoptimized: isDev ? false : true,
   },
 };
 
