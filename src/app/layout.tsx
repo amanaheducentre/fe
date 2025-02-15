@@ -5,7 +5,7 @@ import "./globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: "800",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -20,6 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="cupcake">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <body className={`${poppins.className} antialiased`}>
         <MainNavbar />
         {children}
