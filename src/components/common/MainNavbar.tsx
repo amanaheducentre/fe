@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavbarButton from "../buttons/NavbarButton";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 
 export default function MainNavbar() {
   return (
