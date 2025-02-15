@@ -32,9 +32,9 @@ export default function MainNavbar() {
           </div>
         </div>
         <div className="navbar-center">
-          <a href="/">
+          <Link href="/">
             <Image src="amanah-logo.png" alt="Amanah Edu Centre" width="96" height="96" />
-          </a>
+          </Link>
         </div>
         <div className="navbar-end">
           <button className="btn btn-lg rounded-full">
