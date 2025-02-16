@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function MainFooter() {
   return (
     <div className="bg-accent-content bottom-0 w-full h-max">
