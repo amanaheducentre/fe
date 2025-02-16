@@ -1,13 +1,18 @@
+"use client";
+
+import { ParallaxBanner } from "react-scroll-parallax";
+
 export default function MainHero({ image }: { image: string }) {
   return (
-    <div
-      className="hero min-h-screen"
-      style={{
-        backgroundImage: `url(${image})`,
-        backgroundPosition: "70% 0%",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
+    <ParallaxBanner
+      layers={[
+        {
+          image: image,
+          speed: -25,
+          style: { backgroundPosition: "70% 0%" },
+        },
+      ]}
+      className="aspect-[2/1] hero min-h-screen min-w-screen"
     >
       <div className="hero-content text-center -z-0">
         <div className="max-w-lg">
@@ -15,6 +20,6 @@ export default function MainHero({ image }: { image: string }) {
           <button className="btn btn-lg btn-accent">MULAI SEKARANG</button>
         </div>
       </div>
-    </div>
+    </ParallaxBanner>
   );
 }

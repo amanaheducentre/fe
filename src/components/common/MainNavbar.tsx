@@ -5,7 +5,7 @@ import { Bars3Icon } from "@heroicons/react/24/solid";
 
 export default function MainNavbar() {
   return (
-    <div className="w-full h-max bg-base-200 sticky top-0 z-50">
+    <div className="w-full bg-base-200 fixed top-0 z-50">
       <div className="flex flex-col items-center">
         <div className="navbar w-[90%] md:w-[80%]">
           <div className="navbar-start hidden md:block w-full">
