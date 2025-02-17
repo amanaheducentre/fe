@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import NavbarButton from "../buttons/NavbarButton";
@@ -5,12 +7,12 @@ import { Bars3Icon } from "@heroicons/react/24/solid";
 
 export default function MainNavbar() {
   return (
-    <div className="w-full bg-base-200 fixed top-0 z-50">
+    <div className="w-full bg-base-200 sticky top-0 z-40">
       <div className="flex flex-col items-center">
         <div className="navbar w-[90%] md:w-[80%]">
           <div className="navbar-start hidden md:block w-full">
             <div className="font-bold md:text-xl text-black flex gap-3 md:gap-6">
-              <NavbarButton text="ABOUT US" to="#" additionalClasses="hover:text-indigo-600" />
+              <NavbarButton text="ABOUT US" to="/about-us" additionalClasses="hover:text-indigo-600" />
               <div className="dropdown">
                 <div tabIndex={0} role="button" className="hover:text-green-600 transition-colors duration-200">
                   PROGRAM
@@ -57,7 +59,14 @@ export default function MainNavbar() {
                   <div className="menu bg-base-200 text-base-content font-bold min-h-full w-full pt-40 p-4 z-50 flex flex-col items-center">
                     <ul className="menu bg-base-200 rounded-box w-[50%] text-4xl flex flex-col">
                       <li>
-                        <Link href="#">ABOUT US</Link>
+                        <Link
+                          onClick={() => {
+                            document.getElementById("my-drawer")?.click();
+                          }}
+                          href="/about-us"
+                        >
+                          ABOUT US
+                        </Link>
                       </li>
                       <li>
                         <details open>

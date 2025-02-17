@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="cupcake">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <body className={`${poppins.className} antialiased`}>
+      <body className={`${poppins.className} antialiased bg-base-200`}>
         <MainNavbar />
         <Providers>{children}</Providers>
         <MainFooter />
