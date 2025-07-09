@@ -1,0 +1,1 @@
+<template>Promo page</template>
