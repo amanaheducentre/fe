@@ -14,4 +14,8 @@ export default defineNuxtConfig({
     "@nuxt/test-utils",
   ],
   css: ["~/app/assets/css/main.css"],
+  colorMode: {
+    preference: "light",
+    fallback: "light",
+  },
 });

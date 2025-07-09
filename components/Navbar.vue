@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
+const labelClass = "text-black text-md font-bold mx-1 hover:text-sky-500";
 const items = ref<NavigationMenuItem[][]>([
   [
     {
@@ -12,46 +13,44 @@ const items = ref<NavigationMenuItem[][]>([
   ],
   [
     {
-      label: "Program",
-      icon: "i-lucide-book-open",
+      label: "PROGRAM",
+      class: labelClass,
       children: [
         {
           label: "Serasi",
           description: "Sekolah Ramah Inklusi",
           icon: "i-lucide-house",
-          to: "/program/serasi",
+          to: "#",
         },
         {
           label: "CORONA",
           description: "Coding dan Robotik Amanah",
           icon: "i-lucide-cloud-download",
-          to: "/program/corona",
+          to: "#",
         },
         {
           label: "Arunika",
           icon: "i-lucide-swatch-book",
           description: "Bimbel dan Kursus Menggambar",
-          to: "/program/arunika",
+          to: "#",
         },
       ],
     },
     {
-      label: "Promo",
-      icon: "i-lucide-box",
-      to: "/promo",
+      label: "TESTIMONI",
+      to: "#",
+      class: labelClass,
     },
 
     {
-      label: "About Us",
-      icon: "i-lucide-box",
-      to: "/about_us",
+      label: "FORUM ORANG TUA",
+      to: "#",
+      class: labelClass,
     },
-  ],
-  [
     {
-      label: "Help",
-      icon: "i-lucide-circle-help",
-      disabled: true,
+      label: "BEASISWA",
+      to: "#",
+      class: labelClass,
     },
   ],
 ]);
@@ -61,11 +60,12 @@ const items = ref<NavigationMenuItem[][]>([
   <UNavigationMenu
     color="primary"
     orientation="horizontal"
+    highlight
     :items="items"
     :ui="{
       viewport: 'sm:w-(--reka-navigation-menu-viewport-width)',
       content: 'sm:w-auto',
-      childList: 'sm:w-96',
+      childList: 'sm:w-96 p-1',
       childLinkDescription: 'text-balance line-clamp-2',
     }"
     class="data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-48 h-18"
@@ -73,7 +73,7 @@ const items = ref<NavigationMenuItem[][]>([
     <template #amanah>
       <div>
         <NuxtLink to="/" class="flex items-center px-4 py-2">
-          <img src="/favicon.ico" class="h-14 w-auto" />
+          <img src="/img/logo.png" class="h-14 w-auto" />
         </NuxtLink>
       </div>
     </template>
