@@ -77,6 +77,6 @@ const programList = ref([
 
 #program {
   background: #9b2a2a;
-  background: linear-gradient(21deg, rgba(155, 42, 42, 1) 0%, rgba(186, 6, 6, 1) 50%, rgba(84, 0, 0, 1) 100%);
+  background: linear-gradient(21deg, rgba(142, 3, 57, 1) 0%, rgba(187, 6, 108, 1) 50%, rgba(142, 3, 57, 1) 100%);
 }
 </style>

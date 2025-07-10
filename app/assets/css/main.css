@@ -1,2 +1,11 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@theme {
+  --color-raka-red: #e23000;
+  --color-raka-orange: #f68a08;
+  --color-raka-mint: #0ddf9f;
+  --color-raka-blue: #06b2c4;
+  --color-raka-pink: #bb066c;
+  --color-raka-maroon: #8e0339;
+}

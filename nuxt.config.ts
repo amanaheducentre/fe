@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/scripts",
     "@nuxt/test-utils",
+    "@nuxthub/core",
   ],
   css: ["~/app/assets/css/main.css"],
   colorMode: {
