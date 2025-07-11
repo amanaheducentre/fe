@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
-const labelClass = "text-black text-md font-bold mx-1 hover:text-sky-500";
+const labelClass = "text-black text-md bg-transparent font-bold mx-1 hover:text-sky-500";
 const items = ref<NavigationMenuItem[][]>([
   [
     {
@@ -43,7 +43,7 @@ const items = ref<NavigationMenuItem[][]>([
     },
 
     {
-      label: "FORUM ORANG TUA",
+      label: "BLOG",
       to: "#",
       class: labelClass,
     },
@@ -53,14 +53,13 @@ const items = ref<NavigationMenuItem[][]>([
       class: labelClass,
     },
   ],
+  [{}],
 ]);
 </script>
 
 <template>
   <UNavigationMenu
-    color="primary"
     orientation="horizontal"
-    highlight
     :items="items"
     :ui="{
       viewport: 'sm:w-(--reka-navigation-menu-viewport-width)',

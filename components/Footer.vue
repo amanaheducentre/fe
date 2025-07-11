@@ -23,7 +23,7 @@ const sosmeds = ref([
   },
   {
     label: "Whatsapp",
-    link: "#",
+    link: "https://api.whatsapp.com/send?phone=+6285159946601",
   },
   {
     label: "Tiktok",
@@ -59,7 +59,7 @@ const sosmeds = ref([
         <div class="head-footer">Follow Us</div>
         <div class="desc-footer">
           <div v-for="sosmed in sosmeds">
-            <NuxtLink :to="sosmed.link">{{ sosmed.label }}</NuxtLink>
+            <NuxtLink :to="sosmed.link" target="_blank">{{ sosmed.label }}</NuxtLink>
           </div>
         </div>
       </div>

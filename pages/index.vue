@@ -3,10 +3,6 @@ import { ref } from "vue";
 
 const programList = ref([
   {
-    logo: "/img/logo.png",
-    desc: "Amanah Edu Centre",
-  },
-  {
     logo: "/img/serasi.png",
     desc: "Sekolah Ramah Inklusi",
   },
@@ -55,13 +51,29 @@ const programList = ref([
         </div>
       </div>
     </div>
-    <div id="program" class="w-full h-screen flex flex-col justify-center items-center">
+    <div class="w-full h-screen flex flex-col justify-center items-center bg-gradient-red">
       <div class="hero-title text-7xl text-white w-[30%] text-center">Program Kami</div>
       <div class="h-48 mt-8 text-white font-bold flex justify-start items-start">
         <div v-for="program in programList" class="w-28 h-28">
           <ProgramCard :logo="program.logo" :desc="program.desc" />
         </div>
       </div>
+    </div>
+    <div class="w-full h-max flex justify-center">
+      <UCard class="my-5 w-[70%] rounded-xl bg-gradient-green">
+        <div class="flex flex-col items-center gap-2">
+          <div class="font-bold">Masih Punya Pertanyaan ?</div>
+          <div class="hero-title text-2xl">Tanyakan ke Admin Amanah</div>
+          <div class="mt-2">
+            <NuxtLink to="#" class="flex rounded-full shadow-md bg-white">
+              <div class="flex items-center m-3 gap-1 text-black font-bold text-md">
+                <IconsText size="18" color="green" />
+                Chat Sekarang
+              </div>
+            </NuxtLink>
+          </div>
+        </div>
+      </UCard>
     </div>
   </div>
 </template>
