@@ -10,6 +10,6 @@ defineProps({
     <div class="w-[70%] h-[70%] bg-gray-100 rounded-xl flex justify-center items-center shadow-md">
       <img :src="logo" alt="Logo" class="h-[70%] w-auto" />
     </div>
-    <div>{{ desc }}</div>
+    <div class="mt-2">{{ desc }}</div>
   </div>
 </template>

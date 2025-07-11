@@ -10,17 +10,9 @@
         </div>
       </div>
       <NuxtPage />
-      <div class="w-full h-full flex justify-center">
-        <div class="w-[80%]">
-          <Footer> </Footer>
-        </div>
+      <div class="flex justify-center bg-blue-500">
+        <Footer> </Footer>
       </div>
     </UApp>
   </div>
 </template>
-
-<style scoped>
-html {
-  font-family: "League Spartan";
-}
-</style>

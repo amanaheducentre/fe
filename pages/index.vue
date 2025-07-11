@@ -7,11 +7,11 @@ const programList = ref([
     desc: "Amanah Edu Centre",
   },
   {
-    logo: "/img/logo.png",
+    logo: "/img/serasi.png",
     desc: "Sekolah Ramah Inklusi",
   },
   {
-    logo: "/img/logo.png",
+    logo: "/img/corona.png",
     desc: "Coding Robotik Amanah",
   },
   {
@@ -29,7 +29,7 @@ const programList = ref([
           <span class="hero-title ml-36 mt-52 font-bold text-white text-7xl py-2 leading-22">
             SEKOLAH MONTESSORI <span class="hover:underline transition-all"> #1 DI BANYUWANGI </span>
           </span>
-          <span class="hero-desc ml-36 mt-8 text-white text-lg font-bold"
+          <span class="ml-36 mt-8 text-white text-lg font-bold"
             >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi sit iusto deserunt eaque adipisci
             cupiditate sequi quia praesentium laudantium perspiciatis quaerat ullam, ipsum fuga error veniam dolorem?
             Molestiae, voluptates inventore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
@@ -45,7 +45,7 @@ const programList = ref([
       <div class="w-[75%] h-full flex flex-col justify-center">
         <div class="w-[70%]">
           <div class="hero-title text-7xl leading-22">Sekolah Kami Bukan Sekolah Biasa</div>
-          <div class="hero-desc font-bold text-lg mt-8">
+          <div class="font-bold text-lg mt-8">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, assumenda dolorem voluptates atque quae
             dolores consectetur, explicabo nobis voluptate soluta possimus exercitationem! Consectetur omnis
             necessitatibus aperiam perferendis! Deleniti, quia voluptatem. Lorem ipsum, dolor sit amet consectetur
@@ -65,18 +65,3 @@ const programList = ref([
     </div>
   </div>
 </template>
-
-<style scoped>
-.hero-title {
-  font-family: "moderniz";
-}
-
-.hero-desc {
-  font-family: "League Spartan";
-}
-
-#program {
-  background: #9b2a2a;
-  background: linear-gradient(21deg, rgba(142, 3, 57, 1) 0%, rgba(187, 6, 108, 1) 50%, rgba(142, 3, 57, 1) 100%);
-}
-</style>
