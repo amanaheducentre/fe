@@ -84,7 +84,7 @@ const programList = ref([
         </div>
       </UCard>
     </div>
-    <div class="w-full h-full bg-gradient-red flex justify-center items-center">
+    <div class="w-full h-full bg-gradient-orange flex justify-center items-center">
       <div class="w-[50%] my-10 flex flex-col justify-center items-center">
         <div class="text-2xl text-bold hero-title text-white">Paling Banyak Ditanyakan</div>
         <FAQ class="text-white mt-5 w-[50%]"></FAQ>

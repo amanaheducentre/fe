@@ -27,3 +27,8 @@ html {
   background: #0ddf9f;
   background: linear-gradient(121deg, rgba(13, 223, 159, 1) 0%, rgba(6, 178, 196, 1) 75%);
 }
+
+.bg-gradient-orange {
+  background: #e23000;
+  background: linear-gradient(171deg, rgba(226, 48, 0, 1) 0%, rgba(246, 138, 8, 1) 90%);
+}

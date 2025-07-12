@@ -42,7 +42,7 @@ const sosmeds = ref([
       <div class="hero-title flex my-10 ml-10 py-5 text-3xl">Sekolah Montessori #1 <br/> di Banyuwangi</div>
       <div class="my-10">
         <div class="head-footer">Contact</div>
-        <div class="desc-footer">
+        <div>
           <div>info@lkpamanaheducentre.id</div>
           <div>+62 1234 4321 1234</div>
           <div class="mt-2">Ruko Permata Indah No. 6,</div>
@@ -51,13 +51,13 @@ const sosmeds = ref([
       </div>
       <div class="my-10">
         <div class="head-footer">Links</div>
-        <div v-for="link in links" class="desc-footer">
+        <div v-for="link in links">
           <NuxtLink :to="link.to">{{ link.label }}</NuxtLink>
         </div>
       </div>
       <div class="my-10">
         <div class="head-footer">Follow Us</div>
-        <div class="desc-footer">
+        <div>
           <div v-for="sosmed in sosmeds">
             <NuxtLink :to="sosmed.link" target="_blank">{{ sosmed.label }}</NuxtLink>
           </div>
@@ -72,9 +72,5 @@ const sosmeds = ref([
 .head-footer {
   font-size: x-large;
   font-weight: bolder;
-}
-
-.desc-footer {
-  font-weight: bold;
 }
 </style>
