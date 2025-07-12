@@ -70,7 +70,7 @@ onMounted(async () => {
         </div>
       </GradientBackground>
     </div>
-    <div class="w-full h-screen bg-gray-100 flex justify-end">
+    <div class="w-screen h-screen overflow-hidden bg-gray-100 flex justify-end">
       <div data-kinesisscroll-item data-ks-strength="50" data-ks-transform="rotate" class="flex absolute w-full h-full">
         <div class="flex w-full h-full justify-center items-center">
           <div class="absolute w-18 h-18 -translate-y-64 translate-x-84">
