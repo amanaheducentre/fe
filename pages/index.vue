@@ -11,8 +11,17 @@ const programList = ref([
     desc: "Coding Robotik Amanah",
   },
   {
-    logo: "/img/logo.png",
+    logo: "/img/arunika.png",
     desc: "Bimbingan Menggambar",
+  },
+  {
+    logo: "/img/lensa.png",
+    desc: "Learn English with GSA",
+  },
+
+  {
+    logo: "/img/gsa.png",
+    desc: "Griya Sinau Amanah",
   },
 ]);
 </script>
@@ -23,7 +32,7 @@ const programList = ref([
       <GradientBackground>
         <div class="flex w-[75%] h-full flex-col">
           <span class="hero-title ml-36 mt-52 font-bold text-white text-7xl py-2 leading-22">
-            SEKOLAH MONTESSORI <span class="hover:underline transition-all"> #1 DI BANYUWANGI </span>
+            SEKOLAH MONTESSORI #1 DI BANYUWANGI
           </span>
           <span class="ml-36 mt-8 text-white text-lg font-bold"
             >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi sit iusto deserunt eaque adipisci
@@ -74,6 +83,12 @@ const programList = ref([
           </div>
         </div>
       </UCard>
+    </div>
+    <div class="w-full h-full bg-gradient-red flex justify-center items-center">
+      <div class="w-[50%] my-10 flex flex-col justify-center items-center">
+        <div class="text-2xl text-bold hero-title text-white">Paling Banyak Ditanyakan</div>
+        <FAQ class="text-white mt-5 w-[50%]"></FAQ>
+      </div>
     </div>
   </div>
 </template>

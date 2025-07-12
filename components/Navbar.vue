@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
-const labelClass = "text-black text-md bg-transparent font-bold mx-1 hover:text-sky-500";
+const labelClass = "text-black text-md bg-transparent mx-1 hover:text-sky-500";
 const items = ref<NavigationMenuItem[][]>([
   [
     {
@@ -32,6 +32,18 @@ const items = ref<NavigationMenuItem[][]>([
           label: "Arunika",
           icon: "i-lucide-swatch-book",
           description: "Bimbel dan Kursus Menggambar",
+          to: "#",
+        },
+        {
+          label: "Lensa",
+          icon: "i-lucide-swatch-book",
+          description: "Learn English with GSA",
+          to: "#",
+        },
+        {
+          label: "GSA",
+          icon: "i-lucide-swatch-book",
+          description: "Griya Sinau Amanah",
           to: "#",
         },
       ],
@@ -72,7 +84,7 @@ const items = ref<NavigationMenuItem[][]>([
     <template #amanah>
       <div>
         <NuxtLink to="/" class="flex items-center px-4 py-2">
-          <img src="/img/logo.png" class="h-14 w-auto" />
+          <img src="/img/lkp.png" class="h-12 w-auto" />
         </NuxtLink>
       </div>
     </template>

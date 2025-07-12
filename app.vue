@@ -10,9 +10,9 @@
     <NuxtRouteAnnouncer />
     <UApp>
       <div
-        class="backdrop-blur-md bg-transparent w-full h-full flex justify-center sticky bg-[url('/img/bg_navbar.png')] bg-no-repeat bg-cover bg-bottom drop-shadow-md top-0"
+        class="backdrop-blur-md bg-transparent w-full h-full flex justify-center sticky b-[url('/img/bg_navbar.png')] bg-no-repeat bg-cover bg-bottom drop-shadow-md top-0"
       >
-        <div class="w-[95%] h-24 flex justify-center items-center">
+        <div class="w-full h-14 flex justify-center items-center bg-white/80">
           <Navbar />
         </div>
       </div>
