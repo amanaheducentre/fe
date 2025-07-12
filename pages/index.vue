@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+const gradientList = ref([
+  "bg-raka-red",
+  "bg-raka-orange",
+  "bg-raka-mint",
+  "bg-raka-blue",
+  "bg-raka-pink",
+  "bg-raka-maroon",
+]);
+const bubleCount = ref(4);
+const bubleGradients = ref<Array<String>>([]);
 const programList = ref([
   {
     logo: "/img/serasi.png",
@@ -24,6 +34,20 @@ const programList = ref([
     desc: "Griya Sinau Amanah",
   },
 ]);
+
+function randomizeBubleGradients() {
+  for (let i = 0; i < bubleCount.value; i++) {
+    const newColor = gradientList.value[Math.floor(Math.random() * gradientList.value.length)];
+    newColor == bubleGradients.value[i] ? i-- : (bubleGradients.value[i] = newColor);
+  }
+}
+
+onMounted(async () => {
+  while (true) {
+    randomizeBubleGradients();
+    await sleep(2010);
+  }
+});
 </script>
 
 <template>
@@ -47,8 +71,24 @@ const programList = ref([
       </GradientBackground>
     </div>
     <div class="w-full h-screen bg-gray-100 flex justify-end">
+      <div data-kinesisscroll-item data-ks-strength="50" data-ks-transform="rotate" class="flex absolute w-full h-full">
+        <div class="flex w-full h-full justify-center items-center">
+          <div class="absolute w-18 h-18 -translate-y-64 translate-x-84">
+            <Buble :class="bubleGradients[0]" class="transition-all duration-2000" />
+          </div>
+          <div class="absolute w-12 h-12 translate-y-64 -translate-x-84">
+            <Buble :class="bubleGradients[1]" class="transition-all duration-2000" />
+          </div>
+          <div class="absolute w-24 h-24 translate-y-84 translate-x-24">
+            <Buble :class="bubleGradients[2]" class="transition-all duration-2000" />
+          </div>
+          <div class="absolute w-14 h-14 -translate-y-75 -translate-x-84">
+            <Buble :class="bubleGradients[3]" class="transition-all duration-2000" />
+          </div>
+        </div>
+      </div>
       <div class="w-[75%] h-full flex flex-col justify-center">
-        <div class="w-[70%]">
+        <div class="relative z-9 w-[70%]">
           <div class="hero-title text-7xl leading-22">Sekolah Kami Bukan Sekolah Biasa</div>
           <div class="font-bold text-lg mt-8">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, assumenda dolorem voluptates atque quae

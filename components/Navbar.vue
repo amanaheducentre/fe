@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
-const labelClass = "text-black text-md bg-transparent mx-1 hover:text-sky-500";
+const labelClass = "text-black text-md bg-transparent mx-1";
 const items = ref<NavigationMenuItem[][]>([
   [
     {
@@ -9,6 +9,7 @@ const items = ref<NavigationMenuItem[][]>([
       to: "/",
       active: false,
       slot: "amanah" as const,
+      class: "w-48"
     },
   ],
   [
@@ -19,30 +20,25 @@ const items = ref<NavigationMenuItem[][]>([
         {
           label: "Serasi",
           description: "Sekolah Ramah Inklusi",
-          icon: "i-lucide-house",
           to: "#",
         },
         {
           label: "CORONA",
           description: "Coding dan Robotik Amanah",
-          icon: "i-lucide-cloud-download",
           to: "#",
         },
         {
           label: "Arunika",
-          icon: "i-lucide-swatch-book",
           description: "Bimbel dan Kursus Menggambar",
           to: "#",
         },
         {
           label: "Lensa",
-          icon: "i-lucide-swatch-book",
           description: "Learn English with GSA",
           to: "#",
         },
         {
           label: "GSA",
-          icon: "i-lucide-swatch-book",
           description: "Griya Sinau Amanah",
           to: "#",
         },
@@ -65,7 +61,12 @@ const items = ref<NavigationMenuItem[][]>([
       class: labelClass,
     },
   ],
-  [{}],
+  [
+    {
+      active: false,
+      class: "w-48"
+    },
+  ],
 ]);
 </script>
 
@@ -74,16 +75,20 @@ const items = ref<NavigationMenuItem[][]>([
     orientation="horizontal"
     :items="items"
     :ui="{
+      item: 'flex justify-center',
+      link: 'hover:before:bg-transparent',
+      label: 'hover:before:bg-transparent',
       viewport: 'sm:w-(--reka-navigation-menu-viewport-width)',
       content: 'sm:w-auto',
       childList: 'sm:w-96 p-1',
+      childLinkLabel: 'text-bold text-md',
       childLinkDescription: 'text-balance line-clamp-2',
     }"
     class="data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-48 h-18"
   >
     <template #amanah>
       <div>
-        <NuxtLink to="/" class="flex items-center px-4 py-2">
+        <NuxtLink to="/" class="flex items-center pl-5">
           <img src="/img/lkp.png" class="h-12 w-auto" />
         </NuxtLink>
       </div>

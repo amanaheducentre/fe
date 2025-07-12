@@ -4,6 +4,7 @@
     "": {
       "name": "nuxt-app",
       "dependencies": {
+        "@amineyarman/kinesis": "^1.0.6",
         "@nuxt/content": "3.6.1",
         "@nuxt/eslint": "1.4.1",
         "@nuxt/fonts": "0.11.4",
@@ -28,6 +29,8 @@
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
+
+    "@amineyarman/kinesis": ["@amineyarman/kinesis@1.0.6", "", {}, "sha512-NEI/JB0ELBM93qEZudw3KJV+I1zu6wpXvfjjQCz/I8di4HQv22ORyv9GEMGde8FbfdAKEg/dIfiRjq9MFy4tvA=="],
 
     "@ampproject/remapping": ["@ampproject/remapping@2.3.0", "", { "dependencies": { "@jridgewell/gen-mapping": "^0.3.5", "@jridgewell/trace-mapping": "^0.3.24" } }, "sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw=="],
 
