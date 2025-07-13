@@ -54,11 +54,14 @@ onMounted(async () => {
   <div class="w-full h-full">
     <div class="w-full h-screen overflow-hidden">
       <GradientBackground>
-        <div class="flex w-[75%] h-full flex-col justify-center px-10 md:pl-36">
-          <span class="hero-title font-bold text-white text-4xl lg:text-7xl py-2 md:leading-11 lg:leading-22">
-            SEKOLAH MONTESSORI #1 DI BANYUWANGI
+        <div class="flex md:w-[75%] h-full flex-col justify-center px-10 md:pl-36">
+          <span
+            class="hero-title font-bold text-white text-2xl md:text-4xl lg:text-7xl py-2 md:leading-11 lg:leading-22"
+          >
+            SEKOLAH MONTESSORI #1 <br />
+            DI BANYUWANGI
           </span>
-          <span class="mt-8 text-white lg:text-lg font-medium lg:font-bold"
+          <span class="mt-8 text-white text-sm md:text-md lg:text-lg font-medium lg:font-bold"
             >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi sit iusto deserunt eaque adipisci
             cupiditate sequi quia praesentium laudantium perspiciatis quaerat ullam, ipsum fuga error veniam dolorem?
             Molestiae, voluptates inventore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
@@ -89,10 +92,10 @@ onMounted(async () => {
       </div>
       <div class="w-[75%] h-full flex flex-col justify-center">
         <div class="relative z-9 w-[70%]">
-          <div class="hero-title text-4xl lg:text-7xl md:leading-11 lg:leading-22">
+          <div class="hero-title text-2xl md:text-4xl lg:text-7xl md:leading-11 lg:leading-22">
             Sekolah Kami Bukan Sekolah Biasa
           </div>
-          <div class="font-medium lg:font-bold lg:text-lg mt-8">
+          <div class="md:font-md lg:font-bold text-sm md:text-md lg:text-lg mt-8">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, assumenda dolorem voluptates atque quae
             dolores consectetur, explicabo nobis voluptate soluta possimus exercitationem! Consectetur omnis
             necessitatibus aperiam perferendis! Deleniti, quia voluptatem. Lorem ipsum, dolor sit amet consectetur
@@ -103,9 +106,13 @@ onMounted(async () => {
       </div>
     </div>
     <div class="w-full h-screen flex flex-col justify-center items-center bg-gradient-red">
-      <div class="hero-title text-4xl lg:text-7xl text-white md:w-[30%] w-[50%] text-center">Program Kami</div>
-      <div class="h-48 mt-8 text-white lg:font-bold gap-5 flex justify-start items-start">
-        <div v-for="program in programList" class="w-16 h-16 md:w-20 md:h-20 lg:w-28 lg:h-28">
+      <div class="hero-title text-2xl md:text-4xl lg:text-7xl text-white md:w-[30%] w-[50%] text-center">
+        Program Kami
+      </div>
+      <div
+        class="h-72 md:h-48 mt-8 text-white w-[80%] md:w-max lg:font-bold gap-3 md:gap-5 flex flex-wrap justify-center"
+      >
+        <div v-for="program in programList" class="w-16 h-16 md:w-20 md:h-20 lg:w-28 lg:h-28 place-self-center">
           <ProgramCard :logo="program.logo" :desc="program.desc" />
         </div>
       </div>
