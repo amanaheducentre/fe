@@ -38,33 +38,36 @@ const sosmeds = ref([
 
 <template>
   <div class="bg-gray-900 text-white w-full h-full">
-    <div class="grid grid-cols-4">
-      <div class="hero-title flex my-10 ml-10 py-5 text-3xl">Sekolah Montessori #1 <br/> di Banyuwangi</div>
-      <div class="my-10">
+    <div class="grid grid-rows-4 md:grid-rows-1 md:grid-cols-4 p-5 pt-10">
+      <div class="hero-title flex justify-center items-center text-xl lg:text-3xl text-center">
+        Sekolah Montessori #1 <br />
+        di Banyuwangi
+      </div>
+      <div class="flex flex-col items-center">
         <div class="head-footer">Contact</div>
-        <div>
+        <div class="text-sm px-24 text-center">
           <div>info@lkpamanaheducentre.id</div>
           <div>+62 1234 4321 1234</div>
           <div class="mt-2">Ruko Permata Indah No. 6,</div>
           <div>Jl. Kepiting, Sobo, Tukangkayu, Kec. Banyuwangi, Kabupaten Banyuwangi, Jawa Timur 68418</div>
         </div>
       </div>
-      <div class="my-10">
+      <div class="flex flex-col items-center">
         <div class="head-footer">Links</div>
-        <div v-for="link in links">
+        <div v-for="link in links" class="text-sm">
           <NuxtLink :to="link.to">{{ link.label }}</NuxtLink>
         </div>
       </div>
-      <div class="my-10">
+      <div class="flex flex-col items-center">
         <div class="head-footer">Follow Us</div>
         <div>
-          <div v-for="sosmed in sosmeds">
+          <div v-for="sosmed in sosmeds" class="text-sm">
             <NuxtLink :to="sosmed.link" target="_blank">{{ sosmed.label }}</NuxtLink>
           </div>
         </div>
       </div>
     </div>
-    <div class="flex justify-center">&copy; 2025 Amanah Edu Centre</div>
+    <div class="flex justify-center mt-5">&copy; 2025 Amanah Edu Centre</div>
   </div>
 </template>
 

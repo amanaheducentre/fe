@@ -9,7 +9,7 @@ const items = ref<NavigationMenuItem[][]>([
       to: "/",
       active: false,
       slot: "amanah" as const,
-      class: "w-48"
+      class: "w-48 hidden md:flex",
     },
   ],
   [
@@ -64,7 +64,7 @@ const items = ref<NavigationMenuItem[][]>([
   [
     {
       active: false,
-      class: "w-48"
+      class: "w-48 hidden md:flex",
     },
   ],
 ]);
