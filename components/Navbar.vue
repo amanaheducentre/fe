@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
-const labelClass = "text-black text-md bg-transparent mx-1";
+const labelClass = "text-black text-md bg-transparent mx-1 flex text-center justify-center items-center";
 const items = ref<NavigationMenuItem[][]>([
   [
     {
@@ -49,22 +49,20 @@ const items = ref<NavigationMenuItem[][]>([
       to: "#",
       class: labelClass,
     },
-
-    {
-      label: "BLOG",
-      to: "#",
-      class: labelClass,
-    },
     {
       label: "BEASISWA",
       to: "#",
-      class: labelClass,
+      class: labelClass + " mr-8",
     },
-  ],
-  [
     {
-      active: false,
-      class: "w-48 hidden md:flex",
+      label: "LOG IN",
+      to: "#",
+      class: "text-black font-bold mx-1 bg-gray-300 rounded",
+    },
+    {
+      label: "SIGN UP",
+      to: "#",
+      class: "text-white font-bold mx-1 bg-raka-orange rounded mr-8",
     },
   ],
 ]);
