@@ -56,12 +56,12 @@ onMounted(async () => {
       <GradientBackground>
         <div class="flex md:w-[75%] h-full flex-col justify-center px-10 md:pl-36">
           <span
-            class="hero-title font-bold text-white text-2xl md:text-4xl lg:text-7xl py-2 md:leading-11 lg:leading-22"
+            class="text-moderniz font-bold text-white text-2xl md:text-4xl lg:text-7xl py-2 md:leading-11 lg:leading-22"
           >
             SEKOLAH MONTESSORI #1 <br />
             DI BANYUWANGI
           </span>
-          <span class="mt-8 text-white text-sm md:text-md lg:text-lg font-medium lg:font-bold"
+          <span class="text-arcon mt-8 text-white text-sm md:text-md lg:text-lg font-medium"
             >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi sit iusto deserunt eaque adipisci
             cupiditate sequi quia praesentium laudantium perspiciatis quaerat ullam, ipsum fuga error veniam dolorem?
             Molestiae, voluptates inventore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
@@ -92,10 +92,10 @@ onMounted(async () => {
       </div>
       <div class="w-[75%] h-full flex flex-col justify-center">
         <div class="relative z-9 w-[70%]">
-          <div class="hero-title text-2xl md:text-4xl lg:text-7xl md:leading-11 lg:leading-22">
+          <div class="text-moderniz text-2xl md:text-4xl lg:text-7xl md:leading-11 lg:leading-22">
             Sekolah Kami Bukan Sekolah Biasa
           </div>
-          <div class="md:font-md lg:font-bold text-sm md:text-md lg:text-lg mt-8">
+          <div class="text-arcon md:font-md lg:font-bold text-sm md:text-md lg:text-lg mt-8">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, assumenda dolorem voluptates atque quae
             dolores consectetur, explicabo nobis voluptate soluta possimus exercitationem! Consectetur omnis
             necessitatibus aperiam perferendis! Deleniti, quia voluptatem. Lorem ipsum, dolor sit amet consectetur
@@ -105,39 +105,38 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <div class="w-full h-screen flex flex-col justify-center items-center bg-gradient-red">
-      <div class="hero-title text-2xl md:text-4xl lg:text-7xl text-white md:w-[30%] w-[50%] text-center">
-        Program Kami
-      </div>
-      <div
-        class="h-72 md:h-48 mt-8 text-white w-[80%] md:w-max lg:font-bold gap-3 md:gap-5 flex flex-wrap justify-center"
-      >
-        <div v-for="program in programList" class="w-16 h-16 md:w-20 md:h-20 lg:w-28 lg:h-28 place-self-center">
-          <ProgramCard :logo="program.logo" :desc="program.desc" />
-        </div>
-      </div>
-    </div>
-    <div class="w-full h-max flex justify-center">
-      <UCard class="my-5 w-[70%] rounded-xl bg-gradient-green">
-        <div class="flex flex-col items-center gap-2">
-          <div>Masih Punya Pertanyaan ?</div>
-          <div class="hero-title text-md md:text-2xl text-center">Tanyakan ke Admin Amanah</div>
-          <div class="mt-2">
-            <NuxtLink to="#" class="flex rounded-full shadow-md bg-white">
-              <div class="flex items-center m-3 gap-1 text-black font-bold text-md">
-                <IconsText size="18" color="green" />
-                Chat Sekarang
+    <div class="w-full h-max flex justify-center bg-gray-100">
+      <UCard class="my-5 w-[70%] rounded-4xl bg-gradient-red ring-0">
+        <div class="w-full h-full grid grid-cols-2">
+          <div class="grid grid-rows-2">
+            <div class="text-arcon px-8">
+              <div class="mt-16 px-2 text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight">
+                Belajar Lebih Seru dengan Metode Baru!
               </div>
-            </NuxtLink>
+              <div class="px-2 py-6 text-justify">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. In neque, incidunt eveniet, quae saepe tempora
+                consectetur nihil doloremque delectus similique explicabo? Enim non magni delectus nihil totam, vel rem
+                ea.
+              </div>
+            </div>
+            <div class="px-8 pb-16 flex gap-2 bottom-0 w-full h-full flex-col justify-end">
+              <div>
+                <UButton color="neutral">Learn More</UButton>
+              </div>
+              <div class="text-sm">Mulai dari Rp.185.000/bulan</div>
+            </div>
+          </div>
+          <div class="p-8 flex justify-center items-center w-full h-full">
+            <NuxtImg
+              class="rounded-3xl"
+              :width="1024"
+              :height="1024"
+              format="webp"
+              src="/img/sample/montessori-1.jpg"
+            ></NuxtImg>
           </div>
         </div>
       </UCard>
-    </div>
-    <div class="w-full h-full bg-gradient-orange flex justify-center items-center">
-      <div class="w-[50%] my-10 flex flex-col justify-center items-center">
-        <div class="text-xl lg:text-2xl text-bold hero-title text-white text-center">Paling Banyak Ditanyakan</div>
-        <FAQ class="text-white mt-5 w-[50%]"></FAQ>
-      </div>
     </div>
   </div>
 </template>

@@ -10,12 +10,16 @@
   --color-raka-maroon: #8e0339;
 }
 
-html {
-  font-family: "League Spartan";
+.text-arcon {
+  font-family: "arcon";
 }
 
-.hero-title {
+.text-moderniz {
   font-family: "moderniz";
+}
+
+.text-league-spartan {
+  font-family: "League Spartan";
 }
 
 .bg-gradient-red {

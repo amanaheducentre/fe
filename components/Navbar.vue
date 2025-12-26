@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
-const labelClass = "text-black text-md bg-transparent mx-1 flex text-center justify-center items-center";
+const labelClass =
+  "text-arcon text-black font-light text-md bg-transparent mx-1 flex text-center justify-center items-center";
 const items = ref<NavigationMenuItem[][]>([
   [
     {
@@ -57,7 +58,7 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: "LOG IN",
       to: "#",
-      class: "text-black font-bold mx-1 bg-gray-300 rounded",
+      class: "text-white font-bold mx-1 bg-gray-500 rounded",
     },
     {
       label: "SIGN UP",
