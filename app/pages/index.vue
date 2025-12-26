@@ -38,7 +38,7 @@ const programList = ref([
 function randomizeBubleGradients() {
   for (let i = 0; i < bubleCount.value; i++) {
     const newColor = gradientList.value[Math.floor(Math.random() * gradientList.value.length)];
-    newColor == bubleGradients.value[i] ? i-- : (bubleGradients.value[i] = newColor);
+    newColor == bubleGradients.value[i] ? i-- : (bubleGradients.value[i] = newColor as string);
   }
 }
 
