@@ -105,38 +105,59 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <div class="w-full h-max flex justify-center bg-gray-100">
-      <UCard class="my-5 w-[70%] rounded-4xl bg-gradient-red ring-0">
-        <div class="w-full h-full grid grid-cols-2">
-          <div class="grid grid-rows-2">
-            <div class="text-arcon px-8">
-              <div class="mt-16 px-2 text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight">
+    <div class="w-full h-max flex flex-col justify-center items-center bg-gray-100 text-black">
+      <CardCenterSplit background-color="bg-gray-100">
+        <template #left>
+          <div class="flex flex-col gap-6 text-arcon pr-8">
+            <div class="text-2xl md:text-4xl lg:text-6xl font-black tracking-tight">
+              Belajar Montessori Secara Online!
+            </div>
+            <div class="text-justify text-xl">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In neque, incidunt eveniet, quae saepe tempora
+              consectetur nihil doloremque delectus similique explicabo? Enim non magni delectus nihil totam, vel rem
+              ea. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic minima perspiciatis eaque blanditiis
+              delectus obcaecati necessitatibus rem, nostrum sapiente adipisci rerum repellat sequi ipsa facere nobis
+              perferendis officiis excepturi eligendi. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Blanditiis cum, nemo repellendus dolor aspernatur quaerat quidem delectus consequatur quas velit et eaque
+              assumenda laudantium culpa est facere reiciendis fugiat ex!
+            </div>
+          </div>
+        </template>
+        <template #right>
+          <div class="flex justify-end items-center w-full h-full">
+            <CarouselImageDesc></CarouselImageDesc>
+          </div>
+        </template>
+      </CardCenterSplit>
+    </div>
+    <div class="w-full h-max flex flex-col justify-center items-center bg-gray-100 text-white">
+      <CardCenterSplit background-color="bg-gradient-red">
+        <template #left>
+          <div class="grid grid-rows-2 pt-16">
+            <div class="flex flex-col gap-6 text-arcon pr-8">
+              <div class="text-justify text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight">
                 Belajar Lebih Seru dengan Metode Baru!
               </div>
-              <div class="px-2 py-6 text-justify">
+              <div class="text-justify text-xl">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. In neque, incidunt eveniet, quae saepe tempora
                 consectetur nihil doloremque delectus similique explicabo? Enim non magni delectus nihil totam, vel rem
                 ea.
               </div>
             </div>
-            <div class="px-8 pb-16 flex gap-2 bottom-0 w-full h-full flex-col justify-end">
+            <div class="flex gap-2 bottom-0 w-full h-full flex-col justify-end">
               <div>
-                <UButton color="neutral">Learn More</UButton>
+                <UButton size="xl" color="neutral">Learn More</UButton>
               </div>
               <div class="text-sm">Mulai dari Rp.185.000/bulan</div>
             </div>
           </div>
-          <div class="p-8 flex justify-center items-center w-full h-full">
-            <NuxtImg
-              class="rounded-3xl"
-              :width="1024"
-              :height="1024"
-              format="webp"
-              src="/img/sample/montessori-1.jpg"
-            ></NuxtImg>
+        </template>
+        <template #right>
+          <div class="flex justify-end items-center w-full h-full">
+            <NuxtImg class="rounded-3xl aspect-square" src="/img/sample/montessori-1.jpg"></NuxtImg>
           </div>
-        </div>
-      </UCard>
+        </template>
+      </CardCenterSplit>
     </div>
   </div>
 </template>
