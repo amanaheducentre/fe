@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+const { isMobile } = useDevice();
+
 const gradientList = ref([
   "bg-raka-red",
   "bg-raka-orange",
@@ -54,14 +56,11 @@ onMounted(async () => {
   <div class="w-full h-full">
     <div class="w-full h-screen overflow-hidden">
       <GradientBackground>
-        <div class="flex md:w-[75%] h-full flex-col justify-center px-10 md:pl-36">
-          <span
-            class="text-moderniz font-bold text-white text-2xl md:text-4xl lg:text-7xl py-2 md:leading-11 lg:leading-22"
-          >
-            SEKOLAH MONTESSORI #1 <br />
-            DI BANYUWANGI
+        <UContainer class="flex flex-col items-center w-full h-full pt-12">
+          <span class="text-moderniz font-bold text-white text-4xl lg:text-7xl py-2 md:leading-11 lg:leading-22">
+            SEKOLAH MONTESSORI #1 DI BANYUWANGI
           </span>
-          <span class="text-arcon mt-8 text-white text-sm md:text-md lg:text-lg font-medium"
+          <span class="text-arcon mt-4 text-white text-lg lg:text-lg font-medium text-justify"
             >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi sit iusto deserunt eaque adipisci
             cupiditate sequi quia praesentium laudantium perspiciatis quaerat ullam, ipsum fuga error veniam dolorem?
             Molestiae, voluptates inventore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
@@ -70,7 +69,7 @@ onMounted(async () => {
             adipisicing elit. Temporibus numquam quis sunt, rerum veniam rem eveniet quam error non amet hic in dicta,
             quisquam culpa fugiat molestiae quae incidunt. Impedit!</span
           >
-        </div>
+        </UContainer>
       </GradientBackground>
     </div>
     <div class="relative w-screen h-screen overflow-hidden bg-gray-100 flex justify-end">
@@ -91,11 +90,11 @@ onMounted(async () => {
         </div>
       </div>
       <div class="w-[75%] h-full flex flex-col justify-center">
-        <div class="relative z-9 w-[70%]">
-          <div class="text-moderniz text-2xl md:text-4xl lg:text-7xl md:leading-11 lg:leading-22">
+        <div class="relative z-9 w-[95%]">
+          <div class="text-moderniz text-5xl lg:text-7xl leading-13 lg:leading-22">
             Sekolah Kami Bukan Sekolah Biasa
           </div>
-          <div class="text-arcon md:font-md lg:font-bold text-sm md:text-md lg:text-lg mt-8">
+          <div class="text-arcon md:font-md lg:font-bold text-md lg:text-lg mt-8">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, assumenda dolorem voluptates atque quae
             dolores consectetur, explicabo nobis voluptate soluta possimus exercitationem! Consectetur omnis
             necessitatibus aperiam perferendis! Deleniti, quia voluptatem. Lorem ipsum, dolor sit amet consectetur
@@ -117,9 +116,7 @@ onMounted(async () => {
               consectetur nihil doloremque delectus similique explicabo? Enim non magni delectus nihil totam, vel rem
               ea. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic minima perspiciatis eaque blanditiis
               delectus obcaecati necessitatibus rem, nostrum sapiente adipisci rerum repellat sequi ipsa facere nobis
-              perferendis officiis excepturi eligendi. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Blanditiis cum, nemo repellendus dolor aspernatur quaerat quidem delectus consequatur quas velit et eaque
-              assumenda laudantium culpa est facere reiciendis fugiat ex!
+              perferendis officiis excepturi eligendi.
             </div>
           </div>
         </template>
@@ -133,12 +130,12 @@ onMounted(async () => {
     <div class="w-full h-max flex flex-col justify-center items-center bg-gray-100 text-white">
       <CardCenterSplit background-color="bg-gradient-red">
         <template #left>
-          <div class="grid grid-rows-2 pt-16">
-            <div class="flex flex-col gap-6 text-arcon pr-8">
+          <div class="grid grid-rows-2 md:pt-16">
+            <div class="flex flex-col gap-6 text-arcon md:pr-8">
               <div class="text-justify text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight">
                 Belajar Lebih Seru dengan Metode Baru!
               </div>
-              <div class="text-justify text-xl">
+              <div class="text-justify md:text-xl">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. In neque, incidunt eveniet, quae saepe tempora
                 consectetur nihil doloremque delectus similique explicabo? Enim non magni delectus nihil totam, vel rem
                 ea.
@@ -152,7 +149,7 @@ onMounted(async () => {
             </div>
           </div>
         </template>
-        <template #right>
+        <template #right v-if="!isMobile">
           <div class="flex justify-end items-center w-full h-full">
             <NuxtImg class="rounded-3xl aspect-square" src="/img/sample/montessori-1.jpg"></NuxtImg>
           </div>
