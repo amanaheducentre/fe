@@ -1,9 +1,16 @@
 <script setup lang="ts">
+import { useHead } from "#app";
 import { initializeKinesis } from "@amineyarman/kinesis";
 
 useSeoMeta({
   title: "LKP AManah Edu Centre",
   description: "Lembaga Kursus No.1 di Banyuwangi",
+});
+
+useHead({
+  htmlAttrs: {
+    class: "scroll-smooth",
+  },
 });
 
 onMounted(() => {
@@ -12,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="scroll-smooth">
     <NuxtRouteAnnouncer />
     <UApp>
       <div

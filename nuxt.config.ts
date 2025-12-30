@@ -14,6 +14,8 @@ export default defineNuxtConfig({
     "@nuxt/test-utils",
     "@nuxthub/core",
     "@nuxtjs/device",
+    "@nuxtjs/color-mode",
+    "@vueuse/nuxt",
   ],
   css: ["~/assets/css/main.css"],
   colorMode: {

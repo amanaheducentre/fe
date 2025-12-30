@@ -17,14 +17,14 @@ const items = [
     :items="items"
     class="flex flex-col justify-center items-center rounded-3xl overflow-hidden"
   >
-    <div class="flex w-full h-full justify-center items-center">
+    <div class="flex min-w-full min-h-max justify-center items-center">
       <div>
         <NuxtImg :src="item" />
       </div>
       <div
-        class="flex w-[85%] h-[25%] rounded-3xl bottom-0 mb-8 justify-center items-center bg-gradient-silver absolute z-10 text-center p-4"
+        class="flex text-xs min-w-[85%] min-h-[25%] rounded-3xl bottom-0 mb-8 justify-center items-center bg-gradient-silver absolute z-10 text-center p-4"
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem amet exercitationem ut quae at.
+        Lorem ipsum dolor sit amet
       </div>
     </div>
   </UCarousel>

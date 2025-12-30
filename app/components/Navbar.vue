@@ -16,34 +16,8 @@ const items = ref<NavigationMenuItem[][]>([
   [
     {
       label: "PROGRAM",
+      to: "#",
       class: labelClass,
-      children: [
-        {
-          label: "Serasi",
-          description: "Sekolah Ramah Inklusi",
-          to: "#",
-        },
-        {
-          label: "CORONA",
-          description: "Coding dan Robotik Amanah",
-          to: "#",
-        },
-        {
-          label: "Arunika",
-          description: "Bimbel dan Kursus Menggambar",
-          to: "#",
-        },
-        {
-          label: "Lensa",
-          description: "Learn English with GSA",
-          to: "#",
-        },
-        {
-          label: "GSA",
-          description: "Griya Sinau Amanah",
-          to: "#",
-        },
-      ],
     },
     {
       label: "TESTIMONI",
