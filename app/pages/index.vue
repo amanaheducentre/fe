@@ -55,7 +55,7 @@ watch(scrollPosition, (newValue, oldValue) => {
     <!-- SECTION 1 (Hero) -->
     <section class="w-full min-h-screen overflow-hidden" id="home">
       <GradientBackground>
-        <UContainer class="flex flex-col text-white items-center w-full h-full px-4 sm:px-6 lg:px-8 pt-24">
+        <UContainer class="flex flex-col text-white items-center w-full h-full px-4 sm:px-6 lg:px-8 pt-32">
           <h1
             class="text-moderniz font-bold text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight md:leading-snug lg:leading-[1.05] text-center max-w-5xl"
           >

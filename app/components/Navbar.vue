@@ -81,5 +81,30 @@ const navbarMenu = ref([
       </UButton>
     </div>
   </div>
-  <div v-else></div>
+  <div v-else class="grid grid-cols-3 w-full h-24 bg-white">
+    <div class="flex items-center">
+      <NuxtLink to="/">
+        <NuxtImg src="/img/logo.png" width="32" class="ml-6"></NuxtImg>
+      </NuxtLink>
+    </div>
+    <div class=""></div>
+    <div class="flex justify-end items-center">
+      <div class="flex h-full justify-center items-center gap-3 mx-4">
+        <NuxtLink to="#"> PROGRAM </NuxtLink>
+        <NuxtLink to="#"> GALLERY </NuxtLink>
+        <NuxtLink to="#"> BEASISWA </NuxtLink>
+        <NuxtLink to="#">
+          <Icon name="uil:shopping-cart" size="20px"></Icon>
+        </NuxtLink>
+      </div>
+      <div class="flex gap-2 mr-6">
+        <NuxtLink to="#">
+          <UButton color="neutral" class="bg-gray-500">Log In</UButton>
+        </NuxtLink>
+        <NuxtLink to="#">
+          <UButton color="neutral" class="bg-raka-orange">Sign Up</UButton>
+        </NuxtLink>
+      </div>
+    </div>
+  </div>
 </template>
