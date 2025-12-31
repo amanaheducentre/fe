@@ -1,70 +1,85 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from "@nuxt/ui";
+const { isMobile } = useDevice();
+const isMenuOpen = ref(false);
+const showCloseMenu = ref(false);
 
-const labelClass =
-  "text-arcon text-black font-light text-md bg-transparent mx-1 flex text-center justify-center items-center";
-const items = ref<NavigationMenuItem[][]>([
+watch(isMenuOpen, async () => {
+  showCloseMenu.value = false;
+  if (isMenuOpen.value == true) {
+    await sleep(400);
+    showCloseMenu.value = true;
+  }
+});
+
+const navbarMenu = ref([
   [
     {
-      label: "Amanah Edu Centre",
-      to: "/",
-      active: false,
-      slot: "amanah" as const,
-      class: "w-48 hidden md:flex",
+      name: "Log In",
+      to: "#",
+      class: "text-raka-blue",
+    },
+    {
+      name: "Sign Up",
+      to: "#",
+      class: "text-raka-blue",
     },
   ],
   [
     {
-      label: "PROGRAM",
+      name: "Main Menu",
       to: "#",
-      class: labelClass,
+      class: "text-xl text-raka-orange",
     },
     {
-      label: "TESTIMONI",
+      name: "Program",
       to: "#",
-      class: labelClass,
+      class: "text-sm",
     },
     {
-      label: "BEASISWA",
+      name: "Gallery",
       to: "#",
-      class: labelClass + " mr-8",
+      class: "text-sm",
     },
     {
-      label: "LOG IN",
+      name: "Beasiswa",
       to: "#",
-      class: "text-white font-bold mx-1 bg-gray-500 rounded",
-    },
-    {
-      label: "SIGN UP",
-      to: "#",
-      class: "text-white font-bold mx-1 bg-raka-orange rounded mr-8",
+      class: "text-sm",
     },
   ],
 ]);
 </script>
 
 <template>
-  <UNavigationMenu
-    orientation="horizontal"
-    :items="items"
-    :ui="{
-      item: 'flex justify-center',
-      link: 'hover:before:bg-transparent',
-      label: 'hover:before:bg-transparent',
-      viewport: 'sm:w-(--reka-navigation-menu-viewport-width)',
-      content: 'sm:w-auto',
-      childList: 'sm:w-96 p-1',
-      childLinkLabel: 'text-bold text-md',
-      childLinkDescription: 'text-balance line-clamp-2',
-    }"
-    class="data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-48 h-18"
-  >
-    <template #amanah>
-      <div>
-        <NuxtLink to="/" class="flex items-center pl-5">
-          <img src="/img/lkp.png" class="h-12 w-auto" />
-        </NuxtLink>
+  <div v-if="isMobile" class="flex w-full h-16 bg-white">
+    <div
+      class="flex fixed min-w-[50%] min-h-screen bg-white transition-all z-9999"
+      :class="isMenuOpen ? '' : '-translate-x-100'"
+    >
+      <div class="fixed flex w-full items-center">
+        <div
+          class="flex justify-center items-center w-12 h-12 transition-all translate-x-10 my-8 bg-white rounded-full mx-auto justify-self-center shadow"
+          :class="showCloseMenu ? 'scale-100' : 'scale-0'"
+          @click="isMenuOpen = false"
+        >
+          <Icon name="uil:multiply" size="24px"> </Icon>
+        </div>
       </div>
-    </template>
-  </UNavigationMenu>
+      <div class="flex flex-col gap-4 z-9999 w-full my-6">
+        <div v-for="data in navbarMenu" class="flex flex-col gap-3">
+          <NuxtLink v-for="nav in data" :to="nav.to" class="pl-2" :class="nav.class">{{ nav.name }}</NuxtLink>
+          <hr />
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex fixed transition-all"
+      :class="isMenuOpen ? 'min-h-screen min-w-screen backdrop-blur-md' : ''"
+    ></div>
+    <div class="flex h-full items-center px-2">
+      <UButton @click="isMenuOpen = !isMenuOpen" variant="outline" class="ring-0 text-black">
+        <Icon name="uil:ellipsis-v" size="24px"></Icon>
+      </UButton>
+    </div>
+  </div>
+  <div v-else></div>
 </template>
