@@ -25,6 +25,8 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@iconify-json/qlementine-icons": "^1.2.13",
+    "@iconify-json/uil": "^1.2.3",
     "@nuxt/eslint": "1.12.1",
     "@nuxt/fonts": "0.12.1",
     "@nuxt/scripts": "0.13.2",
