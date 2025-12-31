@@ -75,10 +75,18 @@ const navbarMenu = ref([
       class="flex fixed transition-all"
       :class="isMenuOpen ? 'min-h-screen min-w-screen backdrop-blur-md' : ''"
     ></div>
-    <div class="flex h-full items-center px-2">
-      <UButton @click="isMenuOpen = !isMenuOpen" variant="outline" class="ring-0 text-black">
-        <Icon name="uil:ellipsis-v" size="24px"></Icon>
-      </UButton>
+    <div class="grid grid-cols-3 w-full h-full">
+      <div class="flex h-full items-center px-2">
+        <UButton @click="isMenuOpen = !isMenuOpen" variant="outline" class="ring-0 text-black">
+          <Icon name="uil:ellipsis-v" size="24px"></Icon>
+        </UButton>
+      </div>
+      <div class="flex w-full h-full justify-center items-center">
+        <NuxtLink to="/">
+          <NuxtImg src="/img/logo.png" width="24"></NuxtImg>
+        </NuxtLink>
+      </div>
+      <div></div>
     </div>
   </div>
   <div v-else class="grid grid-cols-3 w-full h-24 bg-white">
