@@ -1,5 +1,77 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import type { TabsItem } from "@nuxt/ui";
+
+const items = [
+  {
+    label: "Coding dan Robotik",
+    description: "Belajar coding dan robotik dengan menyenangkan dan ramah anak.",
+    slot: "account" as const,
+    data: [
+      {
+        image: "https://picsum.photos/1024/1024?random=1",
+        title: "Contoh Kursus Satu",
+        sold: 142,
+        tags: ["Bestseller", "New", "Low Price"],
+        star: 4,
+        rating: 121,
+        price: 200000,
+      },
+      {
+        image: "https://picsum.photos/1024/1024?random=2",
+        title: "Contoh Kursus Dua",
+        sold: 142,
+        tags: ["Bestseller", "New", "Low Price"],
+        star: 4,
+        rating: 121,
+        price: 200000,
+      },
+      {
+        image: "https://picsum.photos/1024/1024?random=3",
+        title: "Contoh Kursus Tiga",
+        sold: 142,
+        tags: ["Bestseller", "New", "Low Price"],
+        star: 4,
+        rating: 121,
+        price: 200000,
+      },
+    ],
+  },
+  {
+    label: "GSA",
+    description: "Belajar dasar membaca, menulis, dan menghitung.",
+    slot: "account" as const,
+    data: [
+      {
+        image: "https://picsum.photos/1024/1024?random=4",
+        title: "Contoh Kursus Empat",
+        sold: 142,
+        tags: ["Bestseller", "New", "Low Price"],
+        star: 4,
+        rating: 121,
+        price: 200000,
+      },
+      {
+        image: "https://picsum.photos/1024/1024?random=5",
+        title: "Contoh Kursus Lima",
+        sold: 142,
+        tags: ["Bestseller", "New", "Low Price"],
+        star: 4,
+        rating: 121,
+        price: 200000,
+      },
+      {
+        image: "https://picsum.photos/1024/1024?random=6",
+        title: "Contoh Kursus Enam",
+        sold: 142,
+        tags: ["Bestseller", "New", "Low Price"],
+        star: 4,
+        rating: 121,
+        price: 200000,
+      },
+    ],
+  },
+] satisfies TabsItem[];
 
 const scrollPosition = ref(0);
 const { isMobile } = useDevice();
@@ -14,13 +86,6 @@ const gradientList = ref([
 ]);
 const bubleCount = ref(4);
 const bubleGradients = ref<Array<String>>([]);
-const programList = ref([
-  { logo: "/img/serasi.png", desc: "Sekolah Ramah Inklusi" },
-  { logo: "/img/corona.png", desc: "Coding Robotik Amanah" },
-  { logo: "/img/arunika.png", desc: "Bimbingan Menggambar" },
-  { logo: "/img/lensa.png", desc: "Learn English with GSA" },
-  { logo: "/img/gsa.png", desc: "Griya Sinau Amanah" },
-]);
 
 function randomizeBubleGradients() {
   for (let i = 0; i < bubleCount.value; i++) {
@@ -208,6 +273,39 @@ watch(scrollPosition, (newValue, oldValue) => {
             </div>
           </template>
         </CardCenterSplit>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="w-full bg-gray-100 text-black" id="courses">
+      <div class="flex flex-col justify-center items-center w-full">
+        <div class="flex flex-col max-w-[90%] px-4 md:px-0 text-arcon">
+          <UContainer>
+            <div class="text-xl md:text-4xl font-bold tracking-tight">Berbagai Macam Kelas Untuk Anak Anda</div>
+            <div>Penuhi kebutuhan ilmu si kecil sejak dalam kandungan cocok untuk usia 0 - 3 tahun!</div>
+
+            <UTabs
+              :items="items"
+              variant="link"
+              class="gap-4 my-4"
+              color="neutral"
+              size="xl"
+              :ui="{
+                trigger: 'font-bold',
+              }"
+            >
+              <template #account="{ item }">
+                <p class="text-muted mb-4">
+                  {{ item.description }}
+                </p>
+
+                <div class="flex overflow-x-auto gap-4 md:w-full p-2">
+                  <CardCourse v-for="data in item.data" v-bind="data" class="shrink-0"></CardCourse>
+                </div>
+              </template>
+            </UTabs>
+          </UContainer>
+        </div>
       </div>
     </section>
   </div>
