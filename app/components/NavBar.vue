@@ -16,7 +16,7 @@ const navbarMenu = ref([
         {
             id: 1001,
             name: "Log In",
-            to: "#",
+            to: "/login",
             class: "text-raka-blue",
         },
         {
@@ -129,7 +129,7 @@ const navbarMenu = ref([
                 </NuxtLink>
             </div>
             <div class="flex gap-2 mr-6">
-                <NuxtLink to="#">
+                <NuxtLink to="/login">
                     <UButton color="neutral" class="bg-gray-500"
                         >Log In</UButton
                     >

@@ -22,13 +22,9 @@ onMounted(() => {
     <div class="scroll-smooth">
         <NuxtRouteAnnouncer />
         <UApp>
-            <div class="fixed z-9999 flex w-full h-max">
-                <NavBar />
-            </div>
-            <NuxtPage />
-            <div class="relative z-9999 flex justify-center">
-                <Footer />
-            </div>
+            <NuxtLayout>
+                <NuxtPage />
+            </NuxtLayout>
         </UApp>
     </div>
 </template>
