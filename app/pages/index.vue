@@ -4,12 +4,15 @@ import type { TabsItem } from "@nuxt/ui";
 
 const testimonialItems = ref([
     {
+        id: 1001,
         text: "Layanannya sangat baik dan murah",
     },
     {
+        id: 1002,
         text: "Sangat membantu anak-anak belajar",
     },
     {
+        id: 1003,
         text: "Kurikulumnya sangat menarik",
     },
 ]);
@@ -22,6 +25,7 @@ const courseItems = [
         slot: "account" as const,
         data: [
             {
+                id: 1001,
                 image: "https://picsum.photos/1024/1024?random=1",
                 title: "Contoh Kursus Satu",
                 sold: 142,
@@ -31,6 +35,7 @@ const courseItems = [
                 price: 200000,
             },
             {
+                id: 1002,
                 image: "https://picsum.photos/1024/1024?random=2",
                 title: "Contoh Kursus Dua",
                 sold: 142,
@@ -40,6 +45,7 @@ const courseItems = [
                 price: 200000,
             },
             {
+                id: 1003,
                 image: "https://picsum.photos/1024/1024?random=3",
                 title: "Contoh Kursus Tiga",
                 sold: 142,
@@ -56,6 +62,7 @@ const courseItems = [
         slot: "account" as const,
         data: [
             {
+                id: 2001,
                 image: "https://picsum.photos/1024/1024?random=4",
                 title: "Contoh Kursus Empat",
                 sold: 142,
@@ -65,6 +72,7 @@ const courseItems = [
                 price: 200000,
             },
             {
+                id: 2002,
                 image: "https://picsum.photos/1024/1024?random=5",
                 title: "Contoh Kursus Lima",
                 sold: 142,
@@ -74,6 +82,7 @@ const courseItems = [
                 price: 200000,
             },
             {
+                id: 2003,
                 image: "https://picsum.photos/1024/1024?random=6",
                 title: "Contoh Kursus Enam",
                 sold: 142,
@@ -98,7 +107,7 @@ const gradientList = ref([
     "bg-raka-maroon",
 ]);
 const bubleCount = ref(4);
-const bubleGradients = ref<Array<String>>([]);
+const bubleGradients = ref<Array<string>>([]);
 
 function randomizeBubleGradients() {
     for (let i = 0; i < bubleCount.value; i++) {
@@ -106,9 +115,12 @@ function randomizeBubleGradients() {
             gradientList.value[
                 Math.floor(Math.random() * gradientList.value.length)
             ];
-        newColor == bubleGradients.value[i]
-            ? i--
-            : (bubleGradients.value[i] = newColor as string);
+
+        if (newColor == bubleGradients.value[i]) {
+            i++;
+        } else {
+            bubleGradients.value[i] = newColor as string;
+        }
     }
 }
 
@@ -128,7 +140,7 @@ onBeforeUnmount(() => {
     window.removeEventListener("scroll", handleScroll);
 });
 
-watch(scrollPosition, (newValue, oldValue) => {
+watch(scrollPosition, (newValue) => {
     console.log("Scroll position changed:", newValue);
 });
 </script>
@@ -136,7 +148,7 @@ watch(scrollPosition, (newValue, oldValue) => {
 <template>
     <div class="w-full min-h-screen">
         <!-- SECTION 1 (Hero) -->
-        <section class="w-full min-h-screen overflow-hidden" id="home">
+        <section id="home" class="w-full min-h-screen overflow-hidden">
             <GradientBackground>
                 <UContainer
                     class="flex flex-col text-white items-center w-full h-full px-4 sm:px-6 lg:px-8 pt-32"
@@ -170,7 +182,7 @@ watch(scrollPosition, (newValue, oldValue) => {
                         :class="scrollPosition <= 150 ? '' : 'hidden'"
                     >
                         <a href="#sekolah-kami">
-                            <Icon name="uil:angle-down" size="26px"></Icon>
+                            <Icon name="uil:angle-down" size="26px" />
                         </a>
                         <i class="text-xs">Scroll Down</i>
                     </div>
@@ -180,8 +192,8 @@ watch(scrollPosition, (newValue, oldValue) => {
 
         <!-- SECTION 2 (Bubble + Teks) -->
         <section
-            class="relative w-full min-h-max overflow-hidden bg-gray-100 scroll-mt-18"
             id="sekolah-kami"
+            class="relative w-full min-h-max overflow-hidden bg-gray-100 scroll-mt-18"
         >
             <!-- Wrapper responsif: mobile = kolom, desktop = baris -->
             <div
@@ -245,7 +257,7 @@ watch(scrollPosition, (newValue, oldValue) => {
                 >
                     <div
                         class="rounded-full bg-linear-to-bl from-raka-orange to-raka-red h-132 w-132"
-                    ></div>
+                    />
                 </div>
 
                 <!-- Area teks -->
@@ -277,7 +289,7 @@ watch(scrollPosition, (newValue, oldValue) => {
         </section>
 
         <!-- SECTION 3 -->
-        <section class="w-full bg-gray-100 text-black" id="montessori">
+        <section id="montessori" class="w-full bg-gray-100 text-black">
             <div
                 class="flex items-center justify-center mx-auto max-w-max px-4 sm:px-6 lg:px-8 py-10"
             >
@@ -320,7 +332,7 @@ watch(scrollPosition, (newValue, oldValue) => {
         </section>
 
         <!-- SECTION 4 -->
-        <section class="w-full bg-gray-100 text-white" id="learn-more">
+        <section id="learn-more" class="w-full bg-gray-100 text-white">
             <div
                 class="flex items-center justify-center mx-auto max-w-max px-4 sm:px-6 lg:px-8 py-10 sm:py-14"
             >
@@ -363,7 +375,7 @@ watch(scrollPosition, (newValue, oldValue) => {
                     </template>
 
                     <!-- Gambar: disembunyikan di mobile, muncul mulai lg -->
-                    <template #right v-if="!isMobile">
+                    <template v-if="!isMobile" #right>
                         <div
                             class="flex justify-end items-center w-full h-full"
                         >
@@ -378,7 +390,7 @@ watch(scrollPosition, (newValue, oldValue) => {
         </section>
 
         <!-- SECTION 5 -->
-        <section class="w-full bg-gray-100 text-black" id="courses">
+        <section id="courses" class="w-full bg-gray-100 text-black">
             <div class="flex flex-col justify-center items-center w-full">
                 <div class="flex flex-col max-w-[90%] px-4 md:px-0 text-arcon">
                     <UContainer>
@@ -413,8 +425,9 @@ watch(scrollPosition, (newValue, oldValue) => {
                                     <CardCourse
                                         v-for="data in item.data"
                                         v-bind="data"
+                                        :key="data.id"
                                         class="shrink-0"
-                                    ></CardCourse>
+                                    />
                                 </div>
                             </template>
                         </UTabs>
@@ -428,7 +441,7 @@ watch(scrollPosition, (newValue, oldValue) => {
         </section>
 
         <!-- SECTION 6 -->
-        <section class="w-full bg-gray-100 text-black py-8" id="testimonials">
+        <section id="testimonials" class="w-full bg-gray-100 text-black py-8">
             <div class="flex flex-col justify-center items-center w-full">
                 <div
                     class="flex flex-col min-w-[65%] max-w-[90%] px-4 md:px-0 text-arcon"
@@ -445,9 +458,10 @@ watch(scrollPosition, (newValue, oldValue) => {
                         >
                             <CardTestimonial
                                 v-for="item in testimonialItems"
+                                :key="item.id"
                                 :text="item.text"
                                 class="shrink-0"
-                            ></CardTestimonial>
+                            />
                         </div>
 
                         <p class="p-2 font-bold text-raka-pink">

@@ -8,13 +8,19 @@
         <path
             d="M70.62 54.59 20 155.84v101.25h101.25V155.84H70.62l50.63-101.25zM290 52.91h-50.62l-50.63 101.25v101.25H290V154.16h-50.62z"
             :fill="color"
-        ></path>
+        />
     </svg>
 </template>
 
 <script setup lang="ts">
 defineProps({
-    size: String,
-    color: String,
+    size: {
+        type: String,
+        default: "24px",
+    },
+    color: {
+        type: String,
+        default: "#000",
+    },
 });
 </script>

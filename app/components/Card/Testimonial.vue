@@ -8,7 +8,10 @@ const props = defineProps({
             avatar: "https://i.pravatar.cc/150?u=john-doe",
         }),
     },
-    text: String,
+    text: {
+        type: String,
+        default: "Lorem ipsum dolor sit amet.",
+    },
 });
 </script>
 

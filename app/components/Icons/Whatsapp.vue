@@ -15,7 +15,13 @@
 
 <script setup lang="ts">
 defineProps({
-    size: String,
-    color: String,
+    size: {
+        type: String,
+        default: "24px",
+    },
+    color: {
+        type: String,
+        default: "#000",
+    },
 });
 </script>
