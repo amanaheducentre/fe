@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="fixed z-9999 flex w-full h-max">
+        <div class="relative z-9999 flex w-full h-max">
             <NavBar />
         </div>
         <slot />
