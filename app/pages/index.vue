@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { TabsItem } from "@nuxt/ui";
+import { getSampleImage } from "@/utils/lorem";
 
 const testimonialItems = ref([
     {
@@ -26,7 +27,7 @@ const courseItems = [
         data: [
             {
                 id: 1001,
-                image: "https://picsum.photos/1024/1024?random=1",
+                image: getSampleImage(1024, 1024),
                 title: "Contoh Kursus Satu",
                 sold: 142,
                 tags: ["Bestseller", "New", "Low Price"],
@@ -36,7 +37,7 @@ const courseItems = [
             },
             {
                 id: 1002,
-                image: "https://picsum.photos/1024/1024?random=2",
+                image: getSampleImage(1024, 1024),
                 title: "Contoh Kursus Dua",
                 sold: 142,
                 tags: ["Bestseller", "New", "Low Price"],
@@ -46,7 +47,7 @@ const courseItems = [
             },
             {
                 id: 1003,
-                image: "https://picsum.photos/1024/1024?random=3",
+                image: getSampleImage(1024, 1024),
                 title: "Contoh Kursus Tiga",
                 sold: 142,
                 tags: ["Bestseller", "New", "Low Price"],
@@ -63,7 +64,7 @@ const courseItems = [
         data: [
             {
                 id: 2001,
-                image: "https://picsum.photos/1024/1024?random=4",
+                image: getSampleImage(1024, 1024),
                 title: "Contoh Kursus Empat",
                 sold: 142,
                 tags: ["Bestseller", "New", "Low Price"],
@@ -73,7 +74,7 @@ const courseItems = [
             },
             {
                 id: 2002,
-                image: "https://picsum.photos/1024/1024?random=5",
+                image: getSampleImage(1024, 1024),
                 title: "Contoh Kursus Lima",
                 sold: 142,
                 tags: ["Bestseller", "New", "Low Price"],
@@ -83,7 +84,7 @@ const courseItems = [
             },
             {
                 id: 2003,
-                image: "https://picsum.photos/1024/1024?random=6",
+                image: getSampleImage(1024, 1024),
                 title: "Contoh Kursus Enam",
                 sold: 142,
                 tags: ["Bestseller", "New", "Low Price"],

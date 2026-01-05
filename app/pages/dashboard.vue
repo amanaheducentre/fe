@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const bannerItems = ref([
-    "https://picsum.photos/1200/800?random=1",
-    "https://picsum.photos/1200/800?random=2",
-    "https://picsum.photos/1200/800?random=3",
-]);
+import { getSampleImages, getSampleImage } from "@/utils/lorem";
+
+const bannerItems = ref([...getSampleImages(1920, 800, 3)]);
 
 const coursesItems = ref([
     {
@@ -13,7 +11,7 @@ const coursesItems = ref([
             {
                 title: "Belajar Vue.js",
                 description: "Belajar Vue.js dari dasar hingga lanjutan",
-                image: "https://picsum.photos/800/600?random=1",
+                image: getSampleImage(800, 600),
                 price: 100000,
                 rating: 4.5,
                 reviews: 100,
@@ -22,7 +20,7 @@ const coursesItems = ref([
             {
                 title: "Belajar React.js",
                 description: "Belajar React.js dari dasar hingga lanjutan",
-                image: "https://picsum.photos/800/600?random=2",
+                image: getSampleImage(800, 600),
                 price: 120000,
                 rating: 4.8,
                 reviews: 150,
@@ -31,7 +29,7 @@ const coursesItems = ref([
             {
                 title: "Belajar TypeScript",
                 description: "Belajar TypeScript dari dasar hingga lanjutan",
-                image: "https://picsum.photos/800/600?random=3",
+                image: getSampleImage(800, 600),
                 price: 150000,
                 rating: 4.9,
                 reviews: 200,
@@ -40,7 +38,7 @@ const coursesItems = ref([
             {
                 title: "Belajar PHP",
                 description: "Belajar PHP dari dasar hingga lanjutan",
-                image: "https://picsum.photos/800/600?random=4",
+                image: getSampleImage(800, 600),
                 price: 180000,
                 rating: 4.7,
                 reviews: 250,
@@ -56,7 +54,7 @@ const coursesItems = ref([
                 title: "Belajar Bahasa Inggris",
                 description:
                     "Belajar Bahasa Inggris dari dasar hingga lanjutan",
-                image: "https://picsum.photos/800/600?random=5",
+                image: getSampleImage(800, 600),
                 price: 100000,
                 rating: 4.6,
                 reviews: 120,
@@ -65,7 +63,7 @@ const coursesItems = ref([
             {
                 title: "Belajar Bahasa Jepang",
                 description: "Belajar Bahasa Jepang dari dasar hingga lanjutan",
-                image: "https://picsum.photos/800/600?random=6",
+                image: getSampleImage(800, 600),
                 price: 120000,
                 rating: 4.8,
                 reviews: 150,
@@ -81,7 +79,7 @@ const coursesItems = ref([
                 title: "Belajar Matematika Dasar",
                 description:
                     "Belajar Matematika Dasar dari dasar hingga lanjutan",
-                image: "https://picsum.photos/800/600?random=7",
+                image: getSampleImage(800, 600),
                 price: 80000,
                 rating: 4.5,
                 reviews: 100,
@@ -91,7 +89,7 @@ const coursesItems = ref([
                 title: "Belajar Matematika Lanjutan",
                 description:
                     "Belajar Matematika Lanjutan dari dasar hingga lanjutan",
-                image: "https://picsum.photos/800/600?random=8",
+                image: getSampleImage(800, 600),
                 price: 150000,
                 rating: 4.9,
                 reviews: 200,
@@ -106,7 +104,7 @@ const coursesItems = ref([
             {
                 title: "Belajar Seni Lukis",
                 description: "Belajar Seni Lukis dari dasar hingga lanjutan",
-                image: "https://picsum.photos/800/600?random=9",
+                image: getSampleImage(800, 600),
                 price: 120000,
                 rating: 4.8,
                 reviews: 150,
@@ -115,7 +113,7 @@ const coursesItems = ref([
             {
                 title: "Belajar Seni Musik",
                 description: "Belajar Seni Musik dari dasar hingga lanjutan",
-                image: "https://picsum.photos/800/600?random=10",
+                image: getSampleImage(800, 600),
                 price: 100000,
                 rating: 4.7,
                 reviews: 120,
