@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "@nuxtjs/device",
     "@nuxtjs/color-mode",
     "@vueuse/nuxt",
+    "nuxt-auth-utils",
   ],
   css: ["~/assets/css/main.css"],
   colorMode: {

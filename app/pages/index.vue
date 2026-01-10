@@ -4,18 +4,9 @@ import type { TabsItem } from "@nuxt/ui";
 import { getSampleImage } from "@/utils/lorem";
 
 const testimonialItems = ref([
-    {
-        id: 1001,
-        text: "Layanannya sangat baik dan murah",
-    },
-    {
-        id: 1002,
-        text: "Sangat membantu anak-anak belajar",
-    },
-    {
-        id: 1003,
-        text: "Kurikulumnya sangat menarik",
-    },
+    { id: 1001, text: "Layanannya sangat baik dan murah" },
+    { id: 1002, text: "Sangat membantu anak-anak belajar" },
+    { id: 1003, text: "Kurikulumnya sangat menarik" },
 ]);
 
 const courseItems = [
@@ -194,75 +185,24 @@ watch(scrollPosition, (newValue) => {
         <!-- SECTION 2 (Bubble + Teks) -->
         <section
             id="sekolah-kami"
-            class="relative w-full min-h-max overflow-hidden bg-gray-100 scroll-mt-18"
+            class="relative w-full overflow-hidden bg-gray-100 scroll-mt-18 py-16 sm:py-20 lg:py-28"
         >
-            <!-- Wrapper responsif: mobile = kolom, desktop = baris -->
             <div
                 class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex flex-col lg:flex-row"
             >
-                <!-- Area bubble -->
-                <div
-                    class="absolute -z-10 w-full lg:w-1/2 min-h-85 sm:min-h-105 lg:min-h-[95%] flex items-center justify-center"
-                >
-                    <div
-                        data-kinesisscroll-item
-                        data-ks-strength="50"
-                        data-ks-transform="rotate"
-                        class="absolute inset-0"
-                    >
-                        <div class="relative w-full h-full">
-                            <!-- Bubble positions: kecil dulu, besar di lg -->
-                            <div
-                                class="absolute w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 top-10 sm:top-12 lg:top-24 right-6 sm:right-10 lg:right-24"
-                            >
-                                <Buble
-                                    :class="bubleGradients[0]"
-                                    class="transition-all duration-2000"
-                                />
-                            </div>
-
-                            <div
-                                class="absolute w-10 h-10 sm:w-12 sm:h-12 bottom-10 sm:bottom-12 lg:bottom-24 left-6 sm:left-10 lg:left-24"
-                            >
-                                <Buble
-                                    :class="bubleGradients[1]"
-                                    class="transition-all duration-2000"
-                                />
-                            </div>
-
-                            <div
-                                class="absolute w-20 h-20 sm:w-24 sm:h-24 bottom-16 sm:bottom-20 lg:bottom-40 right-16 sm:right-20 lg:right-40"
-                            >
-                                <Buble
-                                    :class="bubleGradients[2]"
-                                    class="transition-all duration-2000"
-                                />
-                            </div>
-
-                            <div
-                                class="absolute w-12 h-12 sm:w-14 sm:h-14 top-24 sm:top-28 lg:top-44 left-10 sm:left-14 lg:left-32"
-                            >
-                                <Buble
-                                    :class="bubleGradients[3]"
-                                    class="transition-all duration-2000"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Area model -->
                 <div
                     v-if="!isMobile"
-                    class="flex h-full w-full absolute items-center -z-20"
+                    class="flex h-full w-full absolute items-center -translate-x-35 -z-20"
                 >
+                    <NuxtImg src="/img/raja_mafia.png" class="absolute w-132" />
                     <div
                         class="rounded-full bg-linear-to-bl from-raka-orange to-raka-red h-132 w-132"
                     />
                 </div>
 
                 <!-- Area teks -->
-                <div class="w-full flex items-center py-10 pt-18 right-0">
+                <div class="w-full flex items-center">
                     <div class="w-full max-w-2xl lg:ml-auto">
                         <h2
                             class="text-moderniz text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight lg:leading-[1.05]"
@@ -290,9 +230,12 @@ watch(scrollPosition, (newValue) => {
         </section>
 
         <!-- SECTION 3 -->
-        <section id="montessori" class="w-full bg-gray-100 text-black">
+        <section
+            id="montessori"
+            class="w-full bg-gray-100 text-black py-16 sm:py-20 lg:py-28"
+        >
             <div
-                class="flex items-center justify-center mx-auto max-w-max px-4 sm:px-6 lg:px-8 py-10"
+                class="mx-auto max-w-[90%] flex justify-center px-4 sm:px-6 lg:px-8"
             >
                 <CardCenterSplit background-color="bg-gray-100">
                     <template #left>
@@ -333,9 +276,12 @@ watch(scrollPosition, (newValue) => {
         </section>
 
         <!-- SECTION 4 -->
-        <section id="learn-more" class="w-full bg-gray-100 text-white">
+        <section
+            id="learn-more"
+            class="w-full bg-gray-100 text-white py-20 sm:py-24 lg:py-32"
+        >
             <div
-                class="flex items-center justify-center mx-auto max-w-max px-4 sm:px-6 lg:px-8 py-10 sm:py-14"
+                class="mx-auto max-w-[90%] flex justify-center px-4 sm:px-6 lg:px-8"
             >
                 <CardCenterSplit background-color="bg-gradient-red">
                     <template #left>
@@ -344,7 +290,7 @@ watch(scrollPosition, (newValue) => {
                                 class="flex flex-col gap-4 sm:gap-6 text-arcon md:pr-8"
                             >
                                 <div
-                                    class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-justify"
+                                    class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight"
                                 >
                                     Belajar Lebih Seru dengan Metode Baru!
                                 </div>
@@ -365,8 +311,9 @@ watch(scrollPosition, (newValue) => {
                                     <UButton
                                         :size="isMobile ? 'sm' : 'xl'"
                                         color="neutral"
-                                        >Learn More</UButton
                                     >
+                                        Learn More
+                                    </UButton>
                                 </div>
                                 <div class="text-xs md:text-sm">
                                     Mulai dari Rp.185.000/bulan
@@ -375,7 +322,6 @@ watch(scrollPosition, (newValue) => {
                         </div>
                     </template>
 
-                    <!-- Gambar: disembunyikan di mobile, muncul mulai lg -->
                     <template v-if="!isMobile" #right>
                         <div
                             class="flex justify-end items-center w-full h-full"
@@ -391,85 +337,81 @@ watch(scrollPosition, (newValue) => {
         </section>
 
         <!-- SECTION 5 -->
-        <section id="courses" class="w-full bg-gray-100 text-black">
-            <div class="flex flex-col justify-center items-center w-full">
-                <div class="flex flex-col max-w-[90%] px-4 md:px-0 text-arcon">
-                    <UContainer>
-                        <div
-                            class="text-xl md:text-4xl font-bold tracking-tight"
-                        >
-                            Berbagai Macam Kelas Untuk Anak Anda
-                        </div>
-                        <div>
-                            Penuhi kebutuhan ilmu si kecil sejak dalam kandungan
-                            cocok untuk usia 0 - 3 tahun!
-                        </div>
+        <section
+            id="courses"
+            class="w-full bg-gray-100 text-black py-16 sm:py-20 lg:py-28"
+        >
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-arcon">
+                <UContainer>
+                    <div
+                        class="text-xl md:text-4xl font-bold tracking-tight mb-4"
+                    >
+                        Berbagai Macam Kelas Untuk Anak Anda
+                    </div>
+                    <div>
+                        Penuhi kebutuhan ilmu si kecil sejak dalam kandungan
+                        cocok untuk usia 0 - 3 tahun!
+                    </div>
 
-                        <UTabs
-                            :items="courseItems"
-                            variant="link"
-                            class="gap-4"
-                            color="neutral"
-                            size="xl"
-                            :ui="{
-                                trigger: 'font-bold',
-                            }"
-                        >
-                            <template #account="{ item }">
-                                <p class="text-muted mb-4">
-                                    {{ item.description }}
-                                </p>
+                    <UTabs
+                        :items="courseItems"
+                        variant="link"
+                        class="gap-4 mt-6"
+                        color="neutral"
+                        size="xl"
+                        :ui="{ trigger: 'font-bold' }"
+                    >
+                        <template #account="{ item }">
+                            <p class="text-muted mb-4">
+                                {{ item.description }}
+                            </p>
 
-                                <div
-                                    class="flex overflow-x-auto gap-4 md:w-full p-2"
-                                >
-                                    <CardCourse
-                                        v-for="data in item.data"
-                                        v-bind="data"
-                                        :key="data.id"
-                                        class="shrink-0"
-                                    />
-                                </div>
-                            </template>
-                        </UTabs>
+                            <div
+                                class="flex overflow-x-auto gap-4 md:w-full p-2"
+                            >
+                                <CardCourse
+                                    v-for="data in item.data"
+                                    v-bind="data"
+                                    :key="data.id"
+                                    class="shrink-0"
+                                />
+                            </div>
+                        </template>
+                    </UTabs>
 
-                        <p class="p-2 font-bold text-raka-pink">
-                            Cari Kelas Lainnya ->
-                        </p>
-                    </UContainer>
-                </div>
+                    <p class="p-2 font-bold text-raka-pink">
+                        Cari Kelas Lainnya ->
+                    </p>
+                </UContainer>
             </div>
         </section>
 
         <!-- SECTION 6 -->
-        <section id="testimonials" class="w-full bg-gray-100 text-black py-8">
-            <div class="flex flex-col justify-center items-center w-full">
-                <div
-                    class="flex flex-col min-w-[65%] max-w-[90%] px-4 md:px-0 text-arcon"
-                >
-                    <UContainer>
-                        <div
-                            class="text-xl md:text-4xl font-bold tracking-tight py-4"
-                        >
-                            Testimoni Anda Sangat Berarti
-                        </div>
+        <section
+            id="testimonials"
+            class="w-full bg-gray-100 text-black py-16 sm:py-20 lg:py-28"
+        >
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-arcon">
+                <UContainer>
+                    <div
+                        class="text-xl md:text-4xl font-bold tracking-tight mb-6"
+                    >
+                        Testimoni Anda Sangat Berarti
+                    </div>
 
-                        <div
-                            class="flex justify-start gap-4 p-2 overflow-x-scroll"
-                        >
-                            <CardTestimonial
-                                v-for="item in testimonialItems"
-                                :key="item.id"
-                                :text="item.text"
-                                class="shrink-0"
-                            />
-                        </div>
+                    <div class="flex justify-start gap-4 p-2 overflow-x-scroll">
+                        <CardTestimonial
+                            v-for="item in testimonialItems"
+                            :key="item.id"
+                            :text="item.text"
+                            class="shrink-0"
+                        />
+                    </div>
 
-                        <p class="p-2 font-bold text-raka-pink">
-                            Lihat Testimoni Lainnya ->
-                        </p>
-                    </UContainer>
-                </div>
+                    <p class="p-2 font-bold text-raka-pink">
+                        Lihat Testimoni Lainnya ->
+                    </p>
+                </UContainer>
             </div>
         </section>
     </div>

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@amineyarman/kinesis": "^1.0.6",
+    "@libsql/client": "^0.17.0",
     "@nuxt/content": "3.6.1",
     "@nuxt/icon": "1.14.0",
     "@nuxt/image": "^2.0.0",
@@ -18,10 +19,13 @@
     "@nuxtjs/device": "4.0.0",
     "@unhead/vue": "^2.1.1",
     "better-sqlite3": "^12.5.0",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.1",
     "eslint": "^9.39.2",
     "h3": "^1.15.4",
     "nitropack": "^2.12.9",
     "nuxt": "^4.2.2",
+    "nuxt-auth-utils": "0.5.26",
     "ofetch": "^1.5.1",
     "typescript": "^5.9.3",
     "vue": "^3.5.26",
@@ -39,7 +43,9 @@
     "@nuxtjs/color-mode": "^4.0.0",
     "@vueuse/core": "^14.1.0",
     "@vueuse/nuxt": "^14.1.0",
+    "drizzle-kit": "^0.31.8",
     "tailwindcss": "^4.1.18",
+    "tsx": "^4.21.0",
     "wrangler": "^4.54.0"
   }
 }

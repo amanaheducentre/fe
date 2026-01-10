@@ -61,14 +61,14 @@ const props = defineProps({
                 <UBadge
                     v-for="tag in props.tags"
                     :key="tag"
-                    size="sm"
-                    class="px-3 bg-raka-orange font-bold text-gray-700"
+                    size="md"
+                    class="px-3 bg-raka-orange font-bold text-white"
                 >
                     {{ tag }}
                 </UBadge>
 
                 <UBadge
-                    size="sm"
+                    size="md"
                     variant="outline"
                     color="neutral"
                     class="gap-1"
@@ -77,13 +77,13 @@ const props = defineProps({
                     <span class="font-bold">{{ props.star }}</span>
                 </UBadge>
 
-                <UBadge size="sm" variant="outline" color="neutral">
+                <UBadge size="md" variant="outline" color="neutral">
                     {{ props.rating }} ratings
                 </UBadge>
             </div>
 
             <!-- Price -->
-            <p class="font-bold text-xl sm:text-2xl mt-4">
+            <p class="font-bold text-md mt-4">
                 Rp. {{ props.price?.toLocaleString("id-ID") }}
             </p>
         </div>
