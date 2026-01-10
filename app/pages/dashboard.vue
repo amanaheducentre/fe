@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { getSampleImages, getSampleImage } from "@/utils/lorem";
 
+definePageMeta({
+    middleware: "auth",
+});
+
+const { user } = useUserSession();
+
 const bannerItems = ref([...getSampleImages(1920, 800, 3)]);
 
 const coursesItems = ref([
@@ -131,13 +137,15 @@ const coursesItems = ref([
             <UContainer class="py-4 sm:py-6">
                 <div class="flex items-center gap-3 sm:gap-4">
                     <UAvatar
-                        src="https://github.com/benjamincanac.png"
+                        :src="user?.picture"
                         size="xl"
                         class="sm:w-16! sm:h-16!"
                     />
                     <div class="leading-tight">
                         <p class="text-sm sm:text-base text-gray-500">Halo,</p>
-                        <p class="text-lg sm:text-xl font-semibold">Paulus</p>
+                        <p class="text-lg sm:text-xl font-semibold">
+                            {{ user?.name }}
+                        </p>
                     </div>
                 </div>
             </UContainer>

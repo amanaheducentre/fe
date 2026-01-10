@@ -32,12 +32,14 @@ const fields = ref<AuthFormField[]>([
     },
 ]);
 
-const providers = [
+const providers = ref([
     {
         label: "Google",
         icon: "i-simple-icons-google",
-        onClick: () => {
-            toast.add({ title: "Google", description: "Login with Google" });
+        onClick: async () => {
+            await navigateTo("/api/auth/google", {
+                external: true,
+            });
         },
     },
     {
@@ -47,7 +49,7 @@ const providers = [
             toast.add({ title: "Apple", description: "Login with Apple" });
         },
     },
-];
+]);
 
 const schema = z.object({
     email: z.email("Invalid email"),

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { loggedIn } = useUserSession();
 const { isMobile } = useDevice();
 const isMenuOpen = ref(false);
 const showCloseMenu = ref(false);
@@ -15,14 +16,8 @@ const navbarMenu = ref([
     [
         {
             id: 1001,
-            name: "Log In",
-            to: "/login",
-            class: "text-raka-blue",
-        },
-        {
-            id: 1002,
-            name: "Sign Up",
-            to: "#",
+            name: loggedIn ? "Log Out" : "Log In",
+            to: loggedIn ? "/logout" : "/login",
             class: "text-raka-blue",
         },
     ],
@@ -128,17 +123,26 @@ const navbarMenu = ref([
                     <Icon name="uil:shopping-cart" size="20px" />
                 </NuxtLink>
             </div>
-            <div class="flex gap-2 mr-6">
-                <NuxtLink to="/login">
-                    <UButton color="neutral" class="bg-gray-500"
-                        >Log In</UButton
-                    >
-                </NuxtLink>
-                <NuxtLink to="#">
-                    <UButton color="neutral" class="bg-raka-orange"
-                        >Sign Up</UButton
-                    >
-                </NuxtLink>
+            <div>
+                <div v-if="!loggedIn" class="flex gap-2 mr-6">
+                    <NuxtLink to="/login">
+                        <UButton color="neutral" class="bg-gray-500"
+                            >Log In</UButton
+                        >
+                    </NuxtLink>
+                    <NuxtLink to="#">
+                        <UButton color="neutral" class="bg-raka-orange"
+                            >Sign Up</UButton
+                        >
+                    </NuxtLink>
+                </div>
+                <div v-else class="flex gap-2 mr-6">
+                    <NuxtLink to="/logout">
+                        <UButton color="neutral" class="bg-raka-red"
+                            >Log Out</UButton
+                        >
+                    </NuxtLink>
+                </div>
             </div>
         </div>
     </div>
