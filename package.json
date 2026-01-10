@@ -12,7 +12,6 @@
   "dependencies": {
     "@amineyarman/kinesis": "^1.0.6",
     "@libsql/client": "^0.17.0",
-    "@nuxt/content": "3.6.1",
     "@nuxt/icon": "1.14.0",
     "@nuxt/image": "^2.0.0",
     "@nuxthub/core": "^0.10.4",

@@ -3,11 +3,12 @@ import { getSampleImages, getSampleImage } from "@/utils/lorem";
 
 definePageMeta({
     middleware: "auth",
+    layout: "sidebar",
 });
 
 const { user } = useUserSession();
 
-const bannerItems = ref([...getSampleImages(1920, 800, 3)]);
+const bannerItems = ref([...getSampleImages(1920, 800, 7)]);
 
 const coursesItems = ref([
     {

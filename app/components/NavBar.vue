@@ -12,15 +12,30 @@ watch(isMenuOpen, async () => {
     }
 });
 
+onMounted(() => {
+    if (loggedIn.value == true) {
+        navbarMenu.value[0] = [
+            {
+                id: 1001,
+                name: "Log Out",
+                to: "/logout",
+                class: "text-raka-blue",
+            },
+        ];
+    } else {
+        navbarMenu.value[0] = [
+            {
+                id: 1001,
+                name: "Log In",
+                to: "/login",
+                class: "text-raka-blue",
+            },
+        ];
+    }
+});
+
 const navbarMenu = ref([
-    [
-        {
-            id: 1001,
-            name: loggedIn ? "Log Out" : "Log In",
-            to: loggedIn ? "/logout" : "/login",
-            class: "text-raka-blue",
-        },
-    ],
+    [],
     [
         {
             id: 2001,
