@@ -66,62 +66,27 @@ const navbarMenu = ref([
 </script>
 
 <template>
-    <div v-if="isMobile" class="flex w-full h-16 bg-white">
-        <div
-            class="flex fixed min-w-[50%] min-h-screen bg-white transition-all z-9999"
-            :class="isMenuOpen ? '' : '-translate-x-100'"
-        >
-            <div class="fixed flex w-full items-center">
-                <div
-                    class="flex justify-center items-center w-12 h-12 transition-all translate-x-10 my-8 bg-white rounded-full mx-auto justify-self-center shadow"
-                    :class="showCloseMenu ? 'scale-100' : 'scale-0'"
-                    @click="isMenuOpen = false"
-                >
-                    <Icon name="uil:multiply" size="24px" />
-                </div>
-            </div>
-            <div class="flex flex-col gap-4 z-9999 w-full my-6">
-                <div
-                    v-for="data in navbarMenu"
-                    :key="data[0]?.id || data.length"
-                    class="flex flex-col gap-3"
-                >
-                    <NuxtLink
-                        v-for="nav in data"
-                        :key="nav.id"
-                        :to="nav.to"
-                        class="pl-2"
-                        :class="nav.class"
-                        >{{ nav.name }}</NuxtLink
-                    >
-                    <hr />
-                </div>
-            </div>
-        </div>
-        <div
-            class="flex fixed transition-all"
-            :class="
-                isMenuOpen ? 'min-h-screen min-w-screen backdrop-blur-md' : ''
-            "
-        />
-        <div class="grid grid-cols-3 w-full h-full">
-            <div class="flex h-full items-center px-2">
-                <UButton
-                    variant="outline"
-                    class="ring-0 text-black"
-                    @click="isMenuOpen = !isMenuOpen"
-                >
-                    <Icon name="qlementine-icons:menu-burger-16" size="24px" />
+    <!-- Mobile Navigation -->
+    <div v-if="isMobile" class="grid grid-cols-3 w-full h-16 bg-white">
+        <div class="flex items-center px-3">
+            <UDrawer>
+                <UButton variant="outline" class="ring-0 text-black">
+                    <Icon name="qlementine-icons:menu-burger-16" width="24" />
                 </UButton>
-            </div>
-            <div class="flex w-full h-full justify-center items-center">
-                <NuxtLink to="/">
-                    <NuxtImg src="/img/logo.png" width="24" />
-                </NuxtLink>
-            </div>
-            <div />
+
+                <template #content>
+                    <SideBar />
+                </template>
+            </UDrawer>
+        </div>
+        <div class="flex justify-center items-center">
+            <NuxtLink to="/">
+                <NuxtImg src="/img/logo.png" class="w-7" />
+            </NuxtLink>
         </div>
     </div>
+
+    <!-- Desktop Navigation -->
     <div v-else class="grid grid-cols-3 w-full h-24 bg-white">
         <div class="flex items-center">
             <NuxtLink to="/">

@@ -4,6 +4,11 @@ export default defineAppConfig({
       primary: "sky",
       neutral: "zinc",
     },
+    drawer: {
+      slots: {
+        overlay: "backdrop-blur-xs",
+      },
+    },
     button: {
       compoundVariants: [
         {
