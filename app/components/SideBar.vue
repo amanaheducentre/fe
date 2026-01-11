@@ -62,7 +62,7 @@ const sideItems = ref([
                 </p>
                 <div class="w-full mt-2">
                     <div v-for="item in menu.child" :key="item.title">
-                        <UButton
+                        <NuxtLink
                             v-if="
                                 item.mustLoggedIn
                                     ? loggedIn
@@ -70,13 +70,17 @@ const sideItems = ref([
                                         : false
                                     : true
                             "
-                            :icon="item.icon"
-                            size="md"
-                            color="neutral"
-                            variant="solid"
-                            class="bg-transparent text-gray-700 px-4 w-full text-md"
-                            >{{ item.title }}</UButton
+                            :to="item.to"
                         >
+                            <UButton
+                                :icon="item.icon"
+                                size="md"
+                                color="neutral"
+                                variant="solid"
+                                class="bg-transparent text-gray-700 px-4 w-full text-md"
+                                >{{ item.title }}</UButton
+                            >
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
