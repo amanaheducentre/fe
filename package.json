@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "LMS Amanah Edu Centre",
   "private": true,
   "type": "module",
   "scripts": {
@@ -47,5 +47,12 @@
     "tailwindcss": "^4.1.18",
     "tsx": "^4.21.0",
     "wrangler": "^4.54.0"
-  }
+  },
+  "workspaces": [
+    "."
+  ],
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "unrs-resolver"
+  ]
 }
