@@ -1,7 +1,7 @@
-import type { UserDataRes } from "./user.schema";
+import type { UserData } from "./user.schema";
 
 declare module "#auth-utils" {
-  interface User extends UserDataRes {}
+  interface User extends UserData {}
 }
 
 export {};

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import * as z from "zod";
 import type { FormSubmitEvent, AuthFormField } from "@nuxt/ui";
+import type { BaseDataRes } from "~~/shared/types/base.schema";
+import { unwrapFetchError } from "~~/server/utils/api";
 
 definePageMeta({
   layout: "base",
@@ -59,17 +61,18 @@ const schema = z.object({
 type Schema = z.output<typeof schema>;
 
 async function onSubmit(payload: FormSubmitEvent<Schema>) {
-  const res = await $fetch("/api/auth/login", {
-    method: "POST",
-    body: JSON.stringify({
-      ...payload.data,
-    }),
-  });
+  try {
+    await $fetch("/api/auth/login", {
+      method: "POST",
+      body: payload.data,
+    });
 
-  if (res.token) {
-    // Todo
-    // Save token to local state or cookie
-    await navigateTo("/dashboard");
+    await navigateTo("/dashboard", {
+      external: true,
+    });
+  } catch (e) {
+    const err = unwrapFetchError<BaseDataRes>(e);
+    errors.value = err?.errors?.map((item) => item.message) ?? [];
   }
 }
 
@@ -120,7 +123,7 @@ watch(pageMenu, () => {
               color: 'neutral',
               class: 'bg-raka-orange',
             }"
-            @submit="onSubmit"
+            @submit.prevent="onSubmit"
           >
             <template #description>
               <div class="flex w-full justify-center gap-2">

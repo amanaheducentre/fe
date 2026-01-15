@@ -91,7 +91,28 @@ export interface operations {
             cookie?: never;
         };
         requestBody?: never;
-        responses: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    };
+                };
+            };
+        };
     };
     postSign: {
         parameters: {
@@ -133,29 +154,20 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        token: string;
-                    };
-                };
-            };
-            /** @description Response for status 400 */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
+                        ok: boolean;
+                        status: number;
                         message: string;
-                    };
-                };
-            };
-            /** @description Response for status 401 */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        message: string;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            token: string;
+                        };
                     };
                 };
             };
@@ -211,17 +223,26 @@ export interface operations {
                 content: {
                     "application/json": {
                         ok: boolean;
-                    };
-                };
-            };
-            /** @description Response for status 500 */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
+                        status: number;
                         message: string;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            sub?: string;
+                            name: string;
+                            username?: string | null;
+                            /** Format: email */
+                            email: string;
+                            password: string;
+                            picture?: string | null;
+                            role?: string;
+                        };
                     };
                 };
             };
@@ -232,6 +253,7 @@ export interface operations {
             query?: never;
             header: {
                 authorization: string;
+                "content-type"?: string;
             };
             path?: never;
             cookie?: never;
@@ -245,36 +267,27 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        sub?: string;
-                        name: string;
-                        username?: string | null;
-                        /** Format: email */
-                        email: string;
-                        password: string;
-                        picture?: string | null;
-                        role?: string;
-                    };
-                };
-            };
-            /** @description Response for status 401 */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
+                        ok: boolean;
+                        status: number;
                         message: string;
-                    };
-                };
-            };
-            /** @description Response for status 404 */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        message: string;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            sub?: string;
+                            name: string;
+                            username?: string | null;
+                            /** Format: email */
+                            email: string;
+                            password: string;
+                            picture?: string | null;
+                            role?: string;
+                        };
                     };
                 };
             };

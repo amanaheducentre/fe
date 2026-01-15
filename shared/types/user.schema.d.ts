@@ -5,3 +5,5 @@ export type UserLoginRes = paths["/sign"]["post"]["responses"]["200"]["content"]
 
 export type UserDataHeader = paths["/user/profile"]["get"]["parameters"]["header"];
 export type UserDataRes = paths["/user/profile"]["get"]["responses"]["200"]["content"]["application/json"];
+
+export type UserData = UserDataRes["data"];

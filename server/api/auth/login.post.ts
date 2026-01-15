@@ -1,5 +1,6 @@
 import type { UserDataRes, UserLoginBody, UserLoginRes } from "~~/shared/types/user.schema";
 import { z } from "zod";
+import { apiFetch, mustOk } from "~~/server/utils/api";
 
 const bodySchema = z.object({
   email: z.email(),
@@ -9,34 +10,31 @@ const bodySchema = z.object({
 export default defineEventHandler(async (event) => {
   const { email, password } = await readValidatedBody(event, bodySchema.parse);
 
-  const res = await $fetch<UserLoginRes>(process.env.NUXT_API_BASE_URL! + "/sign", {
-    method: "POST",
-    body: <UserLoginBody>{
-      email: email,
-      password: password,
-    },
-  });
+  const res = mustOk(
+    await apiFetch<UserLoginRes>("/sign", {
+      method: "POST",
+      body: <UserLoginBody>{
+        email: email,
+        password: password,
+      },
+    })
+  );
 
-  if (res.token) {
-    const user = await $fetch<UserDataRes>(process.env.NUXT_API_BASE_URL! + "/user/profile", {
+  const user = mustOk(
+    await apiFetch<UserDataRes>("/user/profile", {
       headers: {
         authorization: "Bearer " + res.token,
       },
-    });
+    })
+  );
 
-    if (user) {
-      await setUserSession(event, { user });
-    } else {
-      throw createError({
-        status: 401,
-      });
-    }
+  await setUserSession(event, { user });
 
-    return res;
-  }
-
-  throw createError({
-    status: 401,
-    message: "Bad credentials",
+  setCookie(event, "user-token", res.token, {
+    maxAge: 60 * 60 * 24 * 7,
+    path: "/",
+    httpOnly: false,
+    secure: false,
   });
+  return res.token;
 });
