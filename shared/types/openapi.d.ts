@@ -37,6 +37,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/user/check": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Check user status */
+        post: operations["postUserCheck"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/user/register": {
         parameters: {
             query?: never;
@@ -128,21 +145,33 @@ export interface operations {
                     id?: string;
                     username?: string;
                     email?: string;
-                    password: string;
+                } & {
+                    type: "local" | "sso";
+                    provider?: string;
+                    token?: string;
+                    password?: string;
                 };
                 "application/x-www-form-urlencoded": {
                     /** Format: uuid */
                     id?: string;
                     username?: string;
                     email?: string;
-                    password: string;
+                } & {
+                    type: "local" | "sso";
+                    provider?: string;
+                    token?: string;
+                    password?: string;
                 };
                 "multipart/form-data": {
                     /** Format: uuid */
                     id?: string;
                     username?: string;
                     email?: string;
-                    password: string;
+                } & {
+                    type: "local" | "sso";
+                    provider?: string;
+                    token?: string;
+                    password?: string;
                 };
             };
         };
@@ -167,6 +196,62 @@ export interface operations {
                     } & {
                         data: {
                             token: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    postUserCheck: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: uuid */
+                    id?: string;
+                    username?: string;
+                    email?: string;
+                };
+                "application/x-www-form-urlencoded": {
+                    /** Format: uuid */
+                    id?: string;
+                    username?: string;
+                    email?: string;
+                };
+                "multipart/form-data": {
+                    /** Format: uuid */
+                    id?: string;
+                    username?: string;
+                    email?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            registered: boolean;
                         };
                     };
                 };

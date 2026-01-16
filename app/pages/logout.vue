@@ -2,7 +2,9 @@
 const { clear } = useUserSession();
 
 onMounted(async () => {
-    await clear();
-    await navigateTo("/");
+  await clear();
+  await navigateTo("/", {
+    external: true,
+  });
 });
 </script>
