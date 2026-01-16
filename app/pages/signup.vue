@@ -4,15 +4,12 @@ import type { FormSubmitEvent, AuthFormField } from "@nuxt/ui";
 import type { BaseDataRes } from "~~/shared/types/base.schema";
 import { unwrapFetchError } from "~~/server/utils/api";
 
-const { user } = useUserSession();
-
 definePageMeta({
   layout: "base",
+  middleware: "auth",
 });
 
-console.log(user.value);
-
-const errors = ref<Array<string>>([]);
+const errors = ref<string[]>([]);
 const fields = ref<AuthFormField[]>([
   {
     name: "password",
@@ -37,24 +34,40 @@ const schema = z
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
-    path: ["password2"],
+    path: ["confirmPassword"],
   });
+
 type Schema = z.output<typeof schema>;
 
-async function onSubmit(payload: FormSubmitEvent<Schema>) {
-  try {
-    await $fetch("/api/auth/register", {
-      method: "POST",
-      body: payload.data,
-    });
+const registerBody = ref<Schema | null>(null);
+const {
+  error,
+  pending,
+  execute: doRegister,
+} = useFetch("/api/auth/register", {
+  method: "POST",
+  body: registerBody,
+  immediate: false,
+  watch: false,
+});
 
-    await navigateTo("/dashboard", {
-      external: true,
-    });
-  } catch (e) {
-    const err = unwrapFetchError<BaseDataRes>(e);
+async function onSubmit(payload: FormSubmitEvent<Schema>) {
+  if (pending.value) return;
+
+  errors.value = [];
+  registerBody.value = payload.data;
+
+  await doRegister();
+
+  if (error.value) {
+    const err = unwrapFetchError<BaseDataRes>(error.value);
     errors.value = err?.errors?.map((item) => item.message) ?? [];
+    return;
   }
+
+  await navigateTo("/dashboard", {
+    external: true,
+  });
 }
 </script>
 
@@ -73,12 +86,15 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
               label: 'Daftar',
               color: 'neutral',
               class: 'bg-raka-orange',
+              loading: pending,
+              disabled: pending,
             }"
             @submit.prevent="onSubmit"
           >
             <template #password-hint>
-              <NuxtLink to="#" class="text-raka-orange font-medium" tabindex="-1">Forgot password?</NuxtLink>
+              <NuxtLink to="#" class="text-raka-orange font-medium" tabindex="-1"> Forgot password? </NuxtLink>
             </template>
+
             <template #validation>
               <UAlert
                 v-if="errors.length > 0"
@@ -88,9 +104,10 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
                 :description="errors.join(', ')"
               />
             </template>
+
             <template #footer>
               Dengan masuk, anda setuju dengan
-              <ULink to="#" class="text-raka-orange font-medium">Syarat dan Ketentuan</ULink>
+              <ULink to="#" class="text-raka-orange font-medium"> Syarat dan Ketentuan </ULink>
               yang berlaku.
             </template>
           </UAuthForm>

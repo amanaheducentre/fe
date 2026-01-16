@@ -59,21 +59,34 @@ const schema = z.object({
 });
 
 type Schema = z.output<typeof schema>;
+const loginBody = ref<Schema | null>(null);
+const {
+  error,
+  pending,
+  execute: doLogin,
+} = useFetch("/api/auth/login", {
+  method: "POST",
+  body: loginBody,
+  immediate: false,
+  watch: false,
+});
 
 async function onSubmit(payload: FormSubmitEvent<Schema>) {
-  try {
-    await $fetch("/api/auth/login", {
-      method: "POST",
-      body: payload.data,
-    });
+  if (pending.value) return;
 
-    await navigateTo("/dashboard", {
-      external: true,
-    });
-  } catch (e) {
-    const err = unwrapFetchError<BaseDataRes>(e);
+  errors.value = [];
+  loginBody.value = payload.data;
+  await doLogin();
+
+  if (error.value) {
+    const err = unwrapFetchError<BaseDataRes>(error.value);
     errors.value = err?.errors?.map((item) => item.message) ?? [];
+    return;
   }
+
+  await navigateTo("/dashboard", {
+    external: true,
+  });
 }
 
 watch(pageMenu, () => {
@@ -122,6 +135,8 @@ watch(pageMenu, () => {
               label: 'Masuk',
               color: 'neutral',
               class: 'bg-raka-orange',
+              loading: pending,
+              disabled: pending,
             }"
             @submit.prevent="onSubmit"
           >
