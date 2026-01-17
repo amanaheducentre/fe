@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useHead } from "#app";
+import { SpeedInsights } from "@vercel/speed-insights/nuxt";
 
 useSeoMeta({
   title: "LKP AManah Edu Centre",
@@ -14,6 +15,7 @@ useHead({
 </script>
 
 <template>
+  <SpeedInsights />
   <div class="scroll-smooth">
     <NuxtRouteAnnouncer />
     <UApp>
