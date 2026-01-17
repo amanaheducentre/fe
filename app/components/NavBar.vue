@@ -1,68 +1,6 @@
 <script setup lang="ts">
 const { loggedIn } = useUserSession();
 const { isMobile } = useDevice();
-const isMenuOpen = ref(false);
-const showCloseMenu = ref(false);
-
-watch(isMenuOpen, async () => {
-  showCloseMenu.value = false;
-  if (isMenuOpen.value == true) {
-    await sleep(400);
-    showCloseMenu.value = true;
-  }
-});
-
-onMounted(() => {
-  if (loggedIn.value == true) {
-    navbarMenu.value[0] = [
-      {
-        id: 1001,
-        name: "Log Out",
-        to: "/logout",
-        class: "text-raka-blue",
-      },
-    ];
-  } else {
-    navbarMenu.value[0] = [
-      {
-        id: 1001,
-        name: "Log In",
-        to: "/login",
-        class: "text-raka-blue",
-      },
-    ];
-  }
-});
-
-const navbarMenu = ref([
-  [],
-  [
-    {
-      id: 2001,
-      name: "Main Menu",
-      to: "#",
-      class: "text-xl text-raka-orange",
-    },
-    {
-      id: 2002,
-      name: "Program",
-      to: "#",
-      class: "text-sm",
-    },
-    {
-      id: 2003,
-      name: "Gallery",
-      to: "#",
-      class: "text-sm",
-    },
-    {
-      id: 2004,
-      name: "Beasiswa",
-      to: "#",
-      class: "text-sm",
-    },
-  ],
-]);
 </script>
 
 <template>

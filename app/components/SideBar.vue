@@ -8,7 +8,7 @@ const sideItems = ref([
       {
         title: loggedIn.value ? "Logout" : "Login",
         icon: "ic:outline-account-circle",
-        to: loggedIn.value ? "/logout" : "/login",
+        to: loggedIn.value ? "/landing/logout" : "/login",
       },
       {
         title: "Profil",
@@ -47,25 +47,18 @@ const sideItems = ref([
 </script>
 
 <template>
-  <div
-    class="min-h-full min-w-full md:min-w-xs md:max-w-md flex flex-col items-center py-12 bg-transparent bg-white shadow-md"
-  >
+  <div class="min-h-full min-w-full md:min-w-xs md:max-w-md flex flex-col items-center py-12 bg-white shadow-md">
     <NuxtLink to="/">
       <NuxtImg src="img/logo.png" class="max-w-8" />
     </NuxtLink>
-    <div
-      class="flex flex-col min-w-full min-h-full my-10 px-12 space-y-8 overflow-y-scroll"
-    >
+    <div class="flex flex-col min-w-full min-h-full my-10 px-12 space-y-8 overflow-y-scroll">
       <div v-for="menu in sideItems" :key="menu.title" class="w-full">
         <p class="font-display font-black tracking-wider">
           {{ menu.title }}
         </p>
         <div class="w-full mt-2">
           <div v-for="item in menu.child" :key="item.title">
-            <NuxtLink
-              v-if="item.mustLoggedIn ? (loggedIn ? true : false) : true"
-              :to="item.to"
-            >
+            <NuxtLink v-if="item.mustLoggedIn ? (loggedIn ? true : false) : true" :to="item.to">
               <UButton
                 :icon="item.icon"
                 size="md"
@@ -81,5 +74,3 @@ const sideItems = ref([
     </div>
   </div>
 </template>
-
-<style scoped></style>
