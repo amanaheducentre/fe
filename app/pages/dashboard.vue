@@ -4,12 +4,12 @@ import { getSampleImages, getSampleImage } from "@/utils/lorem";
 definePageMeta({
   middleware: "auth",
   layout: "sidebar",
+  keepalive: true,
 });
 
 const { user } = useUserSession();
 
 const bannerItems = ref([...getSampleImages(1920, 800, 7)]);
-
 const coursesItems = ref([
   {
     id: 1,

@@ -22,4 +22,5 @@ const { isMobile } = useDevice();
       </main>
     </div>
   </div>
+  <div class="flex justify-center py-5 text-sm bg-black text-inverted">&copy; 2025 Amanah Edu Centre</div>
 </template>

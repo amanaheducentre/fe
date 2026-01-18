@@ -89,29 +89,6 @@ const courseItems = [
 const scrollPosition = ref(0);
 const { isMobile } = useDevice();
 
-const gradientList = ref([
-  "bg-raka-red",
-  "bg-raka-orange",
-  "bg-raka-mint",
-  "bg-raka-blue",
-  "bg-raka-pink",
-  "bg-raka-maroon",
-]);
-const bubleCount = ref(4);
-const bubleGradients = ref<Array<string>>([]);
-
-function randomizeBubleGradients() {
-  for (let i = 0; i < bubleCount.value; i++) {
-    const newColor = gradientList.value[Math.floor(Math.random() * gradientList.value.length)];
-
-    if (newColor == bubleGradients.value[i]) {
-      i++;
-    } else {
-      bubleGradients.value[i] = newColor as string;
-    }
-  }
-}
-
 const handleScroll = () => {
   scrollPosition.value = window.scrollY || window.pageYOffset;
 };
@@ -119,17 +96,12 @@ const handleScroll = () => {
 onMounted(async () => {
   window.addEventListener("scroll", handleScroll);
   while (true) {
-    randomizeBubleGradients();
     await sleep(2010);
   }
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", handleScroll);
-});
-
-watch(scrollPosition, (newValue) => {
-  console.log("Scroll position changed:", newValue);
 });
 </script>
 

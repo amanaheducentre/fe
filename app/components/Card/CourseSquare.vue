@@ -22,11 +22,13 @@ const starCount = computed(() => {
   >
     <!-- Image -->
     <div class="w-full aspect-16/10 overflow-hidden">
-      <NuxtImg
-        :src="props.image"
-        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-        loading="lazy"
-      />
+      <NuxtLink to="/course/pria-solo">
+        <NuxtImg
+          :src="props.image"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          loading="lazy"
+        />
+      </NuxtLink>
     </div>
 
     <!-- Content -->
@@ -48,29 +50,17 @@ const starCount = computed(() => {
           {{ Number(props.rating).toFixed(1) }}
         </p>
         <div class="flex items-center gap-0.5">
-          <Icon
-            v-for="i in starCount"
-            :key="i"
-            name="uil:star"
-            class="text-raka-orange"
-          />
+          <Icon v-for="i in starCount" :key="i" name="uil:star" class="text-raka-orange" />
         </div>
         <p class="text-xs text-gray-500">({{ props.reviews }})</p>
       </div>
 
       <!-- Price -->
-      <p class="text-lg sm:text-xl font-bold">
-        Rp. {{ props.price?.toLocaleString("id-ID") }}
-      </p>
+      <p class="text-lg sm:text-xl font-bold">Rp. {{ props.price?.toLocaleString("id-ID") }}</p>
 
       <!-- Tags -->
       <div class="flex flex-wrap gap-1">
-        <UBadge
-          v-for="tag in props.tags"
-          :key="tag as string"
-          class="px-2 font-bold"
-          size="sm"
-        >
+        <UBadge v-for="tag in props.tags" :key="tag as string" class="px-2 font-bold" size="sm">
           {{ tag }}
         </UBadge>
       </div>
