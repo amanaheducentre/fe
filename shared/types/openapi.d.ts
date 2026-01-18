@@ -141,35 +141,35 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
+                    /** @enum {string} */
+                    type: "local" | "sso";
+                    provider?: string;
                     /** Format: uuid */
                     id?: string;
                     username?: string;
                     email?: string;
-                } & {
-                    type: "local" | "sso";
-                    provider?: string;
                     token?: string;
                     password?: string;
                 };
                 "application/x-www-form-urlencoded": {
+                    /** @enum {string} */
+                    type: "local" | "sso";
+                    provider?: string;
                     /** Format: uuid */
                     id?: string;
                     username?: string;
                     email?: string;
-                } & {
-                    type: "local" | "sso";
-                    provider?: string;
                     token?: string;
                     password?: string;
                 };
                 "multipart/form-data": {
+                    /** @enum {string} */
+                    type: "local" | "sso";
+                    provider?: string;
                     /** Format: uuid */
                     id?: string;
                     username?: string;
                     email?: string;
-                } & {
-                    type: "local" | "sso";
-                    provider?: string;
                     token?: string;
                     password?: string;
                 };
@@ -268,34 +268,46 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    sub?: string;
+                    id?: string;
                     name: string;
                     username?: string | null;
                     /** Format: email */
                     email: string;
                     password: string;
-                    picture?: string | null;
-                    role?: string;
+                    avatar?: string | null;
+                    bio?: string;
+                    phone?: string;
+                    location?: string;
+                    /** @enum {string} */
+                    status: "active" | "banned";
                 };
                 "application/x-www-form-urlencoded": {
-                    sub?: string;
+                    id?: string;
                     name: string;
                     username?: string | null;
                     /** Format: email */
                     email: string;
                     password: string;
-                    picture?: string | null;
-                    role?: string;
+                    avatar?: string | null;
+                    bio?: string;
+                    phone?: string;
+                    location?: string;
+                    /** @enum {string} */
+                    status: "active" | "banned";
                 };
                 "multipart/form-data": {
-                    sub?: string;
+                    id?: string;
                     name: string;
                     username?: string | null;
                     /** Format: email */
                     email: string;
                     password: string;
-                    picture?: string | null;
-                    role?: string;
+                    avatar?: string | null;
+                    bio?: string;
+                    phone?: string;
+                    location?: string;
+                    /** @enum {string} */
+                    status: "active" | "banned";
                 };
             };
         };
@@ -319,14 +331,17 @@ export interface operations {
                         };
                     } & {
                         data: {
-                            sub?: string;
+                            id?: string;
                             name: string;
                             username?: string | null;
                             /** Format: email */
                             email: string;
                             password: string;
-                            picture?: string | null;
-                            role?: string;
+                            avatar?: string | null;
+                            bio?: string;
+                            phone?: string;
+                            location?: string;
+                            status: "active" | "banned";
                         };
                     };
                 };
@@ -364,14 +379,17 @@ export interface operations {
                         };
                     } & {
                         data: {
-                            sub?: string;
+                            id?: string;
                             name: string;
                             username?: string | null;
                             /** Format: email */
                             email: string;
                             password: string;
-                            picture?: string | null;
-                            role?: string;
+                            avatar?: string | null;
+                            bio?: string;
+                            phone?: string;
+                            location?: string;
+                            status: "active" | "banned";
                         };
                     };
                 };

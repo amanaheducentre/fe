@@ -33,6 +33,7 @@ export default defineEventHandler(async (event) => {
     const payload: UserRegBody = {
       ...(user as any),
       password,
+      status: "active",
     };
 
     const reg = mustOk(
