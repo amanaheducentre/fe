@@ -29,7 +29,7 @@ export function mustOk<T>(
   opts?: {
     fallbackMessage?: string;
     status?: number;
-  }
+  },
 ): T {
   if (res.ok) return res.data as T;
 
