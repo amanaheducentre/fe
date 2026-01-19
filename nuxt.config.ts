@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@vueuse/nuxt",
     "nuxt-auth-utils",
+    "@artmizu/nuxt-prometheus",
   ],
   css: ["~/assets/css/main.css"],
   colorMode: {

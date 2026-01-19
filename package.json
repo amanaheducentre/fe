@@ -11,6 +11,7 @@
     "gen:openapi": "openapi-typescript https://api.lkpamanaheducentre.id/openapi/json -o ./shared/types/openapi.d.ts"
   },
   "dependencies": {
+    "@artmizu/nuxt-prometheus": "2.7.0",
     "@nuxt/icon": "1.14.0",
     "@nuxt/image": "^2.0.0",
     "@nuxthub/core": "^0.10.4",

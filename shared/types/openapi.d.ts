@@ -88,6 +88,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/course/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["getCourse"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -119,6 +135,7 @@ export interface operations {
                         ok: boolean;
                         status: number;
                         message: string;
+                        data?: unknown;
                         errors?: {
                             code: number;
                             message: string;
@@ -186,6 +203,7 @@ export interface operations {
                         ok: boolean;
                         status: number;
                         message: string;
+                        data?: unknown;
                         errors?: {
                             code: number;
                             message: string;
@@ -242,6 +260,7 @@ export interface operations {
                         ok: boolean;
                         status: number;
                         message: string;
+                        data?: unknown;
                         errors?: {
                             code: number;
                             message: string;
@@ -268,46 +287,43 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    id?: string;
+                    id?: string | null;
                     name: string;
                     username?: string | null;
                     /** Format: email */
                     email: string;
                     password: string;
                     avatar?: string | null;
-                    bio?: string;
-                    phone?: string;
-                    location?: string;
-                    /** @enum {string} */
-                    status: "active" | "banned";
+                    bio?: string | null;
+                    phone?: string | null;
+                    location?: string | null;
+                    status: string | "active" | "banned";
                 };
                 "application/x-www-form-urlencoded": {
-                    id?: string;
+                    id?: string | null;
                     name: string;
                     username?: string | null;
                     /** Format: email */
                     email: string;
                     password: string;
                     avatar?: string | null;
-                    bio?: string;
-                    phone?: string;
-                    location?: string;
-                    /** @enum {string} */
-                    status: "active" | "banned";
+                    bio?: string | null;
+                    phone?: string | null;
+                    location?: string | null;
+                    status: string | "active" | "banned";
                 };
                 "multipart/form-data": {
-                    id?: string;
+                    id?: string | null;
                     name: string;
                     username?: string | null;
                     /** Format: email */
                     email: string;
                     password: string;
                     avatar?: string | null;
-                    bio?: string;
-                    phone?: string;
-                    location?: string;
-                    /** @enum {string} */
-                    status: "active" | "banned";
+                    bio?: string | null;
+                    phone?: string | null;
+                    location?: string | null;
+                    status: string | "active" | "banned";
                 };
             };
         };
@@ -322,6 +338,7 @@ export interface operations {
                         ok: boolean;
                         status: number;
                         message: string;
+                        data?: unknown;
                         errors?: {
                             code: number;
                             message: string;
@@ -331,17 +348,17 @@ export interface operations {
                         };
                     } & {
                         data: {
-                            id?: string;
+                            id?: string | null;
                             name: string;
                             username?: string | null;
                             /** Format: email */
                             email: string;
                             password: string;
                             avatar?: string | null;
-                            bio?: string;
-                            phone?: string;
-                            location?: string;
-                            status: "active" | "banned";
+                            bio?: string | null;
+                            phone?: string | null;
+                            location?: string | null;
+                            status: string | "active" | "banned";
                         };
                     };
                 };
@@ -370,6 +387,7 @@ export interface operations {
                         ok: boolean;
                         status: number;
                         message: string;
+                        data?: unknown;
                         errors?: {
                             code: number;
                             message: string;
@@ -379,17 +397,78 @@ export interface operations {
                         };
                     } & {
                         data: {
-                            id?: string;
+                            id?: string | null;
                             name: string;
                             username?: string | null;
                             /** Format: email */
                             email: string;
                             password: string;
                             avatar?: string | null;
-                            bio?: string;
-                            phone?: string;
-                            location?: string;
-                            status: "active" | "banned";
+                            bio?: string | null;
+                            phone?: string | null;
+                            location?: string | null;
+                            status: string | "active" | "banned";
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getCourse: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            page: number;
+                            pageSize: number;
+                            total: number;
+                            items: {
+                                id: string;
+                                title: string;
+                                slug: string;
+                                subtitle: string | null;
+                                thumbnailUrl: string | null;
+                                promoVideoUrl: string | null;
+                                currency: string;
+                                priceCurrent: number;
+                                ratingAvg: number;
+                                ratingCount: number;
+                                studentCount: number;
+                                instructor: {
+                                    id: string;
+                                    name: string;
+                                    avatar: string | null;
+                                } | null;
+                                category: {
+                                    id: string;
+                                    name: string;
+                                    slug: string;
+                                } | null;
+                            }[];
                         };
                     };
                 };
