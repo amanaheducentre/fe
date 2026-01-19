@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { getSampleImages, getSampleImage } from "@/utils/lorem";
+import { getSampleImages } from "@/utils/lorem";
+import type { ListCourseRes } from "~~/shared/types/course.schema";
 
 definePageMeta({
   middleware: "auth",
@@ -7,125 +8,28 @@ definePageMeta({
   keepalive: true,
 });
 
-const { user } = useUserSession();
+type ListCourseCategory = {
+  id: number;
+  tag: string;
+  courses: ListCourseRes["data"]["items"];
+};
 
+const { user } = useUserSession();
 const bannerItems = ref([...getSampleImages(1920, 800, 7)]);
-const coursesItems = ref([
-  {
-    id: 1,
-    tag: "Kelas Programming",
-    courses: [
-      {
-        title: "Belajar Vue.js",
-        description: "Belajar Vue.js dari dasar hingga lanjutan",
-        image: getSampleImage(800, 600),
-        price: 100000,
-        rating: 4.5,
-        reviews: 100,
-        tags: ["Bestseller", "Vue.js"],
-      },
-      {
-        title: "Belajar React.js",
-        description: "Belajar React.js dari dasar hingga lanjutan",
-        image: getSampleImage(800, 600),
-        price: 120000,
-        rating: 4.8,
-        reviews: 150,
-        tags: ["Bestseller", "React.js"],
-      },
-      {
-        title: "Belajar TypeScript",
-        description: "Belajar TypeScript dari dasar hingga lanjutan",
-        image: getSampleImage(800, 600),
-        price: 150000,
-        rating: 4.9,
-        reviews: 200,
-        tags: ["Bestseller", "TypeScript"],
-      },
-      {
-        title: "Belajar PHP",
-        description: "Belajar PHP dari dasar hingga lanjutan",
-        image: getSampleImage(800, 600),
-        price: 180000,
-        rating: 4.7,
-        reviews: 250,
-        tags: ["Bestseller", "PHP"],
-      },
-    ],
-  },
-  {
-    id: 2,
-    tag: "Kelas Bahasa",
-    courses: [
-      {
-        title: "Belajar Bahasa Inggris",
-        description: "Belajar Bahasa Inggris dari dasar hingga lanjutan",
-        image: getSampleImage(800, 600),
-        price: 100000,
-        rating: 4.6,
-        reviews: 120,
-        tags: ["Bestseller", "Bahasa Inggris"],
-      },
-      {
-        title: "Belajar Bahasa Jepang",
-        description: "Belajar Bahasa Jepang dari dasar hingga lanjutan",
-        image: getSampleImage(800, 600),
-        price: 120000,
-        rating: 4.8,
-        reviews: 150,
-        tags: ["Bestseller", "Bahasa Jepang"],
-      },
-    ],
-  },
-  {
-    id: 3,
-    tag: "Kelas Matematika",
-    courses: [
-      {
-        title: "Belajar Matematika Dasar",
-        description: "Belajar Matematika Dasar dari dasar hingga lanjutan",
-        image: getSampleImage(800, 600),
-        price: 80000,
-        rating: 4.5,
-        reviews: 100,
-        tags: ["Bestseller", "Matematika"],
-      },
-      {
-        title: "Belajar Matematika Lanjutan",
-        description: "Belajar Matematika Lanjutan dari dasar hingga lanjutan",
-        image: getSampleImage(800, 600),
-        price: 150000,
-        rating: 4.9,
-        reviews: 200,
-        tags: ["Bestseller", "Matematika"],
-      },
-    ],
-  },
-  {
-    id: 4,
-    tag: "Kelas Seni",
-    courses: [
-      {
-        title: "Belajar Seni Lukis",
-        description: "Belajar Seni Lukis dari dasar hingga lanjutan",
-        image: getSampleImage(800, 600),
-        price: 120000,
-        rating: 4.8,
-        reviews: 150,
-        tags: ["Bestseller", "Seni"],
-      },
-      {
-        title: "Belajar Seni Musik",
-        description: "Belajar Seni Musik dari dasar hingga lanjutan",
-        image: getSampleImage(800, 600),
-        price: 100000,
-        rating: 4.7,
-        reviews: 120,
-        tags: ["Bestseller", "Seni"],
-      },
-    ],
-  },
-]);
+const coursesItems = ref<ListCourseCategory[]>([]);
+
+useFetch("/api/course").then(({ data }) => {
+  coursesItems.value = [];
+  const categories = Array.from(new Set(data.value?.items.map((item) => item.category?.name)));
+  for (let i = 0; i < categories.length; i++) {
+    const category = categories[i];
+    coursesItems.value.push({
+      id: i + 1,
+      tag: categories[i]!,
+      courses: data.value?.items.filter((item) => item.category?.name === category)!,
+    });
+  }
+});
 </script>
 
 <template>
@@ -134,7 +38,7 @@ const coursesItems = ref([
     <div class="w-full">
       <UContainer class="py-4 sm:py-6">
         <div class="flex items-center gap-3 sm:gap-4">
-          <UAvatar :src="user?.picture!" size="xl" class="sm:w-16! sm:h-16!" />
+          <UAvatar :src="user?.avatar!" size="xl" class="sm:w-16! sm:h-16!" />
           <div class="leading-tight">
             <p class="text-sm sm:text-base text-gray-500">Halo,</p>
             <p class="text-lg sm:text-xl font-semibold">
@@ -181,7 +85,7 @@ const coursesItems = ref([
             <CardCourseSquare
               v-for="course in item.courses"
               :key="course.title"
-              v-bind="course"
+              :data="course"
               class="shrink-0 w-56 snap-start sm:w-auto"
             />
           </div>
