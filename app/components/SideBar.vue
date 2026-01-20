@@ -47,30 +47,36 @@ const sideItems = ref([
 </script>
 
 <template>
-  <div class="min-h-full min-w-full md:min-w-xs md:max-w-md flex flex-col items-center py-12 bg-white shadow-md">
-    <NuxtLink to="/">
-      <NuxtImg src="img/logo.png" class="max-w-8" />
+  <div class="h-full w-full flex flex-col items-center py-6 sm:py-8 md:py-12 bg-white shadow-lg">
+    <!-- Logo -->
+    <NuxtLink to="/" class="shrink-0">
+      <NuxtImg src="img/logo.png" class="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
     </NuxtLink>
-    <div class="flex flex-col min-w-full min-h-full my-10 px-12 space-y-8 overflow-y-scroll">
-      <div v-for="menu in sideItems" :key="menu.title" class="w-full">
-        <p class="font-display font-black tracking-wider">
+
+    <!-- Menu Items -->
+    <nav
+      class="flex flex-col w-full flex-1 mt-6 sm:mt-8 md:mt-10 px-4 sm:px-6 md:px-8 lg:px-12 space-y-6 sm:space-y-8 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+    >
+      <div v-for="menu in sideItems" :key="menu.title" class="w-full space-y-2">
+        <h3 class="font-display font-black tracking-wider text-xs sm:text-sm text-gray-600">
           {{ menu.title }}
-        </p>
-        <div class="w-full mt-2">
+        </h3>
+        <div class="w-full space-y-1">
           <div v-for="item in menu.child" :key="item.title">
-            <NuxtLink v-if="item.mustLoggedIn ? (loggedIn ? true : false) : true" :to="item.to">
+            <NuxtLink v-if="item.mustLoggedIn ? (loggedIn ? true : false) : true" :to="item.to" class="block">
               <UButton
                 :icon="item.icon"
                 size="md"
                 color="neutral"
                 variant="solid"
-                class="bg-transparent text-gray-700 px-4 w-full text-md"
-                >{{ item.title }}</UButton
+                class="bg-transparent text-gray-700 px-4 w-full justify-start text-sm sm:text-base hover:text-gray-700 hover:bg-gray-50 transition-colors"
               >
+                {{ item.title }}
+              </UButton>
             </NuxtLink>
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   </div>
 </template>
