@@ -88,14 +88,32 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/course/": {
+    "/course/list": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: operations["getCourse"];
+        /** Get list of courses */
+        get: operations["getCourseList"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/course/tags": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get course tags */
+        get: operations["getCourseTags"];
         put?: never;
         post?: never;
         delete?: never;
@@ -414,7 +432,7 @@ export interface operations {
             };
         };
     };
-    getCourse: {
+    getCourseList: {
         parameters: {
             query?: never;
             header?: never;
@@ -470,6 +488,45 @@ export interface operations {
                                 } | null;
                             }[];
                         };
+                    };
+                };
+            };
+        };
+    };
+    getCourseTags: {
+        parameters: {
+            query: {
+                courseId: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            courseId: string;
+                            tag: string;
+                        }[];
                     };
                 };
             };

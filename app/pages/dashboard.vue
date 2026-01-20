@@ -11,14 +11,14 @@ definePageMeta({
 type ListCourseCategory = {
   id: number;
   tag: string;
-  courses: ListCourseRes["data"]["items"];
+  courses: Array<ListCourseRes["data"]["items"][number] & { tags: string[] }>;
 };
 
 const { user } = useUserSession();
 const bannerItems = ref([...getSampleImages(1920, 800, 7)]);
 const coursesItems = ref<ListCourseCategory[]>([]);
 
-useFetch("/api/course").then(({ data }) => {
+useFetch("/api/course/list").then(({ data }) => {
   coursesItems.value = [];
   const categories = Array.from(new Set(data.value?.items.map((item) => item.category?.name)));
   for (let i = 0; i < categories.length; i++) {
@@ -84,8 +84,14 @@ useFetch("/api/course").then(({ data }) => {
           >
             <CardCourseSquare
               v-for="course in item.courses"
-              :key="course.title"
-              :data="course"
+              :key="course.id"
+              :id="course.id"
+              :title="course.title"
+              :subtitle="course.subtitle!"
+              :rating-avg="course.ratingAvg"
+              :rating-count="course.ratingCount"
+              :price="course.priceCurrent"
+              :tags="course.tags"
               class="shrink-0 w-56 snap-start sm:w-auto"
             />
           </div>

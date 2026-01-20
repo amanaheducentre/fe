@@ -3,14 +3,18 @@ import { type PropType } from "vue";
 import type { CourseData } from "~~/shared/types/course.schema";
 
 const props = defineProps({
-  data: {
-    type: Object as PropType<CourseData>,
-  },
+  id: String,
+  thumbnailUrl: String,
+  title: String,
+  subtitle: String,
+  ratingAvg: Number,
+  ratingCount: Number,
+  price: Number,
+  tags: Array as PropType<string[]>,
 });
 
-console.log(props);
 const starCount = computed(() => {
-  const r = Number(props.data?.ratingAvg) || 0;
+  const r = Number(props.ratingAvg) || 0;
   return Math.max(0, Math.min(5, Math.floor(r)));
 });
 </script>
@@ -21,9 +25,9 @@ const starCount = computed(() => {
   >
     <!-- Image -->
     <div class="w-full aspect-16/10 overflow-hidden">
-      <NuxtLink :to="'/course/' + props.data?.id">
+      <NuxtLink :to="'/course/' + props.id">
         <NuxtImg
-          :src="props.data?.thumbnailUrl!"
+          :src="props.thumbnailUrl!"
           class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           loading="lazy"
         />
@@ -33,33 +37,33 @@ const starCount = computed(() => {
     <!-- Content -->
     <div class="flex flex-col gap-2 p-3 sm:p-4">
       <div class="space-y-1">
-        <NuxtLink :to="'/course/' + props.data?.id">
+        <NuxtLink :to="'/course/' + props.id">
           <p class="text-base sm:text-lg font-bold leading-snug line-clamp-2">
-            {{ props.data?.title }}
+            {{ props.title }}
           </p>
         </NuxtLink>
         <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
-          {{ props.data?.subtitle }}
+          {{ props.subtitle }}
         </p>
       </div>
 
       <!-- Rating -->
       <div class="flex items-center gap-2">
         <p class="font-bold text-sm">
-          {{ Number(props.data?.ratingAvg).toFixed(1) }}
+          {{ Number(props.ratingAvg).toFixed(1) }}
         </p>
         <div class="flex items-center gap-0.5">
           <Icon v-for="i in starCount" :key="i" name="uil:star" class="text-raka-orange" />
         </div>
-        <p class="text-xs text-gray-500">({{ props.data?.ratingCount }})</p>
+        <p class="text-xs text-gray-500">({{ props.ratingCount }})</p>
       </div>
 
       <!-- Price -->
-      <p class="text-lg sm:text-xl font-bold">Rp. {{ props.data?.priceCurrent?.toLocaleString("id-ID") }}</p>
+      <p class="text-lg sm:text-xl font-bold">Rp. {{ props.price?.toLocaleString("id-ID") }}</p>
 
       <!-- Tags -->
       <div class="flex flex-wrap gap-1">
-        <UBadge v-for="tag in props.data?.tags" :key="tag as string" class="px-2 font-bold" size="sm">
+        <UBadge v-for="tag in props.tags" :key="tag as string" class="px-2 font-bold" size="sm">
           {{ tag }}
         </UBadge>
       </div>
