@@ -9,7 +9,8 @@
   --color-raka-pink: #bb066c;
   --color-raka-maroon: #8e0339;
 
-  --font-display: "Inter";
+  --color-primary: var(--color-raka-orange);
+  --color-error: var(--color-raka-red);
 }
 
 .text-arcon {

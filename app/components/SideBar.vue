@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { loggedIn } = useUserSession();
 
+const route = useRoute();
+
 const sideItems = ref([
   {
     title: "PENGGUNA",
@@ -67,9 +69,10 @@ const sideItems = ref([
               <UButton
                 :icon="item.icon"
                 size="md"
-                color="neutral"
+                color="primary"
                 variant="solid"
-                class="bg-transparent text-gray-700 px-4 w-full justify-start text-sm sm:text-base hover:text-gray-700 hover:bg-gray-50 transition-colors"
+                :active="route.path.startsWith(item.to)"
+                class="bg-transparent text-gray-700 hover:bg-gray-200 active:bg-raka-orange w-full px-4 transition-colors"
               >
                 {{ item.title }}
               </UButton>

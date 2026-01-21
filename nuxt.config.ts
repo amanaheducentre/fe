@@ -6,6 +6,11 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
     layoutTransition: { name: "page", mode: "out-in" },
   },
+  ui: {
+    theme: {
+      colors: ["primary", "secondary", "info", "success", "warning", "error"],
+    },
+  },
   modules: [
     "@nuxt/fonts",
     "@nuxt/icon",
