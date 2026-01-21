@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from "@nuxt/ui";
-import { useLectureStore } from "~/stores/lecture";
-import type { CourseDetailData } from "~~/shared/types/course.schema";
+import type { CourseCurriculumWithLectures, CourseDetailData } from "~~/shared/types/course.schema";
 
 definePageMeta({
   middleware: "auth",
@@ -15,7 +14,10 @@ const { isMobile } = useDevice();
 const scrollPosition = ref(0);
 const courseProgress = ref(0);
 
-const { data: course, pending } = useFetch<CourseDetailData["data"]>("/api/course/" + route.params.id);
+const { data: course } = useFetch<CourseDetailData["data"]>("/api/course/" + courseId.value);
+const { data: curriculum } = useFetch<CourseCurriculumWithLectures["data"]>(
+  "/api/course/curriculum?courseId=" + courseId.value,
+);
 const isLoading = computed(() => course.value?.id == undefined);
 
 const items = computed<BreadcrumbItem[]>(() => [
@@ -24,37 +26,7 @@ const items = computed<BreadcrumbItem[]>(() => [
   { label: course.value?.title || "Course", to: `/course/${courseId.value}` },
 ]);
 
-// Mock data untuk materi dan benefit - bisa diganti dengan data real dari API
-const courseModules = ref([
-  {
-    label: "Pengenalan Dasar",
-    content: "Modul pengenalan untuk memahami konsep dasar dari materi yang akan dipelajari.",
-    data: [
-      { title: "Video Pengenalan", duration: 675, link: "#" },
-      { title: "Materi Dasar", duration: 345, link: "#" },
-    ],
-  },
-  {
-    label: "Materi Lanjutan",
-    content: "Pelajari konsep yang lebih mendalam dan praktis untuk meningkatkan pemahaman.",
-    data: [
-      { title: "Tutorial Lanjutan", duration: 897, link: "#" },
-      { title: "Studi Kasus", duration: 786, link: "#" },
-    ],
-  },
-  {
-    label: "Praktik dan Proyek",
-    content: "Aplikasikan pengetahuan yang telah dipelajari dalam proyek nyata.",
-    data: [{ title: "Proyek Akhir", duration: 574, link: "#" }],
-  },
-]);
-
-const benefits = ref([
-  `${courseModules.value.length} Modul Belajar`,
-  "Forum Tanya Jawab",
-  "Sertifikat",
-  "Akses Selamanya",
-]);
+const benefits = ref([`Modul Belajar`, "Forum Tanya Jawab", "Sertifikat", "Akses Selamanya"]);
 
 const handleScroll = () => {
   scrollPosition.value = window.scrollY || window.pageYOffset;
@@ -173,13 +145,14 @@ onBeforeUnmount(() => {
                 </CardSlot>
 
                 <CardSlot title="Daftar Materi">
-                  <UAccordion :items="courseModules">
+                  <UAccordion :items="curriculum" label-key="title">
                     <template #content="{ item }">
                       <div class="flex flex-col px-3 sm:px-4 md:px-6 space-y-2">
                         <NuxtLink
-                          v-for="data in item.data"
-                          :key="data.title + data.duration"
-                          :to="data.link"
+                          v-for="data in item.lectures"
+                          :key="data.id"
+                          :to="`/course/lecture/` + data.id"
+                          :external="false"
                           class="flex w-full items-center justify-between gap-3 sm:gap-4 py-1 hover:text-raka-orange transition-colors"
                         >
                           <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
@@ -187,7 +160,7 @@ onBeforeUnmount(() => {
                             <p class="truncate text-sm sm:text-base">{{ data.title }}</p>
                           </div>
                           <div class="shrink-0 text-xs sm:text-sm opacity-80">
-                            {{ formatSecondsToHMS(data.duration) }}
+                            {{ formatSecondsToHMS(data.durationSeconds!) }}
                           </div>
                         </NuxtLink>
                       </div>

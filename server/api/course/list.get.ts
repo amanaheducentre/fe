@@ -11,15 +11,33 @@ export default defineEventHandler(async (event) => {
     event: "course_list_request",
   });
 
+  console.log("KONTORU ASU");
   try {
+    // Get query parameters
+    const query = getQuery(event);
+    console.log(query);
+    const page = query.page || "1";
+    const pageSize = query.pageSize || "10";
+    const q = query.q;
+    const categoryId = query.categoryId;
+
+    // Build query string
+    const queryParams = new URLSearchParams({
+      page: page.toString(),
+      pageSize: pageSize.toString(),
+      ...(q && { q: q.toString() }),
+      ...(categoryId && { categoryId: categoryId.toString() }),
+    });
+
     log.debug("Fetching course list from API", {
       event: "course_list_fetch",
       method: "GET",
-      endpoint: "/course/",
+      endpoint: "/course/list",
+      params: Object.fromEntries(queryParams),
     });
 
     const courses = mustOk(
-      await apiFetch<ListCourseRes>("/course/list", {
+      await apiFetch<ListCourseRes>(`/course/list?${queryParams.toString()}`, {
         method: "GET",
       }),
     ) as ListCourseRes["data"];

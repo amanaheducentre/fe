@@ -14,11 +14,36 @@ const courseStore = useCourseStore();
 const bannerItems = ref([...getSampleImages(1920, 800, 7)]);
 
 const coursesItems = ref<ListCourseByCategory[]>([]);
-const isLoading = computed(() => coursesItems.value?.length < 1);
+const isLoading = ref(true);
 
-courseStore.getCourseByCategory().then((data) => {
-  coursesItems.value = data;
+// Pagination state
+const currentPage = ref(1);
+const pageSize = 3;
+const totalItems = ref(0);
+
+// Calculate total pages
+const totalPages = computed(() => Math.ceil(totalItems.value / pageSize));
+
+// Fetch courses with pagination
+const fetchCourses = async () => {
+  isLoading.value = true;
+  try {
+    const data = await courseStore.getCourseByCategory(currentPage.value, pageSize);
+    coursesItems.value = data;
+    totalItems.value = courseStore.raw?.total || 0;
+  } catch (error) {
+    console.error("Error fetching courses:", error);
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+// Watch for page changes
+watch(currentPage, () => {
+  fetchCourses();
 });
+
+fetchCourses();
 </script>
 
 <template>
@@ -119,5 +144,21 @@ courseStore.getCourseByCategory().then((data) => {
         </div>
       </div>
     </UContainer>
+
+    <!-- Floating Pagination -->
+    <div
+      v-if="!isLoading && totalPages > 1"
+      class="fixed bottom-0 left-0 right-0 z-9999 flex justify-center py-4 sm:py-6 pointer-events-none"
+    >
+      <div class="pointer-events-auto">
+        <UPagination
+          v-model:page="currentPage"
+          :items-per-page="pageSize"
+          :total="totalItems"
+          variant="ghost"
+          class="shadow-sm backdrop-blur-md rounded-full px-2 py-2 hover:px-6 hover:py-3 hover:-translate-y-2 bg-white/50 transition-all"
+        />
+      </div>
+    </div>
   </div>
 </template>

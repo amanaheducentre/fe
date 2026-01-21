@@ -12,7 +12,6 @@ const props = defineProps({
   tags: Array as PropType<string[]>,
 });
 
-const courseStore = useCourseStore();
 const starCount = computed(() => {
   const r = Number(props.ratingAvg) || 0;
   return Math.max(0, Math.min(5, Math.floor(r)));
@@ -22,7 +21,6 @@ const starCount = computed(() => {
 <template>
   <article
     class="group flex flex-col overflow-hidden rounded-xl sm:rounded-2xl ring-1 ring-gray-200 bg-white hover:shadow-lg transition-shadow duration-300 w-full"
-    @click="courseStore.selectCourse(props.id!)"
   >
     <!-- Image -->
     <div class="w-full aspect-16/10 overflow-hidden bg-gray-100">

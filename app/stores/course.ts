@@ -27,8 +27,17 @@ export const useCourseStore = defineStore("course", {
         }
       }
     },
-    async getCourseList() {
-      const { data, error } = await useFetch("/api/course/list");
+    async getCourseList(page: number = 1, pageSize: number = 10, q?: string, categoryId?: string) {
+      const { data, error } = await useFetch("/api/course/list", {
+        method: "GET",
+        query: {
+          page: page.toString(),
+          pageSize: pageSize.toString(),
+          ...(q && { q }),
+          ...(categoryId && { categoryId }),
+        },
+      });
+
       if (error.value) {
         throw error;
       }
@@ -36,8 +45,8 @@ export const useCourseStore = defineStore("course", {
       this.raw = data.value!;
       return this.raw;
     },
-    async getCourseByCategory() {
-      await this.getCourseList();
+    async getCourseByCategory(page: number = 1, pageSize: number = 10, q?: string, categoryId?: string) {
+      await this.getCourseList(page, pageSize, q, categoryId);
       this.listByCategory = [];
       const data = this.raw?.items;
 
