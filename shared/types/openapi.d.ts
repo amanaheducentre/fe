@@ -105,6 +105,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/course/{courseIdentifier}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get course detail by ID or slug */
+        get: operations["getCourseByCourseIdentifier"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/course/tags": {
         parameters: {
             query?: never;
@@ -114,6 +131,216 @@ export interface paths {
         };
         /** Get course tags */
         get: operations["getCourseTags"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/course/{courseIdentifier}/reviews": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get reviews for a course */
+        get: operations["getCourseByCourseIdentifierReviews"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/category/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get all categories */
+        get: operations["getCategory"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/category/{categoryIdentifier}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get category detail by ID or slug */
+        get: operations["getCategoryByCategoryIdentifier"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/category/{categoryIdentifier}/courses": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get courses by category */
+        get: operations["getCategoryByCategoryIdentifierCourses"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/instructor/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get list of instructors */
+        get: operations["getInstructor"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/instructor/{instructorIdentifier}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get instructor detail with their courses */
+        get: operations["getInstructorByInstructorIdentifier"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/instructor/{instructorIdentifier}/courses": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get courses created by an instructor */
+        get: operations["getInstructorByInstructorIdentifierCourses"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/enrollment/my-courses": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get user's enrolled courses (Protected) */
+        get: operations["getEnrollmentMy-courses"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/enrollment/{courseIdentifier}/check": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Check if user is enrolled in a course (Protected) */
+        get: operations["getEnrollmentByCourseIdentifierCheck"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/profile/{userIdentifier}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get public user profile */
+        get: operations["getProfileByUserIdentifier"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/courses/{courseIdentifier}/curriculum": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get course curriculum with sections and lectures
+         * @description Returns course curriculum with progress if user is authenticated
+         */
+        get: operations["getCoursesByCourseIdentifierCurriculum"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/lectures/{lectureId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get lecture detail with assets and progress
+         * @description Returns lecture detail with assets and user progress if authenticated
+         */
+        get: operations["getLecturesByLectureId"];
         put?: never;
         post?: never;
         delete?: never;
@@ -434,7 +661,12 @@ export interface operations {
     };
     getCourseList: {
         parameters: {
-            query?: never;
+            query?: {
+                page?: string;
+                pageSize?: string;
+                q?: string;
+                categoryId?: string;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -493,6 +725,72 @@ export interface operations {
             };
         };
     };
+    getCourseByCourseIdentifier: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                courseIdentifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            id: string;
+                            title: string;
+                            slug: string;
+                            subtitle: string | null;
+                            description: string | null;
+                            thumbnailUrl: string | null;
+                            promoVideoUrl: string | null;
+                            level: string | null;
+                            currency: string;
+                            priceBase: number;
+                            priceCurrent: number;
+                            ratingAvg: number;
+                            ratingCount: number;
+                            studentCount: number;
+                            status: string;
+                            publishedAt: number | null;
+                            createdAt: number;
+                            updatedAt: number;
+                            instructor: {
+                                id: string;
+                                name: string;
+                                avatar: string | null;
+                                bio: string | null;
+                            } | null;
+                            category: {
+                                id: string;
+                                name: string;
+                                slug: string;
+                            } | null;
+                        };
+                    };
+                };
+            };
+        };
+    };
     getCourseTags: {
         parameters: {
             query: {
@@ -527,6 +825,594 @@ export interface operations {
                             courseId: string;
                             tag: string;
                         }[];
+                    };
+                };
+            };
+        };
+    };
+    getCourseByCourseIdentifierReviews: {
+        parameters: {
+            query?: {
+                page?: string;
+                pageSize?: string;
+            };
+            header?: never;
+            path: {
+                courseIdentifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            data: {
+                                id: string;
+                                rating: number;
+                                title: string | null;
+                                body: string | null;
+                                createdAt: number;
+                                reviewer: {
+                                    id: string;
+                                    name: string;
+                                    avatar: string | null;
+                                } | null;
+                            }[];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getCategory: {
+        parameters: {
+            query?: {
+                parentId?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            id: string;
+                            parentId: string | null;
+                            name: string;
+                            slug: string;
+                            sortOrder: number;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    getCategoryByCategoryIdentifier: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                categoryIdentifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            id: string;
+                            parentId: string | null;
+                            name: string;
+                            slug: string;
+                            sortOrder: number;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getCategoryByCategoryIdentifierCourses: {
+        parameters: {
+            query?: {
+                page?: string;
+                pageSize?: string;
+            };
+            header?: never;
+            path: {
+                categoryIdentifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            id: string;
+                            title: string;
+                            slug: string;
+                            subtitle: string | null;
+                            thumbnailUrl: string | null;
+                            priceCurrent: number;
+                            ratingAvg: number;
+                            ratingCount: number;
+                            studentCount: number;
+                            instructor: {
+                                id: string;
+                                name: string;
+                                avatar: string | null;
+                            } | null;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    getInstructor: {
+        parameters: {
+            query?: {
+                page?: string;
+                pageSize?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            id: string;
+                            name: string;
+                            username: string | null;
+                            avatar: string | null;
+                            bio: string | null;
+                            courseCount: string | null;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    getInstructorByInstructorIdentifier: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                instructorIdentifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            id: string;
+                            name: string;
+                            username: string | null;
+                            email: string;
+                            avatar: string | null;
+                            bio: string | null;
+                            phone: string | null;
+                            location: string | null;
+                            createdAt: number;
+                            courses: {
+                                id: string;
+                                title: string;
+                                slug: string;
+                                subtitle: string | null;
+                                thumbnailUrl: string | null;
+                                priceCurrent: number;
+                                ratingAvg: number;
+                                ratingCount: number;
+                                studentCount: number;
+                                publishedAt: number | null;
+                            }[];
+                            courseCount: number;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getInstructorByInstructorIdentifierCourses: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                instructorIdentifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            id: string;
+                            title: string;
+                            status: string;
+                            studentCount: number;
+                            ratingAvg: number;
+                            ratingCount: number;
+                            priceCurrent: number;
+                            updatedAt: number;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    "getEnrollmentMy-courses": {
+        parameters: {
+            query?: never;
+            header: {
+                authorization: string;
+                "content-type"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            enrollmentId: string;
+                            enrolledAt: number;
+                            courseId: string | null;
+                            courseTitle: string | null;
+                            courseSlug: string | null;
+                            courseSubtitle: string | null;
+                            courseThumbnailUrl: string | null;
+                            coursePriceCurrent: number | null;
+                            courseRatingAvg: number | null;
+                            courseRatingCount: number | null;
+                            instructorId: string | null;
+                            instructorName: string | null;
+                            instructorAvatar: string | null;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    getEnrollmentByCourseIdentifierCheck: {
+        parameters: {
+            query?: never;
+            header: {
+                authorization: string;
+                "content-type"?: string;
+            };
+            path: {
+                courseIdentifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            enrolled: boolean;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getProfileByUserIdentifier: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                userIdentifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            id: string;
+                            name: string;
+                            username: string | null;
+                            email: string;
+                            avatar: string | null;
+                            bio: string | null;
+                            phone: string | null;
+                            location: string | null;
+                            createdAt: number;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    getCoursesByCourseIdentifierCurriculum: {
+        parameters: {
+            query?: never;
+            header: {
+                authorization: string;
+                "content-type"?: string;
+            };
+            path: {
+                courseIdentifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data: {
+                            id: string;
+                            title: string;
+                            sortOrder: number;
+                            lectures: {
+                                id: string;
+                                sectionId: string;
+                                /** @enum {string} */
+                                type: "video" | "quiz" | "article";
+                                title: string;
+                                description: string | null;
+                                durationSeconds: number | null;
+                                isPreview: boolean;
+                                sortOrder: number;
+                                /** @enum {string} */
+                                status: "draft" | "published" | "archived";
+                                progress: {
+                                    status: "not_started" | "in_progress" | "completed";
+                                    lastPositionSeconds: number;
+                                    completedAt: number | null;
+                                } | null;
+                            }[];
+                            lectureCount: number;
+                            totalDuration: number;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    getLecturesByLectureId: {
+        parameters: {
+            query?: never;
+            header: {
+                authorization: string;
+                "content-type"?: string;
+            };
+            path: {
+                lectureId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data: {
+                            id: string;
+                            courseId: string;
+                            sectionId: string;
+                            /** @enum {string} */
+                            type: "video" | "quiz" | "article";
+                            title: string;
+                            description: string | null;
+                            durationSeconds: number | null;
+                            isPreview: boolean;
+                            /** @enum {string} */
+                            status: "draft" | "published" | "archived";
+                            publishedAt: number | null;
+                            assets: {
+                                id: string;
+                                /** @enum {string} */
+                                assetType: "video" | "pdf" | "code" | "document";
+                                url: string;
+                                filename: string | null;
+                                sizeBytes: number | null;
+                                meta: unknown;
+                            }[];
+                            progress: {
+                                status: "not_started" | "in_progress" | "completed";
+                                lastPositionSeconds: number;
+                                completedAt: number | null;
+                                updatedAt: number;
+                            } | null;
+                        };
                     };
                 };
             };

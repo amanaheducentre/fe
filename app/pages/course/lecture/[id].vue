@@ -1,0 +1,1 @@
+<template>Halo bang</template>

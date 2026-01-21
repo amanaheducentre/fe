@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from "@nuxt/ui";
-import type { CourseData } from "~~/shared/types/course.schema";
+import { useLectureStore } from "~/stores/lecture";
+import type { CourseDetailData } from "~~/shared/types/course.schema";
 
 definePageMeta({
   middleware: "auth",
   layout: "sidebar",
 });
 
-const courseStore = useCourseStore();
 const route = useRoute();
 const courseId = computed(() => route.params.id as string);
 const { isMobile } = useDevice();
@@ -15,8 +15,8 @@ const { isMobile } = useDevice();
 const scrollPosition = ref(0);
 const courseProgress = ref(0);
 
-const course = ref(courseStore.selected);
-const isLoading = computed(() => course.value.id == undefined);
+const { data: course, pending } = useFetch<CourseDetailData["data"]>("/api/course/" + route.params.id);
+const isLoading = computed(() => course.value?.id == undefined);
 
 const items = computed<BreadcrumbItem[]>(() => [
   { label: "Beranda", to: "/dashboard" },
