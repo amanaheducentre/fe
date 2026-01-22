@@ -4,16 +4,12 @@ import type { LectureDataRes } from "~~/shared/types/lecture.schema";
 definePageMeta({
   middleware: ["auth"],
   layout: "sidebar",
-  key: (route) => route.fullPath,
 });
 
 const route = useRoute();
-const lectureId = computed(() => route.params.lid as string);
+const lectureId = computed(() => route.params.id as string);
 
-const { data: lecture, pending } = useFetch<LectureDataRes["data"]>(() => `/api/lecture/${lectureId.value}`, {
-  key: () => `lecture-${lectureId.value}`,
-  watch: [lectureId],
-});
+const { data: lecture, pending } = useFetch<LectureDataRes["data"]>(`/api/lecture?lectureId=${lectureId.value}`);
 
 const isLoading = computed(() => pending.value || !lecture.value);
 

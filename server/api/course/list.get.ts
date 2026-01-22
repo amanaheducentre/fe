@@ -11,11 +11,9 @@ export default defineEventHandler(async (event) => {
     event: "course_list_request",
   });
 
-  console.log("KONTORU ASU");
   try {
     // Get query parameters
     const query = getQuery(event);
-    console.log(query);
     const page = query.page || "1";
     const pageSize = query.pageSize || "10";
     const q = query.q;

@@ -150,9 +150,9 @@ onBeforeUnmount(() => {
                       <div class="flex flex-col px-3 sm:px-4 md:px-6 space-y-2">
                         <NuxtLink
                           v-for="data in item.lectures"
-                          :key="data.id"
-                          :to="`/course/lecture/` + data.id"
-                          :external="false"
+                          :key="data.title"
+                          :to="`/lecture/` + data.id"
+                          :external="true"
                           class="flex w-full items-center justify-between gap-3 sm:gap-4 py-1 hover:text-raka-orange transition-colors"
                         >
                           <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
