@@ -156,7 +156,7 @@ fetchCourses();
           :items-per-page="pageSize"
           :total="totalItems"
           variant="ghost"
-          class="shadow-sm backdrop-blur-md rounded-full px-2 py-2 hover:px-6 hover:py-3 hover:-translate-y-2 bg-white/50 transition-all"
+          class="shadow-md backdrop-blur-md rounded-full px-2 py-2 hover:px-6 hover:py-3 hover:-translate-y-2 bg-white/50 transition-all"
         />
       </div>
     </div>

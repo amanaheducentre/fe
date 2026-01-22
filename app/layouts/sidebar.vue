@@ -24,7 +24,7 @@ const { isMobile } = useDevice();
     </div>
 
     <!-- Footer -->
-    <footer class="w-full flex justify-center py-4 sm:py-5 text-xs sm:text-sm bg-black text-white z-9998">
+    <footer class="w-full flex justify-center py-8 text-sm sm:text-sm bg-gradient-orange text-white z-9998">
       &copy; 2025 Amanah Edu Centre
     </footer>
   </div>
