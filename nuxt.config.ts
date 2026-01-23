@@ -32,7 +32,11 @@ export default defineNuxtConfig({
     "nuxt-auth-utils",
     "@artmizu/nuxt-prometheus",
     "@pinia/nuxt",
+    "pinia-plugin-persistedstate/nuxt",
   ],
+  piniaPluginPersistedstate: {
+    storage: "localStorage",
+  },
   css: ["~/assets/css/main.css"],
   colorMode: {
     preference: "light",
@@ -47,4 +51,5 @@ export default defineNuxtConfig({
       "2xl": 1536,
     },
   },
+  debug: true,
 });

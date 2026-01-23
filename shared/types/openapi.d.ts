@@ -1412,6 +1412,16 @@ export interface operations {
                                 completedAt: number | null;
                                 updatedAt: number;
                             } | null;
+                            nextLecture: {
+                                id: string;
+                                title: string;
+                                type: "video" | "quiz" | "article";
+                            } | null;
+                            prevLecture: {
+                                id: string;
+                                title: string;
+                                type: "video" | "quiz" | "article";
+                            } | null;
                         };
                     };
                 };

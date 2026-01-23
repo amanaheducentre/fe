@@ -14,9 +14,14 @@ const { isMobile } = useDevice();
 const scrollPosition = ref(0);
 const courseProgress = ref(0);
 
-const { data: course } = useFetch<CourseDetailData["data"]>("/api/course/" + courseId.value);
+const { data: course } = useFetch<CourseDetailData["data"]>("/api/course/" + courseId.value, {
+  server: false,
+});
 const { data: curriculum } = useFetch<CourseCurriculumWithLectures["data"]>(
   "/api/course/curriculum?courseId=" + courseId.value,
+  {
+    server: false,
+  },
 );
 const isLoading = computed(() => course.value?.id == undefined);
 

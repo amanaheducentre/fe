@@ -7,11 +7,22 @@ definePageMeta({
 });
 
 const route = useRoute();
-const lectureId = computed(() => route.params.id as string);
+const lectureStore = useLectureStore();
+const lectureId = ref(route.params.id as string);
+const lecture = ref<LectureDataRes["data"]>();
+const isLoading = ref(true);
 
-const { data: lecture, pending } = useFetch<LectureDataRes["data"]>(`/api/lecture?lectureId=${lectureId.value}`);
-
-const isLoading = computed(() => pending.value || !lecture.value);
+const fetchLecture = async (lectureId: string) => {
+  isLoading.value = true;
+  lectureStore
+    .getLecture(lectureId)
+    .then((data) => {
+      lecture.value = data;
+    })
+    .finally(() => {
+      isLoading.value = false;
+    });
+};
 
 // Get video asset (primary content)
 const videoAsset = computed(() => {
@@ -60,6 +71,17 @@ const getStatusBadge = (status: string) => {
   };
   return badges[status as keyof typeof badges] || badges.not_started;
 };
+
+onMounted(() => {
+  nextTick(async () => {
+    await fetchLecture(lectureId.value);
+  });
+});
+
+watch(lectureId, () => {
+  lectureStore.setLastLectureId(lectureId.value);
+  fetchLecture(lectureId.value);
+});
 </script>
 
 <template>
@@ -195,13 +217,17 @@ const getStatusBadge = (status: string) => {
             <!-- Navigation Buttons -->
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <UButton
-                color="neutral"
+                color="primary"
                 variant="solid"
                 size="lg"
                 icon="uil:angle-left"
                 class="flex-1 justify-center"
-                @click="$router.back()"
+                @click="lectureId = lecture.prevLecture?.id!"
+                :disabled="lecture.prevLecture == null"
               >
+                Kembali ke Materi Sebelumnya
+              </UButton>
+              <UButton color="neutral" variant="solid" size="lg" class="flex-1 justify-center" @click="$router.back()">
                 Kembali
               </UButton>
               <UButton
@@ -210,6 +236,8 @@ const getStatusBadge = (status: string) => {
                 size="lg"
                 trailing-icon="uil:angle-right"
                 class="flex-1 justify-center"
+                @click="lectureId = lecture.nextLecture?.id!"
+                :disabled="lecture.nextLecture == null"
               >
                 Lanjut ke Materi Berikutnya
               </UButton>
