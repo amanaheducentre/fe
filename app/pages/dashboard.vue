@@ -10,6 +10,9 @@ definePageMeta({
 });
 
 const { user } = useUserSession();
+const scrollPosition = ref(0);
+const scrollDirection = ref(true); // Up = true, Down = false
+const ScrollDirectionTimeout = ref(0);
 const courseStore = useCourseStore();
 const bannerItems = ref([...getSampleImages(1920, 800, 7)]);
 
@@ -42,8 +45,33 @@ const fetchCourses = async () => {
 watch(currentPage, () => {
   fetchCourses();
 });
-
 fetchCourses();
+
+const handleScroll = async () => {
+  const lastPosition = scrollPosition.value;
+  const currentPosition = window.scrollY || window.pageYOffset;
+
+  scrollDirection.value = currentPosition < lastPosition;
+  scrollPosition.value = currentPosition;
+
+  ScrollDirectionTimeout.value = 0.7;
+};
+
+onMounted(async () => {
+  window.addEventListener("scroll", handleScroll);
+
+  while (true) {
+    await sleep(100);
+    ScrollDirectionTimeout.value -= 0.1;
+    if (ScrollDirectionTimeout.value <= 0) {
+      scrollDirection.value = true;
+    }
+  }
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
 <template>
@@ -150,13 +178,14 @@ fetchCourses();
       v-if="!isLoading && totalPages > 1"
       class="fixed bottom-0 left-0 right-0 z-9999 flex justify-center py-4 sm:py-6 pointer-events-none"
     >
-      <div class="pointer-events-auto">
+      <div class="pointer-events-auto transition-all">
         <UPagination
           v-model:page="currentPage"
           :items-per-page="pageSize"
           :total="totalItems"
           variant="ghost"
           class="shadow-md backdrop-blur-md rounded-full px-2 py-2 hover:px-6 hover:py-3 hover:-translate-y-2 bg-white/50 transition-all"
+          :class="scrollDirection ? '' : 'opacity-0 scale-90'"
         />
       </div>
     </div>

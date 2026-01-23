@@ -95,9 +95,6 @@ const handleScroll = () => {
 
 onMounted(async () => {
   window.addEventListener("scroll", handleScroll);
-  while (true) {
-    await sleep(2010);
-  }
 });
 
 onBeforeUnmount(() => {
