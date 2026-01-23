@@ -9,6 +9,9 @@ export default defineOAuthGoogleEventHandler({
       email: user.email,
     });
 
+    // Save user state
+    await setUserSession(event, { user });
+
     log.info("OAuth Google success callback received", {
       event: "oauth_success",
     });
@@ -19,6 +22,12 @@ export default defineOAuthGoogleEventHandler({
       });
 
       const check = await checkAccount({ email: user.email }, event);
+      if (!check.registered) {
+        log.warn("User not registered, redirecting to signup", {
+          event: "redirect",
+        });
+        return sendRedirect(event, "/signup");
+      }
 
       log.info("Account check completed", {
         event: "check_account_result",
@@ -46,28 +55,15 @@ export default defineOAuthGoogleEventHandler({
         userId: user.sub,
       });
 
-      await setUserSession(event, { user });
       setCookieToken(event, res.token);
-
-      log.debug("Session and auth cookie set", {
+      log.debug("Auth cookie set", {
         event: "session_initialized",
       });
 
-      const destination: string = check.registered ? "/dashboard" : "/signup";
-
-      if (!check.registered) {
-        log.warn("User not registered, redirecting to signup", {
-          event: "redirect",
-          destination,
-        });
-      } else {
-        log.info("Redirecting user to dashboard", {
-          event: "redirect",
-          destination,
-        });
-      }
-
-      return sendRedirect(event, destination);
+      log.info("Redirecting user to dashboard", {
+        event: "redirect",
+      });
+      return sendRedirect(event, "/dashboard");
     } catch (err) {
       log.error("OAuth Google flow failed", {
         event: "oauth_error",
