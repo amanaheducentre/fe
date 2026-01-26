@@ -65,6 +65,10 @@
   ],
   "trustedDependencies": [
     "@parcel/watcher",
-    "unrs-resolver"
+    "esbuild",
+    "sharp",
+    "unrs-resolver",
+    "vue-demi",
+    "workerd"
   ]
 }

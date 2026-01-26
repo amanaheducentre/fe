@@ -33,9 +33,6 @@ export default defineNuxtConfig({
     "@artmizu/nuxt-prometheus",
     "@pinia/nuxt",
   ],
-  piniaPluginPersistedstate: {
-    storage: "localStorage",
-  },
   css: ["~/assets/css/main.css"],
   colorMode: {
     preference: "light",
@@ -50,5 +47,5 @@ export default defineNuxtConfig({
       "2xl": 1536,
     },
   },
-  debug: true,
+  debug: false,
 });

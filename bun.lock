@@ -52,7 +52,11 @@
     },
   },
   "trustedDependencies": [
+    "workerd",
+    "esbuild",
+    "sharp",
     "unrs-resolver",
+    "vue-demi",
     "@parcel/watcher",
   ],
   "packages": {
