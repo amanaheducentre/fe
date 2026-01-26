@@ -5,7 +5,7 @@ const { isMobile } = useDevice();
 
 <template>
   <!-- Mobile Navigation -->
-  <div v-if="isMobile" class="grid grid-cols-3 w-full h-16 bg-white">
+  <div v-if="isMobile" class="grid grid-cols-3 w-full h-16 bg-white/80 backdrop-blur-md">
     <div class="flex items-center px-3">
       <UDrawer>
         <UButton variant="outline" class="ring-0 text-black">

@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 
-const currentYear = new Date().getFullYear();
 const links = ref([
   {
     label: "Home",
@@ -37,7 +36,7 @@ const sosmeds = ref([
 </script>
 
 <template>
-  <div class="bg-gray-900 text-white w-full h-full">
+  <div class="min-w-screen min-h-screen md:min-h-full flex justify-center items-center">
     <div class="grid grid-rows-4 md:grid-rows-1 md:grid-cols-4 md:p-5 pt-10">
       <div class="text-moderniz flex p-5 justify-center items-center text-xl lg:text-3xl text-center">
         Sekolah Montessori #1 <br />
@@ -67,7 +66,6 @@ const sosmeds = ref([
         </div>
       </div>
     </div>
-    <div class="flex justify-center mt-5 text-sm">&copy; 2025 Amanah Edu Centre</div>
   </div>
 </template>
 
