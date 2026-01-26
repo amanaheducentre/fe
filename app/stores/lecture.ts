@@ -29,5 +29,4 @@ export const useLectureStore = defineStore("lecture", {
       return this.lecture;
     },
   },
-  persist: true,
 });

@@ -32,7 +32,6 @@ export default defineNuxtConfig({
     "nuxt-auth-utils",
     "@artmizu/nuxt-prometheus",
     "@pinia/nuxt",
-    "pinia-plugin-persistedstate/nuxt",
   ],
   piniaPluginPersistedstate: {
     storage: "localStorage",
