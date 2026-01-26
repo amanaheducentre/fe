@@ -13,15 +13,11 @@
   --color-error: var(--color-raka-red);
 }
 
-.text-arcon {
-  font-family: "arcon";
-}
-
-.text-moderniz {
+.text-hero {
   font-family: "moderniz";
 }
 
-.text-league-spartan {
+.text-body {
   font-family: "League Spartan";
 }
 

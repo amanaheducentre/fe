@@ -36,9 +36,9 @@ const sosmeds = ref([
 </script>
 
 <template>
-  <div class="min-w-screen min-h-screen md:min-h-full flex justify-center items-center">
+  <div class="min-w-full min-h-screen md:min-h-full flex justify-center items-center">
     <div class="grid grid-rows-4 md:grid-rows-1 md:grid-cols-4 md:p-5 pt-10">
-      <div class="text-moderniz flex p-5 justify-center items-center text-xl lg:text-3xl text-center">
+      <div class="text-hero flex p-5 justify-center items-center text-xl lg:text-3xl text-center">
         Sekolah Montessori #1 <br />
         di Banyuwangi
       </div>

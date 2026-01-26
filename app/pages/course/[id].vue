@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
       <div class="absolute inset-0 pt-16 sm:pt-20 md:pt-24 lg:pt-28 px-4 sm:px-6 md:px-8 lg:px-12">
         <div class="mx-auto max-w-6xl">
           <!-- Loading Skeleton -->
-          <div v-if="isLoading" class="flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-white text-arcon lg:pr-96">
+          <div v-if="isLoading" class="flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-white text-body lg:pr-96">
             <USkeleton class="h-4 w-64 sm:w-80 bg-white/20" />
             <USkeleton class="h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16 w-full max-w-2xl bg-white/20" />
             <USkeleton class="h-16 sm:h-20 w-full max-w-2xl bg-white/20" />
@@ -67,7 +67,7 @@ onBeforeUnmount(() => {
           </div>
 
           <!-- Actual Content -->
-          <div v-else class="flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-white text-arcon lg:pr-96">
+          <div v-else class="flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-white text-body lg:pr-96">
             <UBreadcrumb
               :items="items"
               class="text-white text-xs sm:text-sm"
@@ -262,7 +262,7 @@ onBeforeUnmount(() => {
                   />
                 </div>
 
-                <div class="flex flex-col space-y-3 sm:space-y-4 p-4 sm:p-5 lg:p-6 text-arcon">
+                <div class="flex flex-col space-y-3 sm:space-y-4 p-4 sm:p-5 lg:p-6 text-body">
                   <div class="flex flex-col space-y-2">
                     <p class="text-2xl sm:text-3xl font-bold text-raka-orange">
                       Rp {{ course?.priceCurrent?.toLocaleString("id-ID") || 0 }}
@@ -295,7 +295,7 @@ onBeforeUnmount(() => {
 
               <!-- Benefits Card -->
               <div class="w-full bg-white border rounded-xl sm:rounded-2xl overflow-hidden shadow-sm">
-                <div class="flex flex-col space-y-3 sm:space-y-4 p-4 sm:p-5 lg:p-6 text-arcon">
+                <div class="flex flex-col space-y-3 sm:space-y-4 p-4 sm:p-5 lg:p-6 text-body">
                   <p class="text-base sm:text-lg lg:text-xl font-bold">Yang Akan Kamu Dapatkan</p>
 
                   <div class="space-y-2 sm:space-y-3">
@@ -312,7 +312,7 @@ onBeforeUnmount(() => {
                 <div class="flex w-full justify-center p-3 sm:p-4 lg:p-5">
                   <NuxtLink class="flex items-center gap-2 sm:gap-3 hover:text-raka-orange transition-colors">
                     <Icon name="uil:question-circle" class="shrink-0 w-6 h-6 sm:w-7 sm:h-7" />
-                    <p class="text-arcon text-sm sm:text-base lg:text-lg font-bold">Lihat Panduan Belajar</p>
+                    <p class="text-body text-sm sm:text-base lg:text-lg font-bold">Lihat Panduan Belajar</p>
                   </NuxtLink>
                 </div>
               </div>

@@ -1,13 +1,25 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import type { TabsItem } from "@nuxt/ui";
 import { getSampleImage } from "@/utils/lorem";
+
+const windowStore = useWindowStore();
 
 const testimonialItems = ref([
   { id: 1001, text: "Layanannya sangat baik dan murah" },
   { id: 1002, text: "Sangat membantu anak-anak belajar" },
   { id: 1003, text: "Kurikulumnya sangat menarik" },
 ]);
+
+// Intersection Observer untuk update URL hash
+let observer: IntersectionObserver | null = null;
+
+const updateUrlHash = (id: string) => {
+  if (window.location.hash !== `#${id}`) {
+    window.history.replaceState(null, "", `#${id}`);
+    windowStore.hashLocation = id;
+  }
+};
 
 const courseItems = [
   {
@@ -86,24 +98,46 @@ const courseItems = [
   },
 ] satisfies TabsItem[];
 
-const scrollPosition = ref(0);
 const { isMobile } = useDevice();
 
-const handleScroll = () => {
-  scrollPosition.value = window.scrollY || window.pageYOffset;
-};
+onMounted(() => {
+  // Setup Intersection Observer
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          const id = entry.target.getAttribute("id");
+          if (id) {
+            updateUrlHash(id);
+          }
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: "0px",
+      threshold: [0.5], // Trigger ketika 50% section terlihat
+    },
+  );
 
-onMounted(async () => {
-  window.addEventListener("scroll", handleScroll);
+  // Observe semua section dengan id
+  const sections = document.querySelectorAll("section[id]");
+  sections.forEach((section) => {
+    observer?.observe(section);
+  });
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener("scroll", handleScroll);
+  // Cleanup observer
+  if (observer) {
+    observer.disconnect();
+    observer = null;
+  }
 });
 </script>
 
 <template>
-  <div class="w-full min-h-screen">
+  <div>
     <!-- SECTION 1 (Hero) -->
     <section id="home" class="w-full min-h-screen overflow-hidden">
       <GradientBackground>
@@ -111,13 +145,13 @@ onBeforeUnmount(() => {
           class="flex flex-col text-white items-center justify-center w-full min-h-screen px-4 sm:px-6 lg:px-8 py-20"
         >
           <h1
-            class="text-moderniz font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-center max-w-xs sm:max-w-md md:max-w-3xl lg:max-w-4xl xl:max-w-5xl"
+            class="text-hero font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-center max-w-xs sm:max-w-md md:max-w-3xl lg:max-w-4xl xl:max-w-5xl"
           >
             SEKOLAH MONTESSORI #1 DI BANYUWANGI
           </h1>
 
           <p
-            class="text-arcon mt-6 sm:mt-8 md:mt-10 lg:mt-12 text-sm sm:text-base lg:text-lg font-medium text-center sm:text-justify max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl leading-relaxed"
+            class="text-body mt-6 sm:mt-8 md:mt-10 lg:mt-12 text-sm sm:text-base lg:text-lg font-medium text-center sm:text-justify max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl leading-relaxed"
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi sit iusto deserunt eaque adipisci
             cupiditate sequi quia praesentium laudantium perspiciatis quaerat ullam, ipsum fuga error veniam dolorem?
@@ -130,7 +164,7 @@ onBeforeUnmount(() => {
 
           <div
             class="flex flex-col justify-center items-center mt-8 sm:mt-12 transition-opacity duration-300"
-            :class="scrollPosition <= 150 ? 'opacity-100' : 'opacity-0'"
+            :class="windowStore.yPosition <= 150 ? 'opacity-100' : 'opacity-0'"
           >
             <a href="#sekolah-kami" class="hover:opacity-70 transition-opacity">
               <Icon name="uil:angle-down" class="w-6 h-6 sm:w-7 sm:h-7" />
@@ -144,7 +178,7 @@ onBeforeUnmount(() => {
     <!-- SECTION 2 (Bubble + Teks) -->
     <section
       id="sekolah-kami"
-      class="relative w-full overflow-hidden bg-gray-100 scroll-mt-16 sm:scroll-mt-18 py-12 sm:py-16 md:py-20 lg:py-24"
+      class="relative w-full bg-gray-100 scroll-mt-16 sm:scroll-mt-18 py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-clip"
     >
       <div
         class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 min-h-[400px] sm:min-h-[450px] lg:min-h-[500px] flex items-center"
@@ -164,13 +198,11 @@ onBeforeUnmount(() => {
         <div class="w-full flex items-center justify-center lg:justify-end">
           <div class="w-full max-w-full sm:max-w-xl lg:max-w-2xl">
             <h2
-              class="text-moderniz text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-center lg:text-left"
+              class="text-hero text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-center lg:text-left"
             >
               Sekolah Kami Bukan Sekolah Biasa
             </h2>
-            <p
-              class="text-arcon font-medium lg:font-bold text-sm sm:text-base lg:text-lg mt-4 sm:mt-6 lg:mt-8 text-justify leading-relaxed"
-            >
+            <p class="text-body md:text-lg mt-4 sm:mt-6 lg:mt-8 text-justify leading-relaxed">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, assumenda dolorem voluptates atque
               quae dolores consectetur, explicabo nobis voluptate soluta possimus exercitationem! Consectetur omnis
               necessitatibus aperiam perferendis! Deleniti, quia voluptatem. Lorem ipsum, dolor sit amet consectetur
@@ -183,33 +215,13 @@ onBeforeUnmount(() => {
     </section>
 
     <!-- SECTION 3 -->
-    <section id="montessori" class="w-full bg-gray-100 text-black py-12 sm:py-16 md:py-20 lg:py-24">
-      <div class="mx-auto max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] flex justify-center px-3 sm:px-4 lg:px-6">
-        <CardCenterSplit background-color="bg-gray-100">
-          <template #left>
-            <div class="flex flex-col gap-4 sm:gap-5 text-arcon pr-0 lg:pr-6">
-              <h2
-                class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black tracking-tight leading-tight"
-              >
-                Belajar Montessori Secara Online!
-              </h2>
-              <p class="text-justify text-sm sm:text-base lg:text-lg leading-relaxed">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. In neque, incidunt eveniet, quae saepe tempora
-                consectetur nihil doloremque delectus similique explicabo? Enim non magni delectus nihil totam, vel rem
-                ea. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic minima perspiciatis eaque blanditiis
-                delectus obcaecati necessitatibus rem, nostrum sapiente adipisci rerum repellat sequi ipsa facere nobis
-                perferendis officiis excepturi eligendi.
-              </p>
-            </div>
-          </template>
-
-          <template #right>
-            <div class="flex justify-center lg:justify-end items-center w-full h-full mt-6 lg:mt-0">
-              <CarouselImageDesc />
-            </div>
-          </template>
-        </CardCenterSplit>
-      </div>
+    <section
+      id="montessori"
+      class="flex flex-col space-y-4 w-full bg-gray-100 text-black py-12 sm:py-16 md:py-20 lg:py-24"
+    >
+      <CarouselImageDesc :speed="0.3" direction="forward" />
+      <CarouselImageDesc :speed="0.5" direction="backward" />
+      <CarouselImageDesc :speed="0.4" direction="forward" />
     </section>
 
     <!-- SECTION 4 -->
@@ -218,13 +230,13 @@ onBeforeUnmount(() => {
         <CardCenterSplit background-color="bg-gradient-red">
           <template #left>
             <div class="flex flex-col gap-6 sm:gap-8">
-              <div class="flex flex-col gap-3 sm:gap-4 text-arcon">
+              <div class="flex flex-col gap-3 sm:gap-4 text-body">
                 <h2
                   class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight leading-tight"
                 >
                   Belajar Lebih Seru dengan Metode Baru!
                 </h2>
-                <p class="text-justify text-sm sm:text-base lg:text-lg leading-relaxed">
+                <p class="text-justify md:text-lg leading-relaxed">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. In neque, incidunt eveniet, quae saepe
                   tempora consectetur nihil doloremque delectus similique explicabo? Enim non magni delectus nihil
                   totam, vel rem ea.
@@ -251,8 +263,8 @@ onBeforeUnmount(() => {
     </section>
 
     <!-- SECTION 5 -->
-    <section id="courses" class="w-full bg-gray-100 text-black py-12 sm:py-16 md:py-20 lg:py-24">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-arcon">
+    <section id="courses" class="w-full bg-gray-100 text-black py-12 sm:py-16 md:py-20 lg:py-24 box-border">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-body">
         <UContainer>
           <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold tracking-tight mb-3 sm:mb-4">
             Berbagai Macam Kelas Untuk Anak Anda
@@ -275,7 +287,7 @@ onBeforeUnmount(() => {
               </p>
 
               <div
-                class="flex overflow-x-auto gap-3 sm:gap-4 p-2 pb-3 -mx-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+                class="flex overflow-x-auto gap-3 sm:gap-4 p-2 pb-3 -mx-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent max-w-full"
               >
                 <CardCourse v-for="data in item.data" v-bind="data" :key="data.id" />
               </div>
@@ -292,15 +304,15 @@ onBeforeUnmount(() => {
     </section>
 
     <!-- SECTION 6 -->
-    <section id="testimonials" class="w-full bg-gray-100 text-black py-12 sm:py-16 md:py-20 lg:py-24">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-arcon">
+    <section id="testimonials" class="w-full bg-gray-100 text-black py-12 sm:py-16 md:py-20 lg:py-24 box-border">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-body">
         <UContainer>
           <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold tracking-tight mb-4 sm:mb-6">
             Testimoni Anda Sangat Berarti
           </h2>
 
           <div
-            class="flex gap-3 sm:gap-4 p-2 pb-3 -mx-2 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+            class="flex gap-3 sm:gap-4 p-2 pb-3 -mx-2 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent max-w-full"
           >
             <CardTestimonial v-for="item in testimonialItems" :key="item.id" :text="item.text" />
           </div>

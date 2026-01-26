@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { loggedIn } = useUserSession();
 const { isMobile } = useDevice();
+
+const windowStore = useWindowStore();
 </script>
 
 <template>
@@ -25,34 +27,41 @@ const { isMobile } = useDevice();
   </div>
 
   <!-- Desktop Navigation -->
-  <div v-else class="grid grid-cols-3 w-full h-24 bg-white">
+  <div
+    v-else
+    class="grid grid-cols-3 w-full bg-white/80 backdrop-blur-xl transition-all"
+    :class="windowStore.yPosition > 0 ? 'h-12' : 'h-24'"
+  >
     <div class="flex items-center">
       <NuxtLink to="/">
-        <NuxtImg src="/img/logo.png" width="32" class="ml-6" />
+        <NuxtImg src="/img/logo.png" :width="windowStore.yPosition > 0 ? '16' : '32'" class="ml-6 transition-all" />
       </NuxtLink>
     </div>
-    <div />
+    <div
+      class="flex justify-center items-center text-body text-gray-500 transition-all"
+      :class="windowStore.yPosition > 0 ? 'scale-100' : 'scale-0'"
+    >
+      {{ windowStore.hashLocation }}
+    </div>
     <div class="flex justify-end items-center">
-      <div class="flex h-full justify-center items-center gap-3 mx-4">
+      <div
+        class="flex h-full justify-center items-center gap-3 mx-4 transition-all"
+        :class="windowStore.yPosition > 0 ? 'text-sm' : 'text-md'"
+      >
         <NuxtLink to="#"> PROGRAM </NuxtLink>
         <NuxtLink to="#"> GALLERY </NuxtLink>
         <NuxtLink to="#"> BEASISWA </NuxtLink>
-        <NuxtLink to="#">
-          <Icon name="uil:shopping-cart" size="20px" />
-        </NuxtLink>
       </div>
       <div>
-        <div v-if="!loggedIn" class="flex gap-2 mr-6">
-          <NuxtLink to="/login">
-            <UButton color="neutral" class="bg-gray-500">Log In</UButton>
-          </NuxtLink>
-          <NuxtLink to="#">
-            <UButton color="neutral" class="bg-raka-orange">Sign Up</UButton>
-          </NuxtLink>
-        </div>
-        <div v-else class="flex gap-2 mr-6">
-          <NuxtLink to="/dashboard">
-            <UButton color="neutral" class="bg-raka-orange">Dashboard</UButton>
+        <div class="flex gap-2 mr-6">
+          <NuxtLink :to="loggedIn ? '/dashboard' : '/login'">
+            <UButton
+              color="neutral"
+              class="bg-gray-500 transition-all"
+              :class="loggedIn ? 'bg-raka-orange' : 'bg-gray-500'"
+              :size="windowStore.yPosition > 0 ? 'xs' : 'md'"
+              >{{ loggedIn ? "Dashboard" : "Login" }}</UButton
+            >
           </NuxtLink>
         </div>
       </div>

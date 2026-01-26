@@ -6,13 +6,10 @@ import type { ListCourseByCategory } from "~~/shared/types/course.schema";
 definePageMeta({
   middleware: "auth",
   layout: "sidebar",
-  keepalive: true,
 });
 
 const { user } = useUserSession();
-const scrollPosition = ref(0);
-const scrollDirection = ref(true); // Up = true, Down = false
-const ScrollDirectionTimeout = ref(0);
+const windowStore = useWindowStore();
 const courseStore = useCourseStore();
 const bannerItems = ref([...getSampleImages(1920, 800, 7)]);
 
@@ -46,32 +43,6 @@ watch(currentPage, () => {
   fetchCourses();
 });
 fetchCourses();
-
-const handleScroll = async () => {
-  const lastPosition = scrollPosition.value;
-  const currentPosition = window.scrollY || window.pageYOffset;
-
-  scrollDirection.value = currentPosition < lastPosition;
-  scrollPosition.value = currentPosition;
-
-  ScrollDirectionTimeout.value = 0.7;
-};
-
-onMounted(async () => {
-  window.addEventListener("scroll", handleScroll);
-
-  while (true) {
-    await sleep(100);
-    ScrollDirectionTimeout.value -= 0.1;
-    if (ScrollDirectionTimeout.value <= 0) {
-      scrollDirection.value = true;
-    }
-  }
-});
-
-onBeforeUnmount(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
 </script>
 
 <template>
@@ -111,7 +82,7 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- Content -->
-    <UContainer class="py-4 sm:py-6 md:py-8 text-arcon space-y-4 sm:space-y-5 md:space-y-6">
+    <UContainer class="py-4 sm:py-6 md:py-8 text-body space-y-4 sm:space-y-5 md:space-y-6">
       <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight font-bold">Mau Belajar Apa Hari Ini?</h1>
 
       <!-- Loading Skeleton -->
@@ -185,7 +156,7 @@ onBeforeUnmount(() => {
           :total="totalItems"
           variant="ghost"
           class="shadow-md backdrop-blur-md rounded-full px-2 py-2 hover:px-6 hover:py-3 hover:-translate-y-2 bg-white/50 transition-all"
-          :class="scrollDirection ? '' : 'opacity-0 scale-90'"
+          :class="windowStore.scrollDirection ? '' : 'opacity-0 scale-90'"
         />
       </div>
     </div>

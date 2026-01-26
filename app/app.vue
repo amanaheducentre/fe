@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useHead } from "#app";
 import { SpeedInsights } from "@vercel/speed-insights/nuxt";
+import { useWindowStore } from "./stores/window";
 
 useSeoMeta({
   title: "LKP AManah Edu Centre",
@@ -11,6 +12,25 @@ useHead({
   htmlAttrs: {
     class: "scroll-smooth",
   },
+});
+
+const windowStore = useWindowStore();
+
+const handleScroll = () => {
+  windowStore.handleScroll(window);
+};
+
+onNuxtReady(async () => {
+  window.addEventListener("scroll", handleScroll);
+
+  while (true) {
+    await sleep(100);
+    if (windowStore.scrollDirectionTimeout > 0) {
+      windowStore.scrollDirectionTimeout -= 0.1;
+    } else {
+      windowStore.scrollDirection = true;
+    }
+  }
 });
 </script>
 
