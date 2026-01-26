@@ -101,21 +101,6 @@ const consoleTransport = new transports.Console({
  */
 let fileTransport: transports.FileTransportInstance | null = null;
 
-try {
-  const logsDir = path.resolve(process.cwd(), "logs");
-  mkdirSync(logsDir, { recursive: true });
-
-  const logFilePath = path.resolve(logsDir, "combined.log");
-  fileTransport = new transports.File({
-    filename: logFilePath,
-  });
-} catch (e) {
-  // Kalau gagal bikin directory/file transport, kita tetap lanjut (console tetap jalan)
-  // dan kita paksa tampilkan sebabnya:
-  // eslint-disable-next-line no-console
-  console.error("[logger] Failed to init file transport:", e);
-}
-
 const devFormat = winston.format.combine(
   winston.format.colorize({ all: true }),
   winston.format.timestamp({ format: "HH:mm:ss" }),
@@ -153,6 +138,21 @@ export const logger = winston.createLogger({
 });
 
 if (!isProd) {
+  try {
+    const logsDir = path.resolve(process.cwd(), "logs");
+    mkdirSync(logsDir, { recursive: true });
+
+    const logFilePath = path.resolve(logsDir, "combined.log");
+    fileTransport = new transports.File({
+      filename: logFilePath,
+    });
+  } catch (e) {
+    // Kalau gagal bikin directory/file transport, kita tetap lanjut (console tetap jalan)
+    // dan kita paksa tampilkan sebabnya:
+    // eslint-disable-next-line no-console
+    console.error("[logger] Failed to init file transport:", e);
+  }
+
   logger.add(
     new winston.transports.File({
       filename: "logs/combined.log",
