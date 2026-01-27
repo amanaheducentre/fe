@@ -140,7 +140,10 @@ onBeforeUnmount(() => {
   <div>
     <!-- SECTION 1 (Hero) -->
     <section id="home" class="overflow-hidden bg-gray-100">
-      <BackgroundVideo src="/video/teaser.mp4" class="overflow-hidden">
+      <BackgroundVideo
+        src="https://github.com/amanaheducentre/fe/raw/refs/heads/main/public/video/teaser.mp4"
+        class="overflow-hidden"
+      >
         <UContainer class="flex flex-col text-white items-center justify-center w-full min-h-screen py-20">
           <h1 class="text-hero font-bold text-3xl lg:text-5xl xl:text-6xl leading-tight text-center">
             SEKOLAH MONTESSORI #1 <br />
