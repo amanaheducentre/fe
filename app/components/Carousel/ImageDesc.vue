@@ -6,7 +6,7 @@ const props = defineProps({
 });
 import { getSampleImages } from "~/utils/lorem";
 
-const items = ref(getSampleImages(1024, 1024, 6));
+const items = ref(getSampleImages(1680, 1024, 6));
 const { isMobile } = useDevice();
 </script>
 
@@ -20,11 +20,11 @@ const { isMobile } = useDevice();
     }"
     :autoplay="{ delay: 5000 }"
     :items="items"
-    :ui="{ item: isMobile ? '' : 'basis-1/3' }"
+    :ui="{ item: isMobile ? 'ps-0' : 'basis-1/3 ps-0' }"
     class="flex flex-col justify-center items-center overflow-hidden w-full"
   >
     <div class="flex min-w-full min-h-max justify-center items-center relative">
-      <NuxtImg :src="item" class="w-full h-full object-cover" />
+      <NuxtImg :src="item" loading="lazy" class="w-full h-full object-cover transition-all scale-100 hover:scale-110" />
       <div
         class="flex text-xs sm:text-sm w-[90%] sm:w-[85%] min-h-[20%] rounded-2xl sm:rounded-3xl bottom-0 mb-4 sm:mb-6 lg:mb-8 justify-center items-center bg-gradient-silver absolute z-10 text-center p-3 sm:p-4 shadow-lg"
       >

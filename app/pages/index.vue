@@ -139,40 +139,35 @@ onBeforeUnmount(() => {
 <template>
   <div>
     <!-- SECTION 1 (Hero) -->
-    <section id="home" class="w-full min-h-screen overflow-hidden">
-      <GradientBackground>
-        <UContainer
-          class="flex flex-col text-white items-center justify-center w-full min-h-screen px-4 sm:px-6 lg:px-8 py-20"
-        >
-          <h1
-            class="text-hero font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-center max-w-xs sm:max-w-md md:max-w-3xl lg:max-w-4xl xl:max-w-5xl"
-          >
-            SEKOLAH MONTESSORI #1 DI BANYUWANGI
+    <section id="home" class="overflow-hidden bg-gray-100">
+      <BackgroundVideo src="/video/teaser.mp4" class="overflow-hidden">
+        <UContainer class="flex flex-col text-white items-center justify-center w-full min-h-screen py-20">
+          <h1 class="text-hero font-bold text-3xl lg:text-5xl xl:text-6xl leading-tight text-center">
+            SEKOLAH MONTESSORI #1 <br />
+            DI BANYUWANGI
           </h1>
 
           <p
-            class="text-body mt-6 sm:mt-8 md:mt-10 lg:mt-12 text-sm sm:text-base lg:text-lg font-medium text-center sm:text-justify max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl leading-relaxed"
+            class="text-body mt-6 sm:mt-8 md:mt-10 lg:mt-12 lg:text-lg font-medium text-center sm:text-justify max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl leading-relaxed"
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi sit iusto deserunt eaque adipisci
             cupiditate sequi quia praesentium laudantium perspiciatis quaerat ullam, ipsum fuga error veniam dolorem?
-            Molestiae, voluptates inventore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-            doloribus tempora a cumque quidem? Reprehenderit corrupti voluptatem nobis magnam sed rerum consectetur
-            accusantium cum, minus similique natus dignissimos excepturi eos. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Temporibus numquam quis sunt, rerum veniam rem eveniet quam error non amet hic in dicta,
-            quisquam culpa fugiat molestiae quae incidunt. Impedit!
+            Molestiae, voluptates inventore.
           </p>
 
           <div
-            class="flex flex-col justify-center items-center mt-8 sm:mt-12 transition-opacity duration-300"
+            class="flex flex-col justify-center items-center mt-8 sm:mt-12 transition-opacity duration-600"
             :class="windowStore.yPosition <= 150 ? 'opacity-100' : 'opacity-0'"
           >
-            <a href="#sekolah-kami" class="hover:opacity-70 transition-opacity">
-              <Icon name="uil:angle-down" class="w-6 h-6 sm:w-7 sm:h-7" />
-            </a>
-            <span class="text-xs sm:text-sm mt-1">Scroll Down</span>
+            <UButton
+              color="neutral"
+              class="bg-black/30 backdrop-blur-md transition-all scale-100 hover:scale-105 rounded-full px-4 py-2"
+            >
+              <a href="#sekolah-kami" class="hover:opacity-70 transition-opacity"> Pelajari Selengkapnya </a>
+            </UButton>
           </div>
         </UContainer>
-      </GradientBackground>
+      </BackgroundVideo>
     </section>
 
     <!-- SECTION 2 (Bubble + Teks) -->
@@ -215,10 +210,7 @@ onBeforeUnmount(() => {
     </section>
 
     <!-- SECTION 3 -->
-    <section
-      id="montessori"
-      class="flex flex-col space-y-4 w-full bg-gray-100 text-black py-12 sm:py-16 md:py-20 lg:py-24"
-    >
+    <section id="montessori" class="flex flex-col w-full bg-gray-100 text-black py-12 sm:py-16 md:py-20 lg:py-24">
       <CarouselImageDesc :speed="0.3" direction="forward" />
       <CarouselImageDesc :speed="0.5" direction="backward" />
       <CarouselImageDesc :speed="0.4" direction="forward" />

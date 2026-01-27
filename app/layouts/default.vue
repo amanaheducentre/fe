@@ -6,7 +6,7 @@ const { isMobile } = useDevice();
   <div class="flex flex-col min-h-screen">
     <!-- Mobile Layout -->
     <div class="flex-1">
-      <div class="sticky top-0 z-50 w-full">
+      <div class="sticky top-0 z-9999 w-full">
         <NavBar />
       </div>
       <slot />

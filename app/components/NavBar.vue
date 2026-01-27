@@ -41,7 +41,7 @@ const windowStore = useWindowStore();
       class="flex justify-center items-center text-body text-gray-500 transition-all"
       :class="windowStore.yPosition > 0 ? 'scale-100' : 'scale-0'"
     >
-      {{ windowStore.hashLocation }}
+      <!-- {{ windowStore.hashLocation }} -->
     </div>
     <div class="flex justify-end items-center">
       <div

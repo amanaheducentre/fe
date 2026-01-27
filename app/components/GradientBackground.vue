@@ -1,12 +1,12 @@
 <template>
-  <div id="gradient" class="w-full h-full">
+  <div id="gradient">
     <slot />
   </div>
 </template>
 
 <style scoped>
 #gradient {
-  height: 100vh;
+  /* height: 100vh; */
 
   filter: saturate(1.05) brightness(1.02);
   background: linear-gradient(
