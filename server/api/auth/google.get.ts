@@ -26,7 +26,7 @@ export default defineOAuthGoogleEventHandler({
         log.warn("User not registered, redirecting to signup", {
           event: "redirect",
         });
-        return sendRedirect(event, "/signup");
+        return sendRedirect(event, "/lms/signup");
       }
 
       log.info("Account check completed", {
@@ -63,7 +63,7 @@ export default defineOAuthGoogleEventHandler({
       log.info("Redirecting user to dashboard", {
         event: "redirect",
       });
-      return sendRedirect(event, "/dashboard");
+      return sendRedirect(event, "/lms");
     } catch (err) {
       log.error("OAuth Google flow failed", {
         event: "oauth_error",

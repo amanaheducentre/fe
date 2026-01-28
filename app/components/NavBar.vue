@@ -54,7 +54,7 @@ const windowStore = useWindowStore();
       </div>
       <div>
         <div class="flex gap-2 mr-6">
-          <NuxtLink :to="loggedIn ? '/dashboard' : '/login'">
+          <NuxtLink :to="loggedIn ? '/lms' : '/lms/login'">
             <UButton
               color="neutral"
               class="bg-gray-500 transition-all"

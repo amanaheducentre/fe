@@ -10,7 +10,7 @@ const sideItems = ref([
       {
         title: loggedIn.value ? "Logout" : "Login",
         icon: "ic:outline-account-circle",
-        to: loggedIn.value ? "/landing/logout" : "/login",
+        to: loggedIn.value ? "/lms/landing/logout" : "/lms/login",
       },
       {
         title: "Profil",
@@ -26,7 +26,7 @@ const sideItems = ref([
       {
         title: "Beranda",
         icon: "ic:baseline-monitor",
-        to: "/dashboard",
+        to: "/lms",
       },
       {
         title: "Katalog Kelas",

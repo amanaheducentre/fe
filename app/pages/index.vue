@@ -2,6 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import type { TabsItem } from "@nuxt/ui";
 import { getSampleImage } from "@/utils/lorem";
+import { programPreviews } from "@/data/programs/index";
 
 const windowStore = useWindowStore();
 
@@ -219,7 +220,43 @@ onBeforeUnmount(() => {
       <CarouselImageDesc :speed="0.4" direction="forward" />
     </section>
 
-    <!-- SECTION 4 -->
+    <!-- SECTION 4 (Programs Showcase) -->
+    <section id="programs" class="w-full bg-gray-100 py-12 sm:py-16 md:py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">Program Pendidikan Kami</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Pilih program yang sesuai dengan usia dan kebutuhan perkembangan anak Anda
+          </p>
+          <div class="w-20 h-1 bg-raka-orange mx-auto rounded-full mt-6" />
+        </div>
+
+        <!-- Programs Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <ProgramCard
+            v-for="program in programPreviews"
+            :key="program.id"
+            :title="program.title"
+            :description="program.description"
+            :image="program.image"
+            :href="program.href"
+            :age-range="program.ageRange"
+          />
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-12">
+          <p class="text-gray-600 mb-6">Tidak yakin program mana yang tepat untuk anak Anda?</p>
+          <UButton to="#contact" size="xl" color="primary" class="shadow-lg">
+            <UIcon name="i-heroicons-chat-bubble-left-right" class="mr-2" />
+            Konsultasi Gratis
+          </UButton>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 (Learn More) -->
     <section id="learn-more" class="w-full bg-gray-100 text-white py-12 sm:py-16 md:py-20 lg:py-24">
       <div class="mx-auto max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] flex justify-center px-3 sm:px-4 lg:px-6">
         <CardCenterSplit background-color="bg-gradient-red">
@@ -257,7 +294,7 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
-    <!-- SECTION 5 -->
+    <!-- SECTION 6 (Courses) -->
     <section id="courses" class="w-full bg-gray-100 text-black py-12 sm:py-16 md:py-20 lg:py-24 box-border">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-body">
         <UContainer>
@@ -298,7 +335,7 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
-    <!-- SECTION 6 -->
+    <!-- SECTION 7 (Testimonials) -->
     <section id="testimonials" class="w-full bg-gray-100 text-black py-12 sm:py-16 md:py-20 lg:py-24 box-border">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-body">
         <UContainer>

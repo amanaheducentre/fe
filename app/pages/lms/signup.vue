@@ -65,7 +65,7 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
     return;
   }
 
-  await navigateTo("/dashboard", {
+  await navigateTo("/lms", {
     external: true,
   });
 }

@@ -56,6 +56,12 @@ See [test/README.md](test/README.md) for detailed testing documentation.
 - **Testing**: Vitest with coverage support
 - **Authentication**: nuxt-auth-utils with session management
 
+### Reference
+
+- Cikal: https://cikal.co.id
+- Udemy: https://udemy.com
+- JIS: https://jisedu.or.id
+
 ### 🏗️ Architecture Patterns
 
 #### Directory Structure Rules
