@@ -10,6 +10,7 @@
   --color-raka-maroon: #8e0339;
 
   /* Daycare */
+  --color-daycare: #329346;
   --color-daycare-primary: #329346;
   --color-daycare-secondary: #ecd23f;
   --color-daycare-50: #f0fdf4;
@@ -36,6 +37,7 @@
   --color-daycare-secondary-950: #482d0a;
 
   /* Kindergarten */
+  --color-tk: #eb891e;
   --color-tk-primary: #eb891e;
   --color-tk-secondary: #6bd29b;
   --color-tk-50: #fef3c7;
@@ -62,6 +64,7 @@
   --color-tk-secondary-950: #052e16;
 
   /* Infant and Toddler */
+  --color-kb: #5385f6;
   --color-kb-primary: #5385f6;
   --color-kb-secondary: #eb891e;
   --color-kb-50: #eff6ff;
@@ -88,6 +91,7 @@
   --color-kb-secondary-950: #451a03;
 
   /* Homeschooling */
+  --color-hs: #8100b7;
   --color-hs-primary: #8100b7;
   --color-hs-secondary: #6eb04c;
   --color-hs-alternative: #e6bc2c;

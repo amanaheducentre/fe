@@ -66,7 +66,11 @@ export default defineNuxtConfig({
     },
   },
   security: {
-    enabled: true,
+    headers: {
+      contentSecurityPolicy: {
+        "img-src": false,
+      },
+    },
   },
   debug: false,
 });

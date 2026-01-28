@@ -16,6 +16,17 @@ const props = withDefaults(defineProps<Props>(), {
   useSecondaryColor: false,
 });
 
+const buttonColor = computed(() => {
+  const colorMap: Record<string, "primary" | "daycare" | "kb" | "tk" | "hs"> = {
+    primary: "primary",
+    daycare: "daycare",
+    kb: "kb",
+    tk: "tk",
+    hs: "hs",
+  };
+  return colorMap[props.themeColor] || "primary";
+});
+
 const getWhatsappLink = (packageName: string) => {
   const message = `${props.whatsappMessage}\n\nPaket yang diminati: ${packageName}`;
   return `https://wa.me/${props.whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -43,14 +54,12 @@ const getWhatsappLink = (packageName: string) => {
             :key="index"
             :class="[
               'relative hover:shadow-2xl transition-all duration-300 overflow-visible',
-              plan.recommended ? `ring-2 ring-${themeColor}-500 scale-105 md:scale-110 shadow-xl` : 'hover:scale-105',
+              plan.recommended ? `ring-2 ring-${themeColor} scale-105 md:scale-110 shadow-xl` : 'hover:scale-105',
             ]"
           >
             <!-- Recommended Badge -->
             <div v-if="plan.recommended" class="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-              <span
-                :class="['text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg', `bg-${themeColor}-500`]"
-              >
+              <span :class="['text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg', `bg-${themeColor}`]">
                 Paling Populer
               </span>
             </div>
@@ -86,7 +95,7 @@ const getWhatsappLink = (packageName: string) => {
                 external
                 target="_blank"
                 size="lg"
-                :color="plan.recommended ? themeColor : ('neutral' as any)"
+                :color="plan.recommended ? buttonColor : 'neutral'"
                 block
                 class="shadow-md"
               >
