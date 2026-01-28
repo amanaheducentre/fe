@@ -3,7 +3,7 @@ import { getSampleImages } from "~/utils/lorem";
 
 export const serasiProgram: ProgramData = {
   id: "serasi",
-  name: "SERASI - Sekolah Ramah Anak Spesial Inklusi",
+  name: "SERASI - Sekolah Ramah Inklusi",
   slug: "serasi",
   category: "serasi",
   tagline: "Setiap Anak Berhak Berkembang Optimal",

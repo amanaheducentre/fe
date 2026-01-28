@@ -305,12 +305,7 @@ const hasTestimonials = computed(() => program.testimonials && program.testimoni
           class="w-full h-full object-cover"
           loading="lazy"
         />
-        <div
-          :class="[
-            'absolute inset-0',
-            `bg-linear-to-br from-${program.themeColor}-600/95 to-${program.themeColor}-800/95`,
-          ]"
-        />
+        <div :class="['absolute inset-0', `bg-linear-to-br from-black/95 to-black/70`]" />
       </div>
 
       <div class="container mx-auto px-4 text-center relative z-10">
@@ -327,7 +322,7 @@ const hasTestimonials = computed(() => program.testimonials && program.testimoni
             external
             target="_blank"
             size="xl"
-            color="neutral"
+            :color="program.themeColor"
             class="shadow-xl"
           >
             <UIcon name="i-heroicons-chat-bubble-left-right" class="mr-2" />
@@ -356,12 +351,5 @@ const hasTestimonials = computed(() => program.testimonials && program.testimoni
         </div>
       </div>
     </section>
-
-    <!-- Floating CTA Button -->
-    <ProgramFloatingCTA
-      :whatsapp-number="program.whatsapp.number"
-      :whatsapp-message="program.whatsapp.message"
-      :theme-color="program.themeColor"
-    />
   </div>
 </template>

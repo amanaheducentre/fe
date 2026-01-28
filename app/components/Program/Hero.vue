@@ -63,10 +63,10 @@ const buttonColor = computed(() => {
         <div
           :class="[
             'inline-flex items-center gap-2 backdrop-blur-sm border rounded-full px-4 py-2 mb-6',
-            `bg-${themeColor}-500/20 border-${themeColor}-500/30`,
+            `bg-white/20 border-white/30`,
           ]"
         >
-          <UIcon name="i-heroicons-cake" :class="`text-${themeColor}-400`" />
+          <UIcon name="i-heroicons-cake" :class="`text-white`" />
           <span class="text-sm font-medium text-white">{{ ageRange }}</span>
         </div>
 
