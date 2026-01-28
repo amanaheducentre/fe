@@ -20,11 +20,12 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const buttonColor = computed(() => {
-  const colorMap: Record<string, "primary" | "daycare" | "kb" | "tk" | "hs"> = {
+  const colorMap: Record<string, "primary" | "daycare" | "kb" | "tk" | "serasi" | "hs"> = {
     primary: "primary",
     daycare: "daycare",
     kb: "kb",
     tk: "tk",
+    serasi: "serasi",
     hs: "hs",
   };
   return colorMap[props.themeColor] || "primary";

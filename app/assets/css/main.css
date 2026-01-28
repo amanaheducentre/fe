@@ -118,6 +118,33 @@
   --color-hs-secondary-900: #14532d;
   --color-hs-secondary-950: #052e16;
 
+  /* Serasi */
+  --color-serasi: #e269b1;
+  --color-serasi-primary: #e269b1;
+  --color-serasi-secondary: #f2d649;
+  --color-serasi-50: #fdf2f8;
+  --color-serasi-100: #fce7f3;
+  --color-serasi-200: #fbcfe8;
+  --color-serasi-300: #f9a8d4;
+  --color-serasi-400: #f472b6;
+  --color-serasi-500: #e269b1;
+  --color-serasi-600: #db2777;
+  --color-serasi-700: #be185d;
+  --color-serasi-800: #9f1239;
+  --color-serasi-900: #831843;
+  --color-serasi-950: #500724;
+  --color-serasi-secondary-50: #fefce8;
+  --color-serasi-secondary-100: #fef9c3;
+  --color-serasi-secondary-200: #fef08a;
+  --color-serasi-secondary-300: #fde047;
+  --color-serasi-secondary-400: #facc15;
+  --color-serasi-secondary-500: #f2d649;
+  --color-serasi-secondary-600: #ca8a04;
+  --color-serasi-secondary-700: #a16207;
+  --color-serasi-secondary-800: #854d0e;
+  --color-serasi-secondary-900: #713f12;
+  --color-serasi-secondary-950: #422006;
+
   --color-primary: var(--color-raka-orange);
   --color-error: var(--color-raka-red);
 }

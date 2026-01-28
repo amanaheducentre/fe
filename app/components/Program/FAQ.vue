@@ -24,11 +24,12 @@ const items = computed(() =>
 
 // Map theme color to valid UI colors
 const buttonColor = computed(() => {
-  const colorMap: Record<string, "primary" | "daycare" | "kb" | "tk" | "hs"> = {
+  const colorMap: Record<string, "primary" | "daycare" | "kb" | "tk" | "serasi" | "hs"> = {
     primary: "primary",
     daycare: "daycare",
     kb: "kb",
     tk: "tk",
+    serasi: "serasi",
     hs: "hs",
   };
   return colorMap[props.themeColor] || "primary";

@@ -11,6 +11,7 @@ export const daycareProgram: ProgramData = {
   ageRange: "0-2 tahun",
   heroImage: "",
   heroVideo: "https://github.com/amanaheducentre/fe/raw/refs/heads/main/public/video/teaser.mp4",
+  themeColor: "daycare",
 
   features: [
     {

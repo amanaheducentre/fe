@@ -61,6 +61,7 @@ export interface ProgramData {
   ageRange: string;
   heroImage: string;
   heroVideo?: string;
+  themeColor: "primary" | "daycare" | "kb" | "tk" | "serasi" | "hs";
 
   features: ProgramFeature[];
   benefits: string[];
@@ -79,6 +80,7 @@ export interface ProgramData {
     ratio: string;
     qualifications: string[];
     description: string;
+    photo?: string;
   };
 
   pricing: ProgramPricing[];

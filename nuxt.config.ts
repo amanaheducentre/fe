@@ -24,6 +24,7 @@ export default defineNuxtConfig({
         "daycare",
         "kb",
         "tk",
+        "serasi",
         "hs",
         "raka-red",
         "raka-orange",

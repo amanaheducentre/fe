@@ -1,4 +1,58 @@
 import { getSampleImage } from "~/utils/lorem";
+import type { ProgramData } from "~~/shared/types/program";
+
+// Export all program data
+export { daycareProgram } from "./daycare";
+export { infantProgram } from "./infant-class";
+export { toddlerProgram } from "./toddler-class";
+export { preschoolProgram } from "./preschool";
+export { kindergartenProgram } from "./kindergarten";
+export { serasiProgram } from "./serasi";
+export { homeschoolingProgram } from "./homeschooling";
+
+// Import for helper function
+import { daycareProgram } from "./daycare";
+import { infantProgram } from "./infant-class";
+import { toddlerProgram } from "./toddler-class";
+import { preschoolProgram } from "./preschool";
+import { kindergartenProgram } from "./kindergarten";
+import { serasiProgram } from "./serasi";
+import { homeschoolingProgram } from "./homeschooling";
+
+/**
+ * Get program data by slug
+ * @param slug - Program slug (e.g., "daycare", "infant-class", "serasi")
+ * @returns Program data or undefined if not found
+ */
+export function getProgramBySlug(slug: string): ProgramData | undefined {
+  const programMap: Record<string, ProgramData> = {
+    daycare: daycareProgram,
+    "infant-class": infantProgram,
+    "toddler-class": toddlerProgram,
+    preschool: preschoolProgram,
+    kindergarten: kindergartenProgram,
+    serasi: serasiProgram,
+    homeschooling: homeschoolingProgram,
+  };
+
+  return programMap[slug];
+}
+
+/**
+ * Get all programs as an array
+ * @returns Array of all program data
+ */
+export function getAllPrograms(): ProgramData[] {
+  return [
+    daycareProgram,
+    infantProgram,
+    toddlerProgram,
+    preschoolProgram,
+    kindergartenProgram,
+    serasiProgram,
+    homeschoolingProgram,
+  ];
+}
 
 export interface ProgramPreview {
   id: string;
@@ -58,5 +112,13 @@ export const programPreviews: ProgramPreview[] = [
     image: getSampleImage(800, 600)!,
     href: "/program/serasi",
     ageRange: "Semua usia",
+  },
+  {
+    id: "homeschooling",
+    title: "Homeschooling",
+    description: "Pendidikan fleksibel setara SD-SMP-SMA dengan ijazah resmi dan pembelajaran personalized.",
+    image: getSampleImage(800, 600)!,
+    href: "/program/homeschooling",
+    ageRange: "7-18 tahun",
   },
 ];

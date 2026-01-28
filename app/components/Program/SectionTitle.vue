@@ -49,6 +49,7 @@ const gradientClasses = computed(() => {
     daycare: "bg-linear-to-r from-green-500 via-emerald-500 to-teal-500",
     kb: "bg-linear-to-r from-blue-500 via-cyan-500 to-blue-600",
     tk: "bg-linear-to-r from-orange-500 via-amber-500 to-yellow-500",
+    serasi: "bg-linear-to-r from-pink-500 via-rose-500 to-fuchsia-500",
     hs: "bg-linear-to-r from-purple-500 via-violet-500 to-indigo-500",
   };
 
@@ -63,6 +64,7 @@ const secondaryGradientClasses = computed(() => {
     daycare: "bg-linear-to-r from-daycare-secondary via-amber-400 to-yellow-400",
     kb: "bg-linear-to-r from-kb-secondary via-orange-400 to-amber-400",
     tk: "bg-linear-to-r from-tk-secondary via-green-400 to-cyan-400",
+    serasi: "bg-linear-to-r from-serasi-secondary via-yellow-400 to-amber-400",
     hs: "bg-linear-to-r from-hs-secondary via-lime-400 to-green-400",
   };
 
