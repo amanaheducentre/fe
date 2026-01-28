@@ -7,11 +7,15 @@ interface Props {
   benefits?: string[];
   image?: string;
   imagePosition?: "left" | "right";
+  themeColor?: string;
+  useSecondaryColor?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   title: "Keunggulan Program",
   imagePosition: "right",
+  themeColor: "primary",
+  useSecondaryColor: false,
 });
 </script>
 
@@ -26,7 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
             <NuxtImg
               :src="image"
               :alt="title"
-              class="w-full h-[400px] lg:h-[500px] object-cover"
+              class="w-full h-100 lg:h-125 object-cover"
               loading="lazy"
               sizes="sm:100vw md:50vw lg:50vw"
             />
@@ -35,15 +39,18 @@ const props = withDefaults(defineProps<Props>(), {
 
         <!-- Text Content -->
         <div :class="imagePosition === 'left' ? 'lg:order-2' : 'lg:order-1'">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-            {{ title }}
-          </h2>
-          <div class="w-20 h-1 bg-primary-500 rounded-full mb-8" />
+          <ProgramSectionTitle
+            :title="title"
+            :theme-color="themeColor"
+            :use-secondary-gradient="useSecondaryColor"
+            align="left"
+            size="md"
+          />
 
           <!-- Benefits List -->
           <div v-if="benefits && benefits.length > 0" class="space-y-4">
             <div v-for="(benefit, index) in benefits.slice(0, 6)" :key="index" class="flex items-start gap-3">
-              <UIcon name="i-heroicons-check-circle" class="text-green-500 text-xl flex-shrink-0 mt-0.5" />
+              <UIcon name="i-heroicons-check-circle" class="text-green-500 text-xl shrink-0 mt-0.5" />
               <span class="text-gray-700 dark:text-gray-300 text-lg">{{ benefit }}</span>
             </div>
           </div>
@@ -52,10 +59,7 @@ const props = withDefaults(defineProps<Props>(), {
 
       <!-- Section Title (if no image) -->
       <div v-else class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          {{ title }}
-        </h2>
-        <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full" />
+        <ProgramSectionTitle :title="title" :theme-color="themeColor" align="center" size="md" />
       </div>
 
       <!-- Features Grid -->
@@ -64,9 +68,12 @@ const props = withDefaults(defineProps<Props>(), {
           <div class="flex flex-col items-center text-center">
             <!-- Icon -->
             <div
-              class="w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4"
+              :class="[
+                'w-16 h-16 rounded-full flex items-center justify-center mb-4',
+                `bg-${themeColor}-100 dark:bg-${themeColor}-900/30`,
+              ]"
             >
-              <UIcon :name="feature.icon" class="text-3xl text-primary-600 dark:text-primary-400" />
+              <UIcon :name="feature.icon" :class="['text-3xl', `text-${themeColor}-600 dark:text-${themeColor}-400`]" />
             </div>
 
             <!-- Title -->
@@ -90,7 +97,7 @@ const props = withDefaults(defineProps<Props>(), {
         <div class="max-w-3xl mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div v-for="(benefit, index) in benefits" :key="index" class="flex items-start gap-3">
-              <UIcon name="i-heroicons-check-circle" class="text-green-500 text-xl flex-shrink-0 mt-0.5" />
+              <UIcon name="i-heroicons-check-circle" class="text-green-500 text-xl shrink-0 mt-0.5" />
               <span class="text-gray-700 dark:text-gray-300">{{ benefit }}</span>
             </div>
           </div>

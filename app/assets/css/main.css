@@ -9,6 +9,111 @@
   --color-raka-pink: #bb066c;
   --color-raka-maroon: #8e0339;
 
+  /* Daycare */
+  --color-daycare-primary: #329346;
+  --color-daycare-secondary: #ecd23f;
+  --color-daycare-50: #f0fdf4;
+  --color-daycare-100: #dcfce7;
+  --color-daycare-200: #bbf7d0;
+  --color-daycare-300: #86efac;
+  --color-daycare-400: #4ade80;
+  --color-daycare-500: #329346;
+  --color-daycare-600: #16a34a;
+  --color-daycare-700: #15803d;
+  --color-daycare-800: #166534;
+  --color-daycare-900: #14532d;
+  --color-daycare-950: #052e16;
+  --color-daycare-secondary-50: #fffef0;
+  --color-daycare-secondary-100: #fffde0;
+  --color-daycare-secondary-200: #fffcc1;
+  --color-daycare-secondary-300: #fffa93;
+  --color-daycare-secondary-400: #fff555;
+  --color-daycare-secondary-500: #ecd23f;
+  --color-daycare-secondary-600: #d9ad21;
+  --color-daycare-secondary-700: #b38a15;
+  --color-daycare-secondary-800: #936714;
+  --color-daycare-secondary-900: #7a5215;
+  --color-daycare-secondary-950: #482d0a;
+
+  /* Kindergarten */
+  --color-tk-primary: #eb891e;
+  --color-tk-secondary: #6bd29b;
+  --color-tk-50: #fef3c7;
+  --color-tk-100: #fde68a;
+  --color-tk-200: #fcd34d;
+  --color-tk-300: #fbbf24;
+  --color-tk-400: #f59e0b;
+  --color-tk-500: #eb891e;
+  --color-tk-600: #d97706;
+  --color-tk-700: #b45309;
+  --color-tk-800: #92400e;
+  --color-tk-900: #78350f;
+  --color-tk-950: #451a03;
+  --color-tk-secondary-50: #f0fdf4;
+  --color-tk-secondary-100: #dcfce7;
+  --color-tk-secondary-200: #bbf7d0;
+  --color-tk-secondary-300: #86efac;
+  --color-tk-secondary-400: #4ade80;
+  --color-tk-secondary-500: #6bd29b;
+  --color-tk-secondary-600: #16a34a;
+  --color-tk-secondary-700: #15803d;
+  --color-tk-secondary-800: #166534;
+  --color-tk-secondary-900: #14532d;
+  --color-tk-secondary-950: #052e16;
+
+  /* Infant and Toddler */
+  --color-kb-primary: #5385f6;
+  --color-kb-secondary: #eb891e;
+  --color-kb-50: #eff6ff;
+  --color-kb-100: #dbeafe;
+  --color-kb-200: #bfdbfe;
+  --color-kb-300: #93c5fd;
+  --color-kb-400: #60a5fa;
+  --color-kb-500: #5385f6;
+  --color-kb-600: #2563eb;
+  --color-kb-700: #1d4ed8;
+  --color-kb-800: #1e40af;
+  --color-kb-900: #1e3a8a;
+  --color-kb-950: #172554;
+  --color-kb-secondary-50: #fef3c7;
+  --color-kb-secondary-100: #fde68a;
+  --color-kb-secondary-200: #fcd34d;
+  --color-kb-secondary-300: #fbbf24;
+  --color-kb-secondary-400: #f59e0b;
+  --color-kb-secondary-500: #eb891e;
+  --color-kb-secondary-600: #d97706;
+  --color-kb-secondary-700: #b45309;
+  --color-kb-secondary-800: #92400e;
+  --color-kb-secondary-900: #78350f;
+  --color-kb-secondary-950: #451a03;
+
+  /* Homeschooling */
+  --color-hs-primary: #8100b7;
+  --color-hs-secondary: #6eb04c;
+  --color-hs-alternative: #e6bc2c;
+  --color-hs-50: #faf5ff;
+  --color-hs-100: #f3e8ff;
+  --color-hs-200: #e9d5ff;
+  --color-hs-300: #d8b4fe;
+  --color-hs-400: #c084fc;
+  --color-hs-500: #a855f7;
+  --color-hs-600: #9333ea;
+  --color-hs-700: #7e22ce;
+  --color-hs-800: #6b21a8;
+  --color-hs-900: #581c87;
+  --color-hs-950: #3f0f5c;
+  --color-hs-secondary-50: #f0fdf4;
+  --color-hs-secondary-100: #dcfce7;
+  --color-hs-secondary-200: #bbf7d0;
+  --color-hs-secondary-300: #86efac;
+  --color-hs-secondary-400: #4ade80;
+  --color-hs-secondary-500: #6eb04c;
+  --color-hs-secondary-600: #16a34a;
+  --color-hs-secondary-700: #15803d;
+  --color-hs-secondary-800: #166534;
+  --color-hs-secondary-900: #14532d;
+  --color-hs-secondary-950: #052e16;
+
   --color-primary: var(--color-raka-orange);
   --color-error: var(--color-raka-red);
 }

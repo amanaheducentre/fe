@@ -6,11 +6,15 @@ interface Props {
   imagePosition?: "left" | "right";
   features?: string[];
   backgroundColor?: string;
+  themeColor?: string;
+  useSecondaryColor?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   imagePosition: "right",
   backgroundColor: "bg-white dark:bg-gray-800",
+  themeColor: "primary",
+  useSecondaryColor: false,
 });
 </script>
 
@@ -24,7 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
             <NuxtImg
               :src="image"
               :alt="title"
-              class="w-full h-[400px] lg:h-[600px] object-cover"
+              class="w-full h-100 lg:h-150 object-cover"
               loading="lazy"
               sizes="sm:100vw md:50vw lg:50vw"
             />
@@ -33,14 +37,14 @@ const props = withDefaults(defineProps<Props>(), {
 
         <!-- Content -->
         <div :class="imagePosition === 'left' ? 'lg:order-2' : 'lg:order-1'">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-            {{ title }}
-          </h2>
-          <div class="w-20 h-1 bg-primary-500 rounded-full mb-6" />
-
-          <p v-if="description" class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-            {{ description }}
-          </p>
+          <ProgramSectionTitle
+            :title="title"
+            :description="description"
+            :theme-color="themeColor"
+            :use-secondary-gradient="useSecondaryColor"
+            align="left"
+            size="md"
+          />
 
           <!-- Features/Benefits List -->
           <div v-if="features && features.length > 0" class="space-y-4">

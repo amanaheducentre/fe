@@ -61,6 +61,7 @@ See [test/README.md](test/README.md) for detailed testing documentation.
 - Cikal: https://cikal.co.id
 - Udemy: https://udemy.com
 - JIS: https://jisedu.or.id
+- Cornell: https://as.cornell.edu
 
 ### 🏗️ Architecture Patterns
 

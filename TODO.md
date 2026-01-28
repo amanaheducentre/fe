@@ -1,10 +1,11 @@
-TODO LIST: AMANAH EDU CENTRE
-===============================================
+# TODO LIST: AMANAH EDU CENTRE
 
 ## FASE 1: PERSIAPAN KOMPONEN UNTUK HALAMAN PROGRAM
--------------------------------------------
+
+---
 
 ### 1.1 TypeScript Types & Data Structure
+
 - [x] Buat TypeScript types untuk program data
   - [x] `shared/types/program.d.ts`
   - [x] Interface: `ProgramData`, `ProgramFeature`, `ProgramPricing`
@@ -16,6 +17,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [x] Centralized content management
 
 ### 1.2 Reusable Components (Vue 3 + TypeScript)
+
 **Standards:** Gunakan `<script setup>`, TypeScript, Nuxt UI components, Tailwind CSS
 
 - [x] `app/components/Program/Hero.vue`
@@ -24,49 +26,41 @@ TODO LIST: AMANAH EDU CENTRE
   - [x] Gunakan `UCard` atau `UContainer` dari Nuxt UI
   - [x] Responsive design (sm, md, lg, xl breakpoints)
   - [x] TypeScript: `defineProps<{ title: string; description: string; ... }>()`
-  
 - [x] `app/components/Program/Features.vue`
   - [x] Props: `features: ProgramFeature[]`
   - [x] Gunakan `UIcon` untuk feature icons
   - [x] Grid layout dengan Tailwind (grid-cols-1 md:grid-cols-2 lg:grid-cols-3)
   - [x] Animated entrance dengan transitions
-  
 - [x] `app/components/Program/Pricing.vue`
   - [x] Props: `pricing: ProgramPricing[]`
   - [x] Gunakan `UCard` untuk pricing cards
   - [x] Highlight recommended package
   - [x] Include CTA buttons
-  
 - [x] `app/components/Program/Gallery.vue`
   - [x] Props: `images: string[]`, `title?: string`
   - [x] Gunakan `<NuxtImg>` dengan lazy loading
   - [x] Implementasi lightbox/modal untuk full view
   - [x] Carousel atau grid layout
-  
 - [x] `app/components/Program/CTA.vue`
   - [x] Props: `whatsappNumber`, `whatsappMessage`, `registrationLink`
   - [x] Gunakan `UButton` dari Nuxt UI
   - [x] Icon dari `@nuxt/icon` (WhatsApp, phone, etc.)
   - [x] Sticky/floating button untuk mobile
-  
 - [x] `app/components/Program/FAQ.vue`
   - [x] Props: `faqs: ProgramFAQ[]`
   - [x] Gunakan `UAccordion` dari Nuxt UI
   - [x] Search/filter functionality (optional)
   - [x] Structured data untuk SEO (JSON-LD)
-  
 - [x] `app/components/Program/Schedule.vue`
   - [x] Props: `schedule: ProgramSchedule`
   - [x] Gunakan `UCard` untuk schedule items
   - [x] Responsive table/calendar view
   - [x] Day/week/month view options (simple implementation)
-  
 - [ ] `app/components/Program/Teacher.vue`
   - [ ] Props: `teacher: TeacherProfile`
   - [ ] Gunakan `UAvatar` untuk photo
   - [ ] Display qualifications, experience
   - [ ] Social media links (optional)
-  
 - [ ] `app/components/Program/Testimonial.vue`
   - [ ] Props: `testimonials: Testimonial[]`
   - [ ] Carousel/slider layout
@@ -74,6 +68,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Avatar + name + role
 
 ### 1.3 Component Testing (Vitest + @vue/test-utils)
+
 - [x] Vitest configured (existing)
 - [x] Test structure setup in `test/` directory
 - [ ] Create test file: `test/nuxt/components.program.test.ts`
@@ -87,6 +82,7 @@ TODO LIST: AMANAH EDU CENTRE
 - [ ] Run: `bun run test test/nuxt/components.program.test.ts`
 
 ### 1.4 Assets & Content Preparation
+
 - [ ] Optimasi aset visual
   - [ ] Foto untuk setiap program (WebP format recommended)
   - [ ] Video promosi (optimized, compressed)
@@ -103,7 +99,8 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Schedule information
 
 ## FASE 2: HALAMAN PROGRAM STATIS
--------------------------------------------
+
+---
 
 **Note:** Halaman statis dengan content dari file data lokal (TypeScript/JSON).
 **Standards:** Vue 3 `<script setup>`, TypeScript, Nuxt UI, SEO optimization, responsive design.
@@ -111,22 +108,25 @@ TODO LIST: AMANAH EDU CENTRE
 ### 2.1 Early Childhood Programs (0-4 tahun)
 
 #### 2.1.1 Daycare (0-2 tahun)
+
 - [x] File: `app/pages/program/daycare.vue`
 - [x] Import content dari `app/data/programs/daycare.ts`
 - [x] Implementasi komponen:
+
   ```vue
   <script setup lang="ts">
-  import type { ProgramData } from '~~/shared/types/program';
-  import { daycareProgram } from '~/data/programs/daycare';
-  
+  import type { ProgramData } from "~~/shared/types/program";
+  import { daycareProgram } from "~/data/programs/daycare";
+
   // SEO metadata
   useSeoMeta({
-    title: 'Daycare Program - Amanah Edu Centre',
-    description: 'Program daycare untuk anak usia 0-2 tahun...',
-    ogImage: '/img/programs/daycare-og.jpg',
+    title: "Daycare Program - Amanah Edu Centre",
+    description: "Program daycare untuk anak usia 0-2 tahun...",
+    ogImage: "/img/programs/daycare-og.jpg",
   });
   </script>
   ```
+
 - [x] Struktur halaman:
   - [x] `<ProgramHero>` - hero section dengan gambar/video
   - [x] `<ProgramFeatures>` - deskripsi & benefit
@@ -155,24 +155,25 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Test di Chrome DevTools + real devices (manual testing required)
 
 #### 2.1.2 Infant Class (1-2 tahun)
-- [ ] File: `app/pages/program/infant-class.vue`
-- [ ] Data: `app/data/programs/infant-class.ts`
-- [ ] Komponen:
-  - [ ] `<ProgramHero>`
-  - [ ] Section: Kurikulum & metodologi pembelajaran
-  - [ ] Section: Milestone perkembangan (card-based layout)
-  - [ ] Section: Aktivitas & stimulasi (grid/carousel)
-  - [ ] `<ProgramSchedule>`
-  - [ ] `<ProgramTeacher>` - teacher profiles
-  - [ ] `<ProgramPricing>`
-  - [ ] `<ProgramGallery>`
-  - [ ] `<ProgramTestimonial>` - testimonial orang tua
-  - [ ] `<ProgramFAQ>`
-  - [ ] `<ProgramCTA>`
-- [ ] SEO: `useSeoMeta()` + structured data
-- [ ] Responsive testing (mobile, tablet, desktop)
+
+- [x] File: `app/pages/program/infant-class.vue`
+- [x] Data: `app/data/programs/infant-class.ts`
+- [x] Komponen:
+  - [x] `<ProgramHero>`
+  - [x] Section: Kegiatan Harian dengan Timeline
+  - [x] Section: Aktivitas & pembelajaran terstruktur
+  - [x] `<ProgramSchedule>`
+  - [x] `<ProgramImageSection>` - Teacher info
+  - [x] `<ProgramPricing>`
+  - [x] `<ProgramGallery>`
+  - [x] `<CardTestimonial>` - testimonial orang tua
+  - [x] `<ProgramFAQ>`
+  - [x] `<ProgramCTA>`
+- [x] SEO: `useSeoMeta()` + structured data
+- [x] Responsive testing (mobile, tablet, desktop)
 
 #### 2.1.3 Toddler Class (2-3 tahun)
+
 - [ ] File: `app/pages/program/toddler-class.vue`
 - [ ] Data: `app/data/programs/toddler-class.ts`
 - [ ] Komponen:
@@ -193,6 +194,7 @@ TODO LIST: AMANAH EDU CENTRE
 ### 2.2 Preschool & Kindergarten Programs (4-6 tahun)
 
 #### 2.2.1 Pre-School (3-4 tahun)
+
 - [ ] File: `app/pages/program/preschool.vue`
 - [ ] Data: `app/data/programs/preschool.ts`
 - [ ] Komponen:
@@ -215,6 +217,7 @@ TODO LIST: AMANAH EDU CENTRE
 - [ ] Responsive testing
 
 #### 2.2.2 Kindergarten (5-6 tahun)
+
 - [ ] File: `app/pages/program/kindergarten.vue`
 - [ ] Data: `app/data/programs/kindergarten.ts`
 - [ ] Komponen:
@@ -241,6 +244,7 @@ TODO LIST: AMANAH EDU CENTRE
 ### 2.3 Special Programs
 
 #### 2.3.1 Serasi (Sekolah Ramah Inklusi)
+
 - [ ] File: `app/pages/program/serasi.vue`
 - [ ] Data: `app/data/programs/serasi.ts`
 - [ ] Komponen:
@@ -266,6 +270,7 @@ TODO LIST: AMANAH EDU CENTRE
 - [ ] Responsive testing
 
 #### 2.3.2 HomeSchooling (7-18 tahun)
+
 - [ ] File: `app/pages/program/homeschooling.vue`
 - [ ] Data: `app/data/programs/homeschooling.ts`
 - [ ] Komponen:
@@ -290,6 +295,7 @@ TODO LIST: AMANAH EDU CENTRE
 - [ ] Responsive testing
 
 ### 2.4 Navigation & Program Directory
+
 - [ ] File: `app/pages/program/index.vue`
   - [ ] Import all program data types
   - [ ] Grid layout dengan `UCard` untuk program cards
@@ -299,7 +305,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Search functionality (optional)
   - [ ] Quick links ke masing-masing program
   - [ ] SEO: `useSeoMeta()` untuk directory page
-  
 - [ ] Update navigation component
   - [x] File: `app/components/NavBar.vue` (exists)
   - [ ] Tambahkan dropdown menu "Program"
@@ -307,7 +312,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Grouped links (Early Childhood, School, Special)
   - [ ] Icons untuk setiap program
   - [ ] Highlight active program page
-  
 - [ ] Breadcrumb component
   - [ ] File: `app/components/Breadcrumb.vue`
   - [ ] Dynamic breadcrumb based on route
@@ -316,13 +320,15 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Add to all program pages
 
 ## FASE 3: LMS (LEARNING MANAGEMENT SYSTEM)
--------------------------------------------
+
+---
 
 **Standards:** Nuxt 4 + TypeScript, Drizzle ORM, Pinia stores, nuxt-auth-utils, structured logging
 
 ### 3.1 LMS Infrastructure & Architecture
 
 #### 3.1.1 TypeScript Types from Backend API
+
 **Note:** Database & backend logic dihandle oleh ElysiaJS backend terpisah (https://api.lkpamanaheducentre.id)
 
 - [x] OpenAPI types auto-generated
@@ -332,6 +338,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Ensure types up-to-date dengan backend schema
 
 #### 3.1.2 API Proxy Layer (Nuxt Server Routes)
+
 **Purpose:** Proxy requests ke backend ElysiaJS API untuk authentication, logging, dan error handling
 **Backend:** https://api.lkpamanaheducentre.id (ElysiaJS)
 
@@ -364,6 +371,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] `server/api/lms/certificates/[courseId].get.ts` - certificate proxy
 
 **API Proxy Standards:**
+
 - [x] Use `apiFetch` helper dari `server/utils/api.ts`
 - [x] Structured logging dengan `withEventLogger`
 - [ ] Authentication forwarding (JWT token dari session)
@@ -372,17 +380,19 @@ TODO LIST: AMANAH EDU CENTRE
 - [x] Trace ID included in all logs (auto via middleware)
 
 #### 3.1.3 TypeScript Types & Interfaces
+
 - [x] OpenAPI types (auto-generated)
   - [x] File: `shared/types/openapi.d.ts`
   - [x] Includes: Course, Module, Lesson, Enrollment, Progress, etc.
 - [ ] Additional frontend-specific types
   - [ ] `shared/types/lms.d.ts` (UI-specific types)
+
   ```typescript
   export interface Course {
     id: string;
     title: string;
     description: string;
-    category: 'tpq' | 'lkp';
+    category: "tpq" | "lkp";
     level?: string;
     instructor: InstructorData;
     thumbnail: string;
@@ -393,7 +403,7 @@ TODO LIST: AMANAH EDU CENTRE
     createdAt: Date;
     updatedAt: Date;
   }
-  
+
   export interface Module {
     id: string;
     courseId: string;
@@ -402,7 +412,7 @@ TODO LIST: AMANAH EDU CENTRE
     order: number;
     lessons: Lesson[];
   }
-  
+
   export interface Lesson {
     id: string;
     moduleId: string;
@@ -413,7 +423,7 @@ TODO LIST: AMANAH EDU CENTRE
     order: number;
     resources: LessonResource[];
   }
-  
+
   export interface Enrollment {
     id: string;
     userId: string;
@@ -422,7 +432,7 @@ TODO LIST: AMANAH EDU CENTRE
     completedAt?: Date;
     progress: number; // 0-100
   }
-  
+
   export interface LessonProgress {
     id: string;
     userId: string;
@@ -431,33 +441,35 @@ TODO LIST: AMANAH EDU CENTRE
     timeSpent: number; // in seconds
     lastAccessedAt: Date;
   }
-  
+
   // Assignment, Quiz, Submission, Grade, Certificate interfaces
   // ...
   ```
 
 #### 3.1.4 Store Management (Pinia + Persistence)
+
 - [x] `app/stores/course.ts` (existing)
   - [x] Basic course state management
   - [ ] Refactor/rename ke `lms-course.ts` (optional)
   - [ ] Add LMS-specific actions (enrollment, progress)
+
   ```typescript
-  import { defineStore } from 'pinia';
-  import type { Course } from '~~/shared/types/lms';
-  
-  export const useLMSCourseStore = defineStore('lms-course', {
+  import { defineStore } from "pinia";
+  import type { Course } from "~~/shared/types/lms";
+
+  export const useLMSCourseStore = defineStore("lms-course", {
     state: () => ({
       courses: [] as Course[],
       selectedCourse: null as Course | null,
       loading: false,
       error: null as string | null,
     }),
-    
+
     actions: {
       async fetchCourses(filters?: { category?: string; level?: string }) {
         this.loading = true;
         try {
-          const { data } = await useFetch('/api/lms/courses', { query: filters });
+          const { data } = await useFetch("/api/lms/courses", { query: filters });
           this.courses = data.value || [];
         } catch (err) {
           this.error = err.message;
@@ -465,7 +477,7 @@ TODO LIST: AMANAH EDU CENTRE
           this.loading = false;
         }
       },
-      
+
       async fetchCourseDetail(id: string) {
         this.loading = true;
         try {
@@ -478,23 +490,21 @@ TODO LIST: AMANAH EDU CENTRE
         }
       },
     },
-    
+
     persist: true, // Cache courses locally
   });
   ```
-  
+
 - [x] `app/stores/lecture.ts` (existing)
   - [x] Basic lecture/lesson state
   - [ ] Refactor/rename ke `lms-learning.ts` (optional)
   - [ ] Add: currentLesson, progress, completedLessons
   - [ ] Add actions: updateProgress, markComplete
   - [ ] Enable persistence
-  
 - [ ] `app/stores/lms-assignment.ts` (new)
   - [ ] State: assignments, submissions, grades
   - [ ] Actions: fetchAssignments, submitAssignment, fetchQuiz, submitQuiz
   - [ ] Persist: false (sensitive data)
-  
 - [ ] Unit tests untuk stores
   - [ ] File: `test/unit/stores.lms.test.ts`
   - [ ] Test: state initialization, actions, error handling
@@ -502,9 +512,11 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Coverage: >80%
 
 ### 3.2 LMS Components Development (Vue 3 + Nuxt UI + TypeScript)
+
 **Standards:** `<script setup>`, TypeScript props, Nuxt UI components, Tailwind CSS, accessibility
 
 #### 3.2.1 Course Discovery Components
+
 - [x] `app/components/Card/Course.vue` (existing)
   - [x] Basic course card layout
   - [ ] Refactor/move ke `app/components/LMS/CourseCard.vue`
@@ -516,20 +528,17 @@ TODO LIST: AMANAH EDU CENTRE
 - [x] `app/components/Card/CourseSquare.vue` (existing)
   - [x] Square variant course card
   - [ ] Merge dengan CourseCard atau keep as variant
-  
 - [ ] `app/components/LMS/CourseGrid.vue`
   - [ ] Props: `courses: Course[]`, `columns?: number`
   - [ ] Responsive grid layout (grid-cols-1 md:grid-cols-2 lg:grid-cols-3)
   - [ ] Empty state handling
   - [ ] Loading skeleton dengan `USkeleton`
-  
 - [ ] `app/components/LMS/CourseFilter.vue`
   - [ ] Props: `categories: string[]`, `levels: string[]`
   - [ ] Emit: `@filter-change`
   - [ ] Gunakan `USelectMenu` untuk dropdowns
   - [ ] Price range slider (optional)
   - [ ] Clear filters button
-  
 - [ ] `app/components/LMS/CourseSearch.vue`
   - [ ] Gunakan `UInput` dengan search icon
   - [ ] Debounced search (300ms)
@@ -537,39 +546,35 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Clear button
 
 #### 3.2.2 Course Detail Components
+
 - [ ] `app/components/LMS/CourseHero.vue`
   - [ ] Props: `course: Course`
   - [ ] Large banner dengan course image/video
   - [ ] Title, instructor, rating, enrolled count
   - [ ] Breadcrumb navigation
   - [ ] Share buttons
-  
 - [ ] `app/components/LMS/CourseInfo.vue`
   - [ ] Props: `course: Course`
   - [ ] Tabs: Overview, Curriculum, Instructor, Reviews
   - [ ] Gunakan `UTabs` dari Nuxt UI
   - [ ] Description, learning outcomes, requirements
-  
 - [ ] `app/components/LMS/CourseCurriculum.vue`
   - [ ] Props: `modules: Module[]`
   - [ ] Accordion layout dengan `UAccordion`
   - [ ] Show lesson count, duration per module
   - [ ] Lock icon untuk unenrolled users
   - [ ] Progress indicator untuk enrolled users
-  
 - [ ] `app/components/LMS/CourseInstructor.vue`
   - [ ] Props: `instructor: InstructorData`
   - [ ] Avatar (`UAvatar`), name, title
   - [ ] Bio, courses taught, rating
   - [ ] Social media links
-  
 - [ ] `app/components/LMS/CourseReviews.vue`
   - [ ] Props: `reviews: Review[]`, `averageRating: number`
   - [ ] Rating summary with stars
   - [ ] Review list with pagination
   - [ ] Filter/sort options
   - [ ] Write review form (if enrolled)
-  
 - [ ] `app/components/LMS/CourseEnroll.vue`
   - [ ] Props: `course: Course`, `enrolled: boolean`
   - [ ] Enrollment button dengan `UButton`
@@ -579,6 +584,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Redirect to lesson after enrollment
 
 #### 3.2.3 Learning Interface Components
+
 - [ ] `app/components/LMS/LessonPlayer.vue`
   - [ ] Props: `lesson: Lesson`, `videoUrl: string`
   - [ ] Video player dengan controls (play, pause, volume, fullscreen, speed)
@@ -586,7 +592,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Track progress, emit `@time-update`, `@complete`
   - [ ] Prevent skip (optional) untuk certain courses
   - [ ] Quality selection, subtitle support
-  
 - [ ] `app/components/LMS/LessonSidebar.vue`
   - [ ] Props: `modules: Module[]`, `currentLessonId: string`
   - [ ] Sidebar navigation dengan `UAccordion`
@@ -594,35 +599,30 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Show completion checkmarks
   - [ ] Collapsible untuk mobile
   - [ ] Search lessons
-  
 - [ ] `app/components/LMS/LessonContent.vue`
   - [ ] Props: `content: string` (HTML/Markdown)
   - [ ] Render formatted content
   - [ ] Support: text, images, code blocks, embeds
   - [ ] Markdown parser jika perlu (e.g., marked.js)
   - [ ] Responsive typography
-  
 - [ ] `app/components/LMS/LessonResources.vue`
   - [ ] Props: `resources: LessonResource[]`
   - [ ] List downloadable files
   - [ ] File type icons (`UIcon`)
   - [ ] Download links dengan tracking
   - [ ] File size display
-  
 - [ ] `app/components/LMS/LessonNotes.vue`
   - [ ] Props: `lessonId: string`
   - [ ] Textarea untuk student notes
   - [ ] Auto-save dengan debounce (1s)
   - [ ] Load saved notes from store/API
   - [ ] Rich text editor (optional, e.g., Tiptap)
-  
 - [ ] `app/components/LMS/ProgressBar.vue`
   - [ ] Props: `progress: number` (0-100)
   - [ ] Linear progress bar dengan `UProgress` atau custom
   - [ ] Show percentage text
   - [ ] Animated transitions
   - [ ] Color coding (red < 30%, yellow < 70%, green >= 70%)
-  
 - [ ] `app/components/LMS/NavigationButtons.vue`
   - [ ] Props: `prevLesson?: Lesson`, `nextLesson?: Lesson`
   - [ ] Prev/Next buttons dengan `UButton`
@@ -631,20 +631,19 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Mark complete button
 
 #### 3.2.4 Assignment & Quiz Components
+
 - [ ] `app/components/LMS/AssignmentCard.vue`
   - [ ] Props: `assignment: Assignment`
   - [ ] Display: title, due date, status (pending/submitted/graded)
   - [ ] `UCard` dengan badge untuk status
   - [ ] Countdown timer untuk deadline
   - [ ] Click: navigate to assignment detail
-  
 - [ ] `app/components/LMS/AssignmentDetail.vue`
   - [ ] Props: `assignment: Assignment`
   - [ ] Display: instructions, requirements, attachments
   - [ ] Deadline countdown prominent
   - [ ] Grading rubric (if available)
   - [ ] Submission history
-  
 - [ ] `app/components/LMS/AssignmentSubmission.vue`
   - [ ] Props: `assignmentId: string`
   - [ ] Form: text input atau file upload
@@ -653,14 +652,12 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Preview before submit
   - [ ] Submit button dengan loading state
   - [ ] Success notification dengan `useToast()`
-  
 - [ ] `app/components/LMS/QuizCard.vue`
   - [ ] Props: `quiz: Quiz`
   - [ ] Display: title, question count, time limit, attempts left
   - [ ] `UCard` dengan status badge
   - [ ] Start quiz button
   - [ ] Best score display (if multiple attempts)
-  
 - [ ] `app/components/LMS/QuizPlayer.vue`
   - [ ] Props: `quiz: Quiz`
   - [ ] Question navigation (numbered buttons)
@@ -669,7 +666,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Mark for review
   - [ ] Submit confirmation modal
   - [ ] Auto-submit on time out
-  
 - [ ] `app/components/LMS/QuizResults.vue`
   - [ ] Props: `quiz: Quiz`, `submission: QuizSubmission`
   - [ ] Score display (prominent)
@@ -679,41 +675,37 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Retake button (if attempts available)
 
 #### 3.2.5 Dashboard Components
+
 - [ ] `app/components/LMS/DashboardStats.vue`
   - [ ] Props: `stats: DashboardStats`
   - [ ] Grid layout (courses enrolled, completed, in progress)
   - [ ] `UCard` untuk each stat
   - [ ] Icons (`UIcon`) untuk visual
   - [ ] Animated numbers (count up effect)
-  
 - [ ] `app/components/LMS/EnrolledCourses.vue`
   - [ ] Props: `courses: Course[]`
   - [ ] List dengan `<CourseCard>` atau simplified version
   - [ ] Progress bar untuk each course
   - [ ] "Continue Learning" button
   - [ ] Sort: by progress, by recent activity
-  
 - [ ] `app/components/LMS/RecentActivity.vue`
   - [ ] Props: `activities: Activity[]`
   - [ ] Timeline layout
   - [ ] Activity types: lesson completed, quiz taken, assignment submitted
   - [ ] Relative timestamps ("2 hours ago")
   - [ ] Link to activity detail
-  
 - [ ] `app/components/LMS/UpcomingDeadlines.vue`
   - [ ] Props: `deadlines: Deadline[]`
   - [ ] List sorted by date (soonest first)
   - [ ] Countdown timers
   - [ ] Urgent indicator (< 24 hours)
   - [ ] Quick action buttons
-  
 - [ ] `app/components/LMS/Achievements.vue`
   - [ ] Props: `achievements: Achievement[]`
   - [ ] Badge grid layout
   - [ ] Locked/unlocked states
   - [ ] Tooltip dengan achievement details
   - [ ] Progress untuk in-progress achievements
-  
 - [ ] `app/components/LMS/Certificates.vue`
   - [ ] Props: `certificates: Certificate[]`
   - [ ] Grid atau list dengan certificate previews
@@ -722,6 +714,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Verification code display
 
 #### 3.2.6 Component Testing
+
 - [ ] File: `test/nuxt/components.lms.test.ts`
 - [ ] Test each component:
   - [ ] Props rendering
@@ -735,9 +728,11 @@ TODO LIST: AMANAH EDU CENTRE
 - [ ] Run: `bun run test test/nuxt/components.lms.test.ts`
 
 ### 3.3 LMS Pages Development (File-based Routing + Authentication)
+
 **Standards:** Vue 3 `<script setup>`, TypeScript, `useFetch`, middleware auth, SEO optimization
 
 #### 3.3.1 Main LMS Pages
+
 - [x] `app/pages/lms/index.vue` - LMS home/dashboard (exists)
   - [x] Page created
   - [ ] Add auth middleware: `definePageMeta({ middleware: 'auth' })`
@@ -751,7 +746,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Add SEO: `useSeoMeta()`
   - [ ] Add loading states
   - [ ] Add empty state
-  
 - [ ] `app/pages/lms/courses.vue` - Course catalog (create new or rename existing)
   - [ ] List semua courses (TPQ, LKP)
   - [ ] Components:
@@ -762,7 +756,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Sort options (popularity, rating, newest, price)
   - [ ] Filter state management (URL query params)
   - [ ] SEO: Static meta tags
-  
 - [ ] `app/pages/lms/my-courses.vue` - My enrolled courses (create new)
   - [ ] Auth required: `definePageMeta({ middleware: 'auth' })`
   - [ ] Fetch dari store atau API: `/api/lms/enrollments`
@@ -775,10 +768,12 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] SEO: `useSeoMeta()` dengan noindex (private page)
 
 **Note: Authentication pages already exist:**
+
 - [x] `app/pages/lms/login.vue` - Login page
 - [x] `app/pages/lms/signup.vue` - Signup page
 
 #### 3.3.2 Course Detail & Learning Pages
+
 - [x] `app/pages/lms/course/[id].vue` - Course detail page (exists)
   - [x] Page created with dynamic route
   - [x] Fetch course detail from API
@@ -795,7 +790,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Add SEO: Dynamic `useSeoMeta()`
   - [ ] Add structured data: Course schema
   - [ ] Add share buttons
-  
 - [x] `app/pages/lms/lecture/[id].vue` - Learning interface (exists)
   - [x] Page created with dynamic route
   - [ ] Rename/refactor to `/lms/learn/[courseId]/[lessonId].vue` (optional)
@@ -818,6 +812,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] SEO: `useSeoMeta()` dengan noindex (learning page)
 
 #### 3.3.3 Assignment & Quiz Pages
+
 - [ ] `app/pages/lms/assignment/[id].vue` - Assignment detail & submission
   - [ ] Auth required
   - [ ] Check enrollment untuk course terkait
@@ -832,7 +827,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Submit confirmation modal
   - [ ] Success notification after submit
   - [ ] SEO: noindex
-  
 - [ ] `app/pages/lms/quiz/[id].vue` - Quiz taking interface
   - [ ] Auth required
   - [ ] Check enrollment
@@ -848,7 +842,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Submit confirmation modal
   - [ ] Redirect to results after submit
   - [ ] SEO: noindex
-  
 - [ ] `app/pages/lms/quiz/[id]/result.vue` - Quiz results page
   - [ ] Auth required
   - [ ] Fetch submission: `useFetch("/api/lms/quizzes/{id}/submission")`
@@ -862,6 +855,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] SEO: noindex
 
 #### 3.3.4 Progress & Certificate Pages
+
 - [ ] `app/pages/lms/progress/[courseId].vue` - Course progress detail
   - [ ] Auth required
   - [ ] Check enrollment
@@ -877,7 +871,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Progress chart/graph (optional)
   - [ ] Export progress report (PDF)
   - [ ] SEO: noindex
-  
 - [ ] `app/pages/lms/certificate/[courseId].vue` - Certificate display
   - [ ] Auth required
   - [ ] Check: course completed & passing grade
@@ -897,6 +890,7 @@ TODO LIST: AMANAH EDU CENTRE
 ### 3.4 Program-Specific LMS Implementation
 
 #### 3.4.1 TPQ (Taman Pendidikan Al-Qur'an)
+
 - [ ] Buat course structure untuk TPQ
   - [ ] Level: Iqra 1-6, Jilid 1-6, Al-Qur'an
   - [ ] Modul per jilid/level
@@ -918,6 +912,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Achievement badges
 
 #### 3.4.2 LKP/Bimbingan Belajar
+
 - [ ] Buat course structure untuk LKP
   - [ ] Kategori: SD, SMP, SMA
   - [ ] Mata pelajaran per tingkat
@@ -941,6 +936,7 @@ TODO LIST: AMANAH EDU CENTRE
 ### 3.5 LMS Features & Functionality
 
 #### 3.5.1 Video Player Features
+
 - [ ] Implementasi video player (Vimeo/YouTube/Self-hosted)
   - [ ] Play/pause, volume, fullscreen
   - [ ] Speed control (0.5x - 2x)
@@ -950,6 +946,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Prevent skip (for certain courses)
 
 #### 3.5.2 Interactive Features
+
 - [ ] Discussion forum per course
 - [ ] Live chat dengan instructor
 - [ ] Q&A section
@@ -957,6 +954,7 @@ TODO LIST: AMANAH EDU CENTRE
 - [ ] Study groups
 
 #### 3.5.3 Notification & Reminder
+
 - [ ] Email notification
   - [ ] Enrollment confirmation
   - [ ] New lesson available
@@ -967,6 +965,7 @@ TODO LIST: AMANAH EDU CENTRE
 - [ ] WhatsApp notification (optional)
 
 #### 3.5.4 Gamification
+
 - [ ] Points system
 - [ ] Badges & achievements
 - [ ] Leaderboard
@@ -974,6 +973,7 @@ TODO LIST: AMANAH EDU CENTRE
 - [ ] Rewards & prizes
 
 #### 3.5.5 Analytics & Reporting
+
 - [ ] Student analytics
   - [ ] Time spent learning
   - [ ] Completion rate
@@ -986,6 +986,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Export reports
 
 ### 3.6 Testing & Quality Assurance (Vitest + @vue/test-utils)
+
 **Standards:** Coverage >80%, organized tests, mock external dependencies
 
 - [ ] Unit tests untuk stores
@@ -996,7 +997,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Mock: $fetch calls dengan `vi.mock()`
   - [ ] Test error handling
   - [ ] Coverage: >80%
-  
 - [ ] Component tests untuk UI
   - [ ] File: `test/nuxt/components.lms.test.ts`
   - [ ] Mount components dengan `@vue/test-utils`
@@ -1005,7 +1005,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Test conditional rendering
   - [ ] Mock: stores, composables
   - [ ] Coverage: >80%
-  
 - [ ] Integration tests untuk API
   - [ ] File: `test/nuxt/api.lms.test.ts`
   - [ ] Test API endpoints dengan mock data
@@ -1013,7 +1012,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Test error responses
   - [ ] Test validation (Zod schemas)
   - [ ] Mock: database queries, external APIs
-  
 - [ ] E2E tests untuk user flows
   - [ ] Setup: Consider Playwright atau Cypress
   - [ ] Test flows:
@@ -1024,21 +1022,18 @@ TODO LIST: AMANAH EDU CENTRE
     - [ ] Certificate: complete course → check grade → view/download certificate
   - [ ] Test on multiple browsers (Chrome, Firefox, Safari)
   - [ ] Test responsive layouts (mobile, tablet, desktop)
-  
 - [ ] Performance testing
   - [ ] Lighthouse CI integration
   - [ ] Target scores: Performance >90, Accessibility >95, Best Practices >90, SEO >90
   - [ ] Test: page load times, time to interactive, largest contentful paint
   - [ ] Test: API response times (<200ms for most endpoints)
   - [ ] Load testing dengan k6 atau Artillery (optional)
-  
 - [ ] Security testing
   - [ ] OWASP Top 10 checklist
   - [ ] Test: SQL injection, XSS, CSRF protection
   - [ ] Test: authentication & authorization (role-based access)
   - [ ] Test: rate limiting effectiveness
   - [ ] Dependency vulnerability scan: `bun audit`
-  
 - [ ] Accessibility testing (WCAG 2.1 AA)
   - [ ] Automated: axe-core, Lighthouse accessibility audit
   - [ ] Manual: keyboard navigation, screen reader testing
@@ -1046,6 +1041,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Test: form labels, error messages
 
 **Testing Commands:**
+
 - Run all tests: `bun run test`
 - Watch mode: `bun run test:watch`
 - Coverage: `bun run test:coverage`
@@ -1053,6 +1049,7 @@ TODO LIST: AMANAH EDU CENTRE
 - UI mode: `bun run test --ui`
 
 **Existing Infrastructure (Already Complete):**
+
 - [x] `app/middleware/auth.ts` - Authentication middleware
 - [x] `app/layouts/base.vue` - Base layout
 - [x] `app/layouts/default.vue` - Default layout
@@ -1064,9 +1061,11 @@ TODO LIST: AMANAH EDU CENTRE
 - [x] Server utils: `server/utils/api.ts`, `server/utils/log.ts`, `server/utils/session.ts`
 
 ## FASE 4: INTEGRASI & OPTIMIZATION
--------------------------------------------
+
+---
 
 ### 4.1 Integration
+
 - [ ] Payment gateway integration
   - [ ] Provider: Midtrans atau Xendit
   - [ ] Server API: `server/api/payment/create.post.ts`
@@ -1076,21 +1075,18 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Invoice generation (PDF)
   - [ ] Email notification after payment
   - [ ] Logging: scope "payment"
-  
 - [ ] WhatsApp Business API integration
   - [ ] Server utils: `server/utils/whatsapp.ts`
   - [ ] Auto-reply untuk inquiry
   - [ ] Notification templates (enrollment, deadlines, certificates)
   - [ ] Rate limiting untuk prevent spam
   - [ ] Opt-in/opt-out mechanism
-  
 - [ ] Google Analytics & Tag Manager
   - [ ] Install: `@nuxtjs/google-analytics` atau custom
   - [ ] Track: page views, events (enrollment, completion)
   - [ ] E-commerce tracking (course purchases)
   - [ ] Custom events: video watch time, quiz scores
   - [ ] Privacy-compliant (GDPR)
-  
 - [ ] Social media sharing
   - [ ] Open Graph tags (already in `useSeoMeta()`)
   - [ ] Twitter Card tags
@@ -1098,13 +1094,13 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Share: certificates, achievements ke LinkedIn/Facebook/Twitter
 
 ### 4.2 SEO & Marketing
+
 - [ ] SEO optimization untuk semua pages
   - [ ] Dynamic `useSeoMeta()` dengan relevant keywords
   - [ ] Meta tags: title, description, keywords
   - [ ] Open Graph tags: og:title, og:description, og:image, og:url
   - [ ] Twitter Card tags
   - [ ] Canonical URLs
-  
 - [ ] Structured data (JSON-LD)
   - [ ] Schema.org types:
     - [ ] Course (untuk course pages)
@@ -1112,26 +1108,22 @@ TODO LIST: AMANAH EDU CENTRE
     - [ ] BreadcrumbList (untuk breadcrumbs)
     - [ ] Review/Rating (untuk testimonials)
   - [ ] Implement: `useSchemaOrg()` composable atau manual `<script type="application/ld+json">`
-  
 - [ ] Sitemap generation
   - [ ] Install: `@nuxtjs/sitemap`
   - [ ] Config: `nuxt.config.ts`
   - [ ] Include: all public pages (exclude private/auth pages)
   - [ ] Dynamic routes: programs, courses
   - [ ] Update frequency, priority
-  
 - [ ] Robots.txt
   - [ ] Already exists: `public/robots.txt`
   - [ ] Allow: public pages, sitemap
   - [ ] Disallow: admin, API, private pages (/lms/learn, /lms/my-courses, etc.)
-  
 - [ ] Blog/artikel untuk content marketing
   - [ ] Optional: Setup Nuxt Content module
   - [ ] Directory: `content/blog/`
   - [ ] Pages: `app/pages/blog/[...slug].vue`
   - [ ] Topics: pendidikan, tips belajar, success stories
   - [ ] SEO-optimized articles
-  
 - [ ] Landing pages untuk ads campaign
   - [ ] Custom pages: `app/pages/landing/[campaign].vue`
   - [ ] A/B testing setup (optional)
@@ -1139,6 +1131,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Fast loading (<2s LCP)
 
 ### 4.3 Performance Optimization
+
 - [ ] Image optimization
   - [ ] Use `<NuxtImg>` everywhere (already using `@nuxt/image`)
   - [ ] Lazy loading: `loading="lazy"` attribute
@@ -1146,31 +1139,25 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] WebP format automatic conversion
   - [ ] Optimize source images before upload
   - [ ] CDN untuk image serving
-  
 - [ ] Code splitting & lazy loading
   - [ ] Automatic code splitting per route (Nuxt default)
   - [ ] Lazy load heavy components:
     ```typescript
-    const HeavyComponent = defineAsyncComponent(
-      () => import('~/components/Heavy.vue')
-    );
+    const HeavyComponent = defineAsyncComponent(() => import("~/components/Heavy.vue"));
     ```
   - [ ] Lazy load below-the-fold content
   - [ ] Tree-shaking (automatic dengan Vite)
-  
 - [ ] Caching strategy
   - [ ] Browser caching: static assets (images, fonts, CSS, JS)
   - [ ] Service Worker untuk offline caching (optional PWA)
   - [ ] API response caching (Redis/Memory cache)
   - [ ] Nuxt `useFetch` cache by default
   - [ ] CDN caching rules
-  
 - [ ] CDN setup
   - [ ] Provider: Cloudflare, AWS CloudFront, atau Vercel Edge
   - [ ] Cache: static assets, images, fonts
   - [ ] Edge functions untuk dynamic content (optional)
   - [ ] DDoS protection
-  
 - [ ] Lighthouse score optimization
   - [ ] Target: Performance >90, Accessibility >95, Best Practices >90, SEO >90
   - [ ] Run: `npx lighthouse <url> --view`
@@ -1183,32 +1170,29 @@ TODO LIST: AMANAH EDU CENTRE
     - [ ] Minimize main-thread work
 
 ### 4.4 Security
+
 - [ ] Authentication & authorization
   - [ ] Already using: `nuxt-auth-utils`
   - [ ] Session management: HTTP-only cookies
   - [ ] JWT tokens (if using external API)
   - [ ] Role-based access control (RBAC)
   - [ ] Middleware: `auth.ts` untuk protected routes
-  
 - [ ] Input validation & sanitization
   - [ ] Server-side: Zod schemas untuk all inputs
   - [ ] Client-side: Form validation
   - [ ] SQL injection protection (Drizzle ORM parameterized queries)
   - [ ] XSS protection: sanitize HTML content
   - [ ] CSRF protection: tokens, SameSite cookies
-  
 - [ ] Rate limiting
   - [ ] Server middleware: `server/middleware/rate-limit.ts`
   - [ ] Limit: API requests per IP/user
   - [ ] Strategy: sliding window, token bucket
   - [ ] Response: 429 Too Many Requests
   - [ ] Storage: Memory (simple) atau Redis (distributed)
-  
 - [ ] HTTPS enforcement
   - [ ] Redirect HTTP → HTTPS
   - [ ] HSTS header: `Strict-Transport-Security`
   - [ ] Secure cookies: `secure` flag
-  
 - [ ] Security headers
   - [ ] CSP (Content Security Policy)
   - [ ] X-Content-Type-Options: nosniff
@@ -1216,7 +1200,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] X-XSS-Protection: 1; mode=block
   - [ ] Referrer-Policy: no-referrer-when-downgrade
   - [ ] Implement: `server/middleware/security-headers.ts` or Nuxt config
-  
 - [ ] GDPR compliance (if applicable)
   - [ ] Cookie consent banner
   - [ ] Privacy policy page
@@ -1225,18 +1208,17 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Logging: redact sensitive data (already implemented)
 
 ### 4.5 Documentation
+
 - [ ] API documentation (OpenAPI/Swagger)
   - [ ] Already generating types: `bun run gen:openapi`
   - [ ] Setup Swagger UI: `/api/_docs` route
   - [ ] Document: all API endpoints, request/response schemas
   - [ ] Examples untuk each endpoint
-  
 - [ ] Component documentation (Storybook)
   - [ ] Install: `@nuxtjs/storybook` (optional)
   - [ ] Stories: for reusable components
   - [ ] Props documentation
   - [ ] Usage examples
-  
 - [ ] User guide untuk LMS
   - [ ] How to enroll in course
   - [ ] How to watch lessons
@@ -1244,13 +1226,11 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] How to take quizzes
   - [ ] How to download certificates
   - [ ] FAQ section
-  
 - [ ] Admin guide
   - [ ] How to manage courses
   - [ ] How to grade assignments
   - [ ] How to view analytics
   - [ ] How to manage users
-  
 - [ ] Developer documentation
   - [ ] Already exists: `README.md` (AI Development Rules)
   - [ ] Update: architecture decisions, patterns used
@@ -1258,9 +1238,11 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] API documentation reference
 
 ## FASE 5: DEPLOYMENT & MAINTENANCE
--------------------------------------------
+
+---
 
 ### 5.1 Deployment
+
 - [ ] Setup production environment
   - [ ] Platform: NuxtHub, Cloudflare Pages, Vercel, atau VPS
   - [ ] Environment variables:
@@ -1274,7 +1256,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Domain & DNS
     - [ ] Configure domain
     - [ ] SSL certificate (auto with Cloudflare/Vercel)
-  
 - [ ] CI/CD pipeline
   - [ ] Git workflow: main branch → production
   - [ ] Platform options:
@@ -1291,7 +1272,6 @@ TODO LIST: AMANAH EDU CENTRE
     - [ ] Push to main (production)
     - [ ] Push to develop (staging)
   - [ ] Manual approval for production (optional)
-  
 - [ ] Monitoring & logging
   - [ ] Error tracking: Sentry integration
     - [ ] Install: `@nuxtjs/sentry`
@@ -1311,7 +1291,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Analytics dashboard:
     - [ ] Google Analytics for user behavior
     - [ ] Custom dashboard for business metrics
-  
 - [ ] Backup strategy
   - [ ] Database backups:
     - [ ] Automated daily backups
@@ -1323,7 +1302,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Code backups:
     - [ ] Git repository (primary)
     - [ ] Mirror to secondary service (GitLab/Bitbucket)
-  
 - [ ] Disaster recovery plan
   - [ ] Incident response playbook
   - [ ] Rollback procedure:
@@ -1334,6 +1312,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Post-mortem template
 
 ### 5.2 Training & Onboarding
+
 - [ ] Training untuk admin/staff
   - [ ] User management (add/edit/delete users)
   - [ ] Course management (create/edit courses, modules, lessons)
@@ -1343,7 +1322,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Viewing analytics & reports
   - [ ] Certificate generation
   - [ ] Technical support basics
-  
 - [ ] Training untuk instructor
   - [ ] Course creation workflow
   - [ ] Content best practices
@@ -1351,7 +1329,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Grading guidelines
   - [ ] Using instructor dashboard
   - [ ] Communication dengan students
-  
 - [ ] Onboarding flow untuk students
   - [ ] Welcome email with instructions
   - [ ] Tutorial video atau walkthrough
@@ -1360,6 +1337,7 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Sample course untuk practice
 
 ### 5.3 Maintenance & Updates
+
 - [ ] Regular security updates
   - [ ] Dependency updates:
     - [ ] Weekly check: `bun update --latest`
@@ -1369,7 +1347,6 @@ TODO LIST: AMANAH EDU CENTRE
     - [ ] Nuxt minor/patch updates (monthly)
     - [ ] Major updates (quarterly, with testing)
   - [ ] Security patches: apply immediately
-  
 - [ ] Feature updates based on feedback
   - [ ] Feedback collection:
     - [ ] In-app feedback form
@@ -1378,7 +1355,6 @@ TODO LIST: AMANAH EDU CENTRE
   - [ ] Feature request tracking (GitHub Issues, Jira)
   - [ ] Prioritization: impact vs effort
   - [ ] Release schedule: monthly or bi-weekly
-  
 - [ ] Bug fixes
   - [ ] Bug reporting channel (email, form, issue tracker)
   - [ ] Triage: critical/high/medium/low
@@ -1388,13 +1364,11 @@ TODO LIST: AMANAH EDU CENTRE
     - [ ] Medium: 1 week
     - [ ] Low: next release
   - [ ] Hotfix procedure for critical bugs
-  
 - [ ] Performance monitoring
   - [ ] Weekly review: Lighthouse scores, Core Web Vitals
   - [ ] Monthly review: analytics, user behavior
   - [ ] Identify bottlenecks: slow queries, heavy pages
   - [ ] Optimization sprints (quarterly)
-  
 - [ ] User support system
   - [ ] Support channels:
     - [ ] Email: support@amanaheducentre.id
@@ -1407,8 +1381,10 @@ TODO LIST: AMANAH EDU CENTRE
     - [ ] Normal: 24 hours
   - [ ] Support hours: define working hours
 
--------------------------------------------
+---
+
 NOTES:
+
 - Prioritaskan fase sesuai kebutuhan bisnis
 - Bisa dikerjakan parallel untuk beberapa tugas yang independen
 - Review & testing di setiap fase sebelum lanjut ke fase berikutnya

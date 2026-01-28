@@ -59,7 +59,7 @@ const isHovered = ref(false);
       <!-- Description -->
       <p
         class="text-sm text-white/90 transition-all duration-500 line-clamp-2"
-        :class="isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+        :class="isHovered ? 'translate-y-0' : 'translate-y-2'"
       >
         {{ description }}
       </p>

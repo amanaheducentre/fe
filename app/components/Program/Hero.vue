@@ -8,11 +8,26 @@ interface Props {
   heroVideo: string;
   ctaText?: string;
   ctaLink?: string;
+  themeColor?: string;
+  useSecondaryColor?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   ctaText: "Daftar Sekarang",
   ctaLink: "#contact",
+  themeColor: "primary",
+  useSecondaryColor: false,
+});
+
+const buttonColor = computed(() => {
+  const colorMap: Record<string, "primary" | "daycare" | "kb" | "tk" | "hs"> = {
+    primary: "primary",
+    daycare: "daycare",
+    kb: "kb",
+    tk: "tk",
+    hs: "hs",
+  };
+  return colorMap[props.themeColor] || "primary";
 });
 </script>
 
@@ -45,9 +60,12 @@ const props = withDefaults(defineProps<Props>(), {
       <div class="max-w-3xl">
         <!-- Age Badge -->
         <div
-          class="inline-flex items-center gap-2 bg-primary-500/20 backdrop-blur-sm border border-primary-500/30 rounded-full px-4 py-2 mb-6"
+          :class="[
+            'inline-flex items-center gap-2 backdrop-blur-sm border rounded-full px-4 py-2 mb-6',
+            `bg-${themeColor}-500/20 border-${themeColor}-500/30`,
+          ]"
         >
-          <UIcon name="i-heroicons-cake" class="text-primary-400" />
+          <UIcon name="i-heroicons-cake" :class="`text-${themeColor}-400`" />
           <span class="text-sm font-medium text-white">{{ ageRange }}</span>
         </div>
 
@@ -68,7 +86,7 @@ const props = withDefaults(defineProps<Props>(), {
 
         <!-- CTA Buttons -->
         <div class="flex flex-wrap gap-4">
-          <UButton :to="ctaLink" size="xl" color="primary" class="shadow-lg">
+          <UButton :to="ctaLink" size="xl" :color="buttonColor" class="shadow-lg">
             <UIcon name="i-heroicons-rocket-launch" class="mr-2" />
             {{ ctaText }}
           </UButton>

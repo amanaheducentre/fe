@@ -4,10 +4,14 @@ import type { ProgramFAQ } from "~~/shared/types/program";
 interface Props {
   title?: string;
   faqs: ProgramFAQ[];
+  themeColor?: string;
+  useSecondaryColor?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   title: "Pertanyaan yang Sering Diajukan",
+  themeColor: "primary",
+  useSecondaryColor: false,
 });
 
 const items = computed(() =>
@@ -17,6 +21,18 @@ const items = computed(() =>
     content: faq.answer,
   })),
 );
+
+// Map theme color to valid UI colors
+const buttonColor = computed(() => {
+  const colorMap: Record<string, "primary" | "daycare" | "kb" | "tk" | "hs"> = {
+    primary: "primary",
+    daycare: "daycare",
+    kb: "kb",
+    tk: "tk",
+    hs: "hs",
+  };
+  return colorMap[props.themeColor] || "primary";
+});
 </script>
 
 <template>
@@ -24,13 +40,14 @@ const items = computed(() =>
     <div class="container mx-auto px-4">
       <!-- Section Title -->
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          {{ title }}
-        </h2>
-        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Temukan jawaban atas pertanyaan umum tentang program kami
-        </p>
-        <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full mt-4" />
+        <ProgramSectionTitle
+          :title="title"
+          subtitle="Temukan jawaban atas pertanyaan umum tentang program kami"
+          :theme-color="themeColor"
+          :use-secondary-gradient="useSecondaryColor"
+          align="center"
+          size="md"
+        />
       </div>
 
       <!-- FAQ Accordion -->
@@ -46,7 +63,7 @@ const items = computed(() =>
         <!-- Contact CTA -->
         <div class="mt-12 text-center">
           <p class="text-gray-600 dark:text-gray-400 mb-4">Masih ada pertanyaan lain?</p>
-          <UButton to="#contact" size="lg" color="primary" variant="outline">
+          <UButton to="#contact" size="lg" :color="buttonColor" variant="outline">
             <UIcon name="i-heroicons-chat-bubble-left-right" class="mr-2" />
             Hubungi Kami
           </UButton>

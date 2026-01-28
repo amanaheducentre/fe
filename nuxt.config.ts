@@ -14,7 +14,24 @@ export default defineNuxtConfig({
   },
   ui: {
     theme: {
-      colors: ["primary", "secondary", "info", "success", "warning", "error"],
+      colors: [
+        "primary",
+        "secondary",
+        "info",
+        "success",
+        "warning",
+        "error",
+        "daycare",
+        "kb",
+        "tk",
+        "hs",
+        "raka-red",
+        "raka-orange",
+        "raka-mint",
+        "raka-blue",
+        "raka-pink",
+        "raka-maroon",
+      ],
     },
   },
   modules: [
@@ -32,6 +49,7 @@ export default defineNuxtConfig({
     "nuxt-auth-utils",
     "@artmizu/nuxt-prometheus",
     "@pinia/nuxt",
+    "nuxt-security",
   ],
   css: ["~/assets/css/main.css"],
   colorMode: {
@@ -46,6 +64,9 @@ export default defineNuxtConfig({
       xl: 1280,
       "2xl": 1536,
     },
+  },
+  security: {
+    enabled: true,
   },
   debug: false,
 });

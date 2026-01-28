@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { daycareProgram } from "~~/app/data/programs/daycare";
+import { infantProgram } from "~~/app/data/programs/infant-class";
 
 // SEO Meta Tags
 useSeoMeta({
-  title: daycareProgram.metaTitle,
-  description: daycareProgram.metaDescription,
-  ogTitle: daycareProgram.metaTitle,
-  ogDescription: daycareProgram.metaDescription,
-  ogImage: daycareProgram.ogImage,
+  title: infantProgram.metaTitle,
+  description: infantProgram.metaDescription,
+  ogTitle: infantProgram.metaTitle,
+  ogDescription: infantProgram.metaDescription,
+  ogImage: infantProgram.ogImage,
   ogType: "website",
   twitterCard: "summary_large_image",
-  twitterTitle: daycareProgram.metaTitle,
-  twitterDescription: daycareProgram.metaDescription,
-  twitterImage: daycareProgram.ogImage,
+  twitterTitle: infantProgram.metaTitle,
+  twitterDescription: infantProgram.metaDescription,
+  twitterImage: infantProgram.ogImage,
 });
 
 // Page transition
@@ -28,36 +28,36 @@ definePageMeta({
   <div class="min-h-screen">
     <!-- Hero Section -->
     <ProgramHero
-      :title="daycareProgram.name"
-      :tagline="daycareProgram.tagline"
-      :description="daycareProgram.description"
-      :age-range="daycareProgram.ageRange"
-      :hero-video="daycareProgram.heroVideo!"
+      :title="infantProgram.name"
+      :tagline="infantProgram.tagline"
+      :description="infantProgram.description"
+      :age-range="infantProgram.ageRange"
+      :hero-video="infantProgram.heroVideo!"
       hero-image=""
-      cta-text="Daftar Daycare"
+      cta-text="Daftar Infant Class"
       cta-link="#contact"
-      theme-color="daycare"
+      theme-color="kb"
     />
 
     <!-- Features Section -->
     <ProgramFeatures
-      title="Mengapa Memilih Daycare Amanah?"
-      :features="daycareProgram.features"
-      :benefits="daycareProgram.benefits"
-      :image="daycareProgram.gallery[0]"
+      title="Mengapa Memilih Infant Class Amanah?"
+      :features="infantProgram.features"
+      :benefits="infantProgram.benefits"
+      :image="infantProgram.gallery[0]"
       image-position="right"
-      theme-color="daycare"
+      theme-color="kb"
       :use-secondary-color="true"
     />
 
     <!-- Facilities Section with Image -->
     <ProgramImageSection
-      title="Fasilitas Lengkap & Aman"
-      :image="daycareProgram.gallery[1]!"
+      title="Fasilitas Lengkap untuk Bayi 1-2 Tahun"
+      :image="infantProgram.gallery[1]!"
       image-position="left"
-      :features="daycareProgram.facilities.items"
+      :features="infantProgram.facilities.items"
       background-color="bg-gray-50 dark:bg-gray-900"
-      theme-color="daycare"
+      theme-color="kb"
     />
 
     <!-- Daily Activities with Image -->
@@ -68,7 +68,7 @@ definePageMeta({
           <div>
             <ProgramSectionTitle
               title="Kegiatan Harian"
-              theme-color="daycare"
+              theme-color="kb"
               :use-secondary-gradient="true"
               align="left"
               size="md"
@@ -76,12 +76,12 @@ definePageMeta({
 
             <div class="space-y-4">
               <div
-                v-for="(activity, index) in daycareProgram.dailyActivities"
+                v-for="(activity, index) in infantProgram.dailyActivities"
                 :key="index"
-                class="border-l-4 border-daycare-500 pl-4 py-2"
+                class="border-l-4 border-kb-500 pl-4 py-2"
               >
                 <div class="flex items-center gap-2 mb-1">
-                  <UIcon name="i-heroicons-clock" class="text-daycare-500" />
+                  <UIcon name="i-heroicons-clock" class="text-kb-500" />
                   <span class="font-semibold text-gray-900 dark:text-white">
                     {{ activity.time }}
                   </span>
@@ -100,8 +100,8 @@ definePageMeta({
           <div class="lg:sticky lg:top-24">
             <div class="relative rounded-2xl overflow-hidden shadow-2xl">
               <NuxtImg
-                :src="daycareProgram.gallery[2]"
-                alt="Kegiatan Harian di Daycare"
+                :src="infantProgram.gallery[2]"
+                alt="Kegiatan Harian di Infant Class"
                 class="w-full h-125 lg:h-150 object-cover"
                 loading="lazy"
                 sizes="sm:100vw md:50vw lg:50vw"
@@ -114,22 +114,22 @@ definePageMeta({
 
     <!-- Schedule Section -->
     <ProgramSchedule
-      title="Jadwal & Pilihan Waktu"
-      :schedules="daycareProgram.schedule"
-      :image="daycareProgram.gallery[4]"
-      theme-color="daycare"
+      title="Jadwal & Pilihan Program"
+      :schedules="infantProgram.schedule"
+      :image="infantProgram.gallery[4]"
+      theme-color="kb"
       :use-secondary-color="true"
     />
 
-    <!-- Caregiver Info Section with Image -->
+    <!-- Teacher Info Section with Image -->
     <section class="py-16 md:py-24 bg-primary-50 dark:bg-primary-950">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <!-- Text Content -->
           <div>
             <ProgramSectionTitle
-              title="Pengasuh Profesional & Berpengalaman"
-              theme-color="daycare"
+              title="Teacher Bersertifikat PAUD"
+              theme-color="kb"
               :use-secondary-gradient="true"
               align="left"
               size="md"
@@ -137,25 +137,25 @@ definePageMeta({
 
             <!-- Ratio -->
             <div class="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg mb-6 shadow-md">
-              <UIcon name="i-heroicons-users" class="text-4xl text-daycare-600 dark:text-daycare-400" />
+              <UIcon name="i-heroicons-users" class="text-4xl text-kb-600 dark:text-kb-400" />
               <div>
-                <p class="text-sm text-gray-600 dark:text-gray-400">Rasio Pengasuh & Anak</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Rasio Teacher & Bayi</p>
                 <p class="text-2xl font-bold text-gray-900 dark:text-white">
-                  {{ daycareProgram.caregiverInfo.ratio }}
+                  {{ infantProgram.caregiverInfo.ratio }}
                 </p>
               </div>
             </div>
 
             <!-- Description -->
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              {{ daycareProgram.caregiverInfo.description }}
+              {{ infantProgram.caregiverInfo.description }}
             </p>
 
             <!-- Qualifications -->
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Kualifikasi Pengasuh:</h3>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Kualifikasi Teacher:</h3>
             <div class="space-y-3">
               <div
-                v-for="(qualification, index) in daycareProgram.caregiverInfo.qualifications"
+                v-for="(qualification, index) in infantProgram.caregiverInfo.qualifications"
                 :key="index"
                 class="flex items-start gap-3"
               >
@@ -165,12 +165,12 @@ definePageMeta({
             </div>
           </div>
 
-          <!-- Caregiver Image -->
+          <!-- Teacher Image -->
           <div>
             <div class="relative rounded-2xl overflow-hidden shadow-2xl">
               <NuxtImg
-                :src="daycareProgram.gallery[3]"
-                alt="Pengasuh Profesional Daycare Amanah"
+                :src="infantProgram.gallery[3]"
+                alt="Teacher PAUD di Infant Class Amanah"
                 class="w-full h-100 lg:h-137.5 object-cover"
                 loading="lazy"
                 sizes="sm:100vw md:50vw lg:50vw"
@@ -183,19 +183,19 @@ definePageMeta({
 
     <!-- Pricing Section -->
     <ProgramPricing
-      title="Paket Daycare"
-      :pricing="daycareProgram.pricing"
-      :whatsapp-number="daycareProgram.whatsapp.number"
-      :whatsapp-message="daycareProgram.whatsapp.message"
-      theme-color="daycare"
+      title="Paket Infant Class"
+      :pricing="infantProgram.pricing"
+      :whatsapp-number="infantProgram.whatsapp.number"
+      :whatsapp-message="infantProgram.whatsapp.message"
+      theme-color="kb"
       :use-secondary-color="true"
     />
 
     <!-- Gallery Section -->
     <ProgramGallery
-      title="Galeri Daycare Amanah"
-      :images="daycareProgram.gallery"
-      theme-color="daycare"
+      title="Galeri Infant Class Amanah"
+      :images="infantProgram.gallery"
+      theme-color="kb"
       :use-secondary-color="true"
     />
 
@@ -204,7 +204,7 @@ definePageMeta({
       <!-- Background Image with Overlay -->
       <div class="absolute inset-0 z-0">
         <NuxtImg
-          :src="daycareProgram.gallery[5]"
+          :src="infantProgram.gallery[5]"
           alt="Background"
           class="w-full h-full object-cover opacity-10"
           loading="lazy"
@@ -216,7 +216,7 @@ definePageMeta({
           <ProgramSectionTitle
             title="Testimoni Orang Tua"
             subtitle="Apa kata orang tua yang telah mempercayakan anaknya kepada kami"
-            theme-color="daycare"
+            theme-color="kb"
             :use-secondary-gradient="true"
             align="center"
             size="md"
@@ -227,7 +227,7 @@ definePageMeta({
           class="flex justify-center items-center gap-3 sm:gap-4 p-2 pb-3 -mx-2 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent max-w-full"
         >
           <CardTestimonial
-            v-for="(testimonial, index) in daycareProgram.testimonials"
+            v-for="(testimonial, index) in infantProgram.testimonials"
             :key="index"
             :name="testimonial.name"
             :role="testimonial.role"
@@ -240,9 +240,9 @@ definePageMeta({
 
     <!-- FAQ Section -->
     <ProgramFAQ
-      title="Pertanyaan Seputar Daycare"
-      :faqs="daycareProgram.faqs"
-      theme-color="daycare"
+      title="Pertanyaan Seputar Infant Class"
+      :faqs="infantProgram.faqs"
+      theme-color="kb"
       :use-secondary-color="true"
     />
 
@@ -250,18 +250,20 @@ definePageMeta({
     <section class="py-16 md:py-24 relative overflow-hidden">
       <!-- Background Image with Overlay -->
       <div class="absolute inset-0 z-0">
-        <NuxtImg :src="daycareProgram.gallery[6]" alt="Background" class="w-full h-full object-cover" loading="lazy" />
-        <div class="absolute inset-0 bg-linear-to-br from-daycare-600/95 to-daycare-800/95" />
+        <NuxtImg :src="infantProgram.gallery[6]" alt="Background" class="w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 bg-linear-to-br from-kb-600/95 to-kb-800/95" />
       </div>
 
       <div class="container mx-auto px-4 text-center relative z-10">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Siap Bergabung dengan Daycare Amanah?</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+          Siap Mendaftarkan Bayi Anda di Infant Class Amanah?
+        </h2>
         <p class="text-xl mb-8 max-w-2xl mx-auto text-white/90">
-          Daftarkan anak Anda sekarang dan rasakan pengalaman penitipan anak yang aman, nyaman, dan penuh kasih sayang!
+          Bergabunglah dengan program pembelajaran dan perkembangan yang dirancang khusus untuk bayi usia 1-2 tahun!
         </p>
         <div class="flex flex-wrap gap-4 justify-center">
           <UButton
-            :to="`https://wa.me/${daycareProgram.whatsapp.number}?text=${encodeURIComponent(daycareProgram.whatsapp.message)}`"
+            :to="`https://wa.me/${infantProgram.whatsapp.number}?text=${encodeURIComponent(infantProgram.whatsapp.message)}`"
             external
             target="_blank"
             size="xl"
@@ -288,8 +290,8 @@ definePageMeta({
             <p class="text-sm opacity-90">Trial Day Available</p>
           </div>
           <div class="flex flex-col items-center text-white">
-            <UIcon name="i-heroicons-clock" class="text-4xl mb-2" />
-            <p class="text-sm opacity-90">Jadwal Fleksibel</p>
+            <UIcon name="i-heroicons-chart-bar" class="text-4xl mb-2" />
+            <p class="text-sm opacity-90">Monitoring Perkembangan</p>
           </div>
         </div>
       </div>
@@ -297,9 +299,9 @@ definePageMeta({
 
     <!-- Floating CTA Button -->
     <ProgramCTA
-      :whatsapp-number="daycareProgram.whatsapp.number"
-      :whatsapp-message="daycareProgram.whatsapp.message"
-      cta-text="Daftar Daycare"
+      :whatsapp-number="infantProgram.whatsapp.number"
+      :whatsapp-message="infantProgram.whatsapp.message"
+      cta-text="Daftar Infant Class"
     />
   </div>
 </template>
