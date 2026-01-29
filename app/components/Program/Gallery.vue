@@ -41,7 +41,7 @@ const closeLightbox = () => {
           <div
             v-for="(image, index) in images"
             :key="index"
-            class="relative aspect-square overflow-hidden rounded-lg group cursor-pointer"
+            class="gallery-item relative aspect-square overflow-hidden rounded-lg group cursor-pointer"
             @click="openLightbox(image)"
           >
             <NuxtImg

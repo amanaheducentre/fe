@@ -64,7 +64,11 @@ const props = withDefaults(defineProps<Props>(), {
 
       <!-- Features Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <UCard v-for="(feature, index) in features" :key="index" class="hover:shadow-lg transition-shadow duration-300">
+        <UCard
+          v-for="(feature, index) in features"
+          :key="index"
+          class="program-card hover:shadow-lg transition-shadow duration-300"
+        >
           <div class="flex flex-col items-center text-center">
             <!-- Icon -->
             <div

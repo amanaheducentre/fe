@@ -71,48 +71,69 @@ const hasPricing = computed(() => program.pricing && program.pricing.length > 0)
 const hasGallery = computed(() => program.gallery && program.gallery.length > 0);
 const hasFaqs = computed(() => program.faqs && program.faqs.length > 0);
 const hasTestimonials = computed(() => program.testimonials && program.testimonials.length > 0);
+
+// Initialize animations on mount
+onMounted(() => {
+  // Lazy loading animations
+  const { observeElements } = useScrollAnimation();
+
+  nextTick(() => {
+    // Animate sections
+    observeElements(".program-section");
+    // Animate cards
+    observeElements(".program-card");
+    // Animate gallery images
+    observeElements(".gallery-item");
+    // Animate activity items
+    observeElements(".activity-item");
+  });
+});
 </script>
 
 <template>
   <div class="min-h-screen">
     <!-- Hero Section -->
-    <ProgramHero
-      :title="program.name"
-      :tagline="program.tagline"
-      :description="program.description"
-      :age-range="program.ageRange"
-      :hero-video="program.heroVideo || ''"
-      :hero-image="program.heroImage"
-      cta-text="Daftar Sekarang"
-      cta-link="#contact"
-      :theme-color="program.themeColor"
-    />
+    <section class="program-section">
+      <ProgramHero
+        :title="program.name"
+        :tagline="program.tagline"
+        :description="program.description"
+        :age-range="program.ageRange"
+        :hero-video="program.heroVideo || ''"
+        :hero-image="program.heroImage"
+        cta-text="Daftar Sekarang"
+        cta-link="#contact"
+        :theme-color="program.themeColor"
+      />
+    </section>
 
     <!-- Features Section -->
-    <ProgramFeatures
-      v-if="hasFeatures"
-      title="Keunggulan Program"
-      :features="program.features"
-      :benefits="hasBenefits ? program.benefits : undefined"
-      :image="hasGallery ? program.gallery[0] : undefined"
-      image-position="right"
-      :theme-color="program.themeColor"
-      :use-secondary-color="true"
-    />
+    <section v-if="hasFeatures" class="program-section">
+      <ProgramFeatures
+        title="Keunggulan Program"
+        :features="program.features"
+        :benefits="hasBenefits ? program.benefits : undefined"
+        :image="hasGallery ? program.gallery[0] : undefined"
+        image-position="right"
+        :theme-color="program.themeColor"
+        :use-secondary-color="true"
+      />
+    </section>
 
     <!-- Facilities Section with Image -->
-    <ProgramImageSection
-      v-if="hasFacilities && hasGallery"
-      :title="program.facilities.title"
-      :image="(program.gallery.length > 1 ? program.gallery[1] : program.gallery[0]) || ''"
-      image-position="left"
-      :features="program.facilities.items"
-      background-color="bg-gray-50 dark:bg-gray-900"
-      :theme-color="program.themeColor"
-    />
+    <section v-if="hasFacilities && hasGallery" class="program-section">
+      <ProgramImageSection
+        :title="program.facilities.title"
+        :image="(program.gallery.length > 1 ? program.gallery[1] : program.gallery[0]) || ''"
+        image-position="left"
+        :features="program.facilities.items"
+        background-color="bg-gray-50 dark:bg-gray-900"
+        :theme-color="program.themeColor"
+      />
+    </section>
 
     <!-- Daily Activities with Image -->
-    <section v-if="hasDailyActivities" class="py-16 md:py-24 bg-white dark:bg-gray-800">
+    <section v-if="hasDailyActivities" class="program-section py-16 md:py-24 bg-white dark:bg-gray-800">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <!-- Daily Activities Timeline -->
@@ -129,7 +150,7 @@ const hasTestimonials = computed(() => program.testimonials && program.testimoni
               <div
                 v-for="(activity, index) in program.dailyActivities"
                 :key="index"
-                :class="['border-l-4 pl-4 py-2', `border-${program.themeColor}-500`]"
+                :class="['border-l-4 pl-4 py-2 activity-item', `border-${program.themeColor}-500`]"
               >
                 <div class="flex items-center gap-2 mb-1">
                   <UIcon name="i-heroicons-clock" :class="`text-${program.themeColor}-500`" />
@@ -164,17 +185,18 @@ const hasTestimonials = computed(() => program.testimonials && program.testimoni
     </section>
 
     <!-- Schedule Section -->
-    <ProgramSchedule
-      v-if="hasSchedule"
-      title="Jadwal Operasional"
-      :schedules="program.schedule"
-      :image="hasGallery && program.gallery.length > 3 ? program.gallery[3] : undefined"
-      :theme-color="program.themeColor"
-      :use-secondary-color="true"
-    />
+    <section v-if="hasSchedule" class="program-section">
+      <ProgramSchedule
+        title="Jadwal Operasional"
+        :schedules="program.schedule"
+        :image="hasGallery && program.gallery.length > 3 ? program.gallery[3] : undefined"
+        :theme-color="program.themeColor"
+        :use-secondary-color="true"
+      />
+    </section>
 
     <!-- Caregiver/Teacher Info Section -->
-    <section v-if="hasCaregiverInfo" class="py-16 md:py-24 bg-white dark:bg-gray-800">
+    <section v-if="hasCaregiverInfo" class="program-section py-16 md:py-24 bg-white dark:bg-gray-800">
       <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
           <ProgramSectionTitle
@@ -205,7 +227,7 @@ const hasTestimonials = computed(() => program.testimonials && program.testimoni
             <!-- Info Cards -->
             <div class="order-1 lg:order-2 space-y-6">
               <!-- Ratio Card -->
-              <UCard class="hover:shadow-xl transition-shadow">
+              <UCard class="program-card hover:shadow-xl transition-shadow">
                 <div class="flex items-center gap-6">
                   <div
                     :class="[
@@ -225,7 +247,7 @@ const hasTestimonials = computed(() => program.testimonials && program.testimoni
               </UCard>
 
               <!-- Qualifications Card -->
-              <UCard class="hover:shadow-xl transition-shadow">
+              <UCard class="program-card hover:shadow-xl transition-shadow">
                 <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
                   <UIcon name="i-heroicons-academic-cap" :class="`text-${program.themeColor}-600 text-2xl`" />
                   Kualifikasi Tim
@@ -248,30 +270,34 @@ const hasTestimonials = computed(() => program.testimonials && program.testimoni
     </section>
 
     <!-- Pricing Section -->
-    <ProgramPricing
-      v-if="hasPricing"
-      title="Investasi Pendidikan"
-      :pricing="program.pricing"
-      :whatsapp-number="program.whatsapp.number"
-      :whatsapp-message="program.whatsapp.message"
-      :theme-color="program.themeColor"
-    />
+    <section v-if="hasPricing" class="program-section">
+      <ProgramPricing
+        title="Investasi Pendidikan"
+        :pricing="program.pricing"
+        :whatsapp-number="program.whatsapp.number"
+        :whatsapp-message="program.whatsapp.message"
+        :theme-color="program.themeColor"
+      />
+    </section>
 
     <!-- Gallery Section -->
-    <ProgramGallery
-      v-if="hasGallery"
-      title="Galeri Foto"
-      :images="program.gallery"
-      :theme-color="program.themeColor"
-      :use-secondary-color="true"
-    />
+    <section v-if="hasGallery" class="program-section">
+      <ProgramGallery
+        title="Galeri Foto"
+        :images="program.gallery"
+        :theme-color="program.themeColor"
+        :use-secondary-color="true"
+      />
+    </section>
 
     <!-- Testimonials Section -->
-    <section v-if="hasTestimonials" class="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+    <section v-if="hasTestimonials" class="program-section py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
       <div class="container mx-auto px-4">
         <ProgramSectionTitle title="Testimoni Orang Tua" :theme-color="program.themeColor" align="center" size="md" />
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        <div
+          class="flex justify-center gap-3 sm:gap-4 p-2 pb-3 -mx-2 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent w-full program-card"
+        >
           <CardTestimonial
             v-for="(testimonial, index) in program.testimonials"
             :key="index"
@@ -286,16 +312,17 @@ const hasTestimonials = computed(() => program.testimonials && program.testimoni
     </section>
 
     <!-- FAQ Section -->
-    <ProgramFAQ
-      v-if="hasFaqs"
-      title="Pertanyaan Umum"
-      :faqs="program.faqs"
-      :theme-color="program.themeColor"
-      :use-secondary-color="true"
-    />
+    <section v-if="hasFaqs" class="program-section">
+      <ProgramFAQ
+        title="Pertanyaan Umum"
+        :faqs="program.faqs"
+        :theme-color="program.themeColor"
+        :use-secondary-color="true"
+      />
+    </section>
 
     <!-- Final CTA Section with Background -->
-    <section class="py-16 md:py-24 relative overflow-hidden">
+    <section class="program-section py-16 md:py-24 relative overflow-hidden">
       <!-- Background Image with Overlay -->
       <div class="absolute inset-0 z-0">
         <NuxtImg
