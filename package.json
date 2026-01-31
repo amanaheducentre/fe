@@ -55,6 +55,7 @@
     "@vue/test-utils": "^2.4.6",
     "@vueuse/core": "^14.1.0",
     "@vueuse/nuxt": "^14.1.0",
+    "daisyui": "^5.5.14",
     "openapi-typescript": "^7.10.1",
     "tailwindcss": "^4.1.18",
     "tsx": "^4.21.0",

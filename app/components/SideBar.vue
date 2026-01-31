@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { loggedIn } = useUserSession();
+const stateStore = useStateStore();
+const { loggedIn, clear } = useUserSession();
 
 const route = useRoute();
 
@@ -10,13 +11,21 @@ const sideItems = ref([
       {
         title: loggedIn.value ? "Logout" : "Login",
         icon: "ic:outline-account-circle",
-        to: loggedIn.value ? "/lms/landing/logout" : "/lms/login",
+        to: "",
+        click: () => {
+          if (loggedIn.value) {
+            navigateTo("/lms/landing/logout");
+          } else {
+            stateStore.doLogin();
+          }
+        },
       },
       {
         title: "Profil",
         icon: "ic:outline-account-circle",
         to: "",
         mustLoggedIn: true,
+        click: () => {},
       },
     ],
   },
@@ -27,21 +36,25 @@ const sideItems = ref([
         title: "Beranda",
         icon: "ic:baseline-monitor",
         to: "/lms",
+        click: () => {},
       },
       {
         title: "Katalog Kelas",
         icon: "ic:outline-auto-awesome-mosaic",
         to: "",
+        click: () => {},
       },
       {
         title: "Kelas Saya",
         icon: "ic:outline-school",
         to: "",
+        click: () => {},
       },
       {
         title: "Pertanyaan",
         icon: "ic:outline-speaker-notes",
         to: "",
+        click: () => {},
       },
     ],
   },
@@ -72,6 +85,7 @@ const sideItems = ref([
                 color="primary"
                 variant="solid"
                 :active="route.path.startsWith(item.to)"
+                @click="item.click"
                 class="bg-transparent text-gray-700 hover:bg-gray-200 active:bg-raka-orange w-full px-4 transition-colors"
               >
                 {{ item.title }}

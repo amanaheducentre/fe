@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const { loggedIn } = useUserSession();
 const { isMobile } = useDevice();
 
 const windowStore = useWindowStore();
+const stateStore = useStateStore();
 </script>
 
 <template>
@@ -54,15 +54,9 @@ const windowStore = useWindowStore();
       </div>
       <div>
         <div class="flex gap-2 mr-6">
-          <NuxtLink :to="loggedIn ? '/lms' : '/lms/login'">
-            <UButton
-              color="neutral"
-              class="bg-gray-500 transition-all"
-              :class="loggedIn ? 'bg-raka-orange' : 'bg-gray-500'"
-              :size="windowStore.yPosition > 0 ? 'xs' : 'md'"
-              >{{ loggedIn ? "Dashboard" : "Login" }}</UButton
-            >
-          </NuxtLink>
+          <UButton color="neutral" :size="windowStore.yPosition > 0 ? 'xs' : 'md'" @click="stateStore.doLogin"
+            >Login</UButton
+          >
         </div>
       </div>
     </div>

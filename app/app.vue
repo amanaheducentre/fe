@@ -40,6 +40,7 @@ onNuxtReady(async () => {
     <NuxtRouteAnnouncer />
     <UApp>
       <NuxtLayout>
+        <ModalLogin />
         <NuxtPage />
       </NuxtLayout>
     </UApp>
