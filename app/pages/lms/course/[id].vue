@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from "@nuxt/ui";
 import type { CourseCurriculumWithLectures, CourseDetailData } from "~~/shared/types/course.schema";
+import type { EnrollmentCheckBodyRes } from "~~/shared/types/enrollment.schema";
 
 definePageMeta({
   middleware: "auth",
@@ -23,6 +24,10 @@ const { data: curriculum } = useFetch<CourseCurriculumWithLectures["data"]>(
     server: false,
   },
 );
+const { data: enrollment } = useFetch<EnrollmentCheckBodyRes["data"]>("/api/enrollment/" + courseId.value, {
+  server: false,
+});
+
 const isLoading = computed(() => course.value?.id == undefined);
 
 const items = computed<BreadcrumbItem[]>(() => [
@@ -156,12 +161,20 @@ onBeforeUnmount(() => {
                         <NuxtLink
                           v-for="data in item.lectures"
                           :key="data.title"
-                          :to="`/lecture/` + data.id"
+                          :to="data.isPreview || enrollment?.enrolled ? `/lms/lecture/` + data.id : ''"
                           :external="true"
-                          class="flex w-full items-center justify-between gap-3 sm:gap-4 py-1 hover:text-raka-orange transition-colors"
+                          class="flex w-full items-center justify-between gap-3 sm:gap-4 p-1 my-1 rounded-md transition-colors"
+                          :class="
+                            data.isPreview || enrollment?.enrolled
+                              ? `hover:text-raka-orange`
+                              : 'hover:text-gray-600 bg-gray-200 text-gray-400'
+                          "
                         >
                           <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
-                            <Icon name="uil:play" class="shrink-0 w-4 h-4 sm:w-5 sm:h-5" />
+                            <Icon
+                              :name="data.isPreview || enrollment?.enrolled ? 'uil:play' : 'uil:lock'"
+                              class="shrink-0 w-4 h-4 sm:w-5 sm:h-5"
+                            />
                             <p class="truncate text-sm sm:text-base">{{ data.title }}</p>
                           </div>
                           <div class="shrink-0 text-xs sm:text-sm opacity-80">
@@ -300,7 +313,7 @@ onBeforeUnmount(() => {
 
                   <div class="space-y-2 sm:space-y-3">
                     <div v-for="benefit in benefits" :key="benefit" class="flex items-center gap-2 sm:gap-3">
-                      <Icon name="uil:check-circle" class="text-green-600 shrink-0 w-5 h-5 sm:w-6 sm:h-6" />
+                      <Icon name="uil:check-circle" class="shrink-0 w-5 h-5 sm:w-6 sm:h-6" />
                       <p class="text-xs sm:text-sm md:text-base">{{ benefit }}</p>
                     </div>
                   </div>

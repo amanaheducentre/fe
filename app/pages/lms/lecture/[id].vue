@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { EnrollmentCheckBodyRes } from "~~/shared/types/enrollment.schema";
 import type { LectureDataRes } from "~~/shared/types/lecture.schema";
 
 definePageMeta({
@@ -10,17 +11,31 @@ const route = useRoute();
 const lectureStore = useLectureStore();
 const lectureId = ref(route.params.id as string);
 const lecture = ref<LectureDataRes["data"]>();
+const isEnrolled = ref(false);
 const isLoading = ref(true);
 
 const fetchLecture = async (lectureId: string) => {
   isLoading.value = true;
   lectureStore
     .getLecture(lectureId)
-    .then((data) => {
+    .then(async (data) => {
       lecture.value = data;
+
+      const { data: enrollment } = await useFetch<EnrollmentCheckBodyRes["data"]>(
+        "/api/enrollment/" + lecture.value.courseId,
+        {
+          server: false,
+        },
+      );
+
+      isEnrolled.value = enrollment.value?.enrolled!;
     })
-    .finally(() => {
+    .finally(async () => {
       isLoading.value = false;
+
+      if (!lecture.value?.isPreview && !isEnrolled.value) {
+        await navigateTo("/lms/course/" + lecture.value?.courseId);
+      }
     });
 };
 

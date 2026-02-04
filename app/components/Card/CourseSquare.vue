@@ -24,7 +24,7 @@ const starCount = computed(() => {
   >
     <!-- Image -->
     <div class="w-full aspect-16/10 overflow-hidden bg-gray-100">
-      <NuxtLink :to="'/course/' + props.id">
+      <NuxtLink :to="'/lms/course/' + props.id">
         <NuxtImg
           :src="props.thumbnailUrl!"
           class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -36,7 +36,7 @@ const starCount = computed(() => {
     <!-- Content -->
     <div class="flex flex-col gap-2 p-3 sm:p-4">
       <div class="space-y-1">
-        <NuxtLink :to="'/course/' + props.id">
+        <NuxtLink :to="'/lms/course/' + props.id">
           <h3
             class="text-sm sm:text-base md:text-lg font-bold leading-snug line-clamp-2 hover:text-raka-orange transition-colors"
           >
