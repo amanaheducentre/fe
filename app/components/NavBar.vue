@@ -7,8 +7,17 @@ const stateStore = useStateStore();
 
 <template>
   <!-- Mobile Navigation -->
-  <div v-if="isMobile" class="grid grid-cols-3 w-full h-16 bg-white/80 backdrop-blur-md">
-    <div class="flex items-center px-3">
+  <div
+    v-if="isMobile"
+    class="grid grid-cols-3 w-full h-16 bg-linear-to-t from-transparent to-white/60 backdrop-blur-md"
+  >
+    <div></div>
+    <div class="flex justify-center items-center">
+      <NuxtLink to="/">
+        <NuxtImg src="/img/logo.png" class="w-7" />
+      </NuxtLink>
+    </div>
+    <div class="flex items-center justify-end px-3">
       <UDrawer>
         <UButton variant="outline" class="ring-0 text-black">
           <Icon name="qlementine-icons:menu-burger-16" width="24" />
@@ -18,11 +27,6 @@ const stateStore = useStateStore();
           <SideBar />
         </template>
       </UDrawer>
-    </div>
-    <div class="flex justify-center items-center">
-      <NuxtLink to="/">
-        <NuxtImg src="/img/logo.png" class="w-7" />
-      </NuxtLink>
     </div>
   </div>
 

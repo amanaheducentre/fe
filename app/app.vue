@@ -10,7 +10,7 @@ useSeoMeta({
 
 useHead({
   htmlAttrs: {
-    class: "scroll-smooth",
+    class: "scroll-smooth text-body",
   },
 });
 

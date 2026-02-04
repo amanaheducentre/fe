@@ -84,7 +84,7 @@ export interface ProgramData {
   };
 
   pricing: ProgramPricing[];
-  gallery: string[];
+  gallery: string[][];
   faqs: ProgramFAQ[];
   testimonials: Testimonial[];
 

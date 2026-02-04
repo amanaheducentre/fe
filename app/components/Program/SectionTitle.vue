@@ -81,7 +81,12 @@ const activeGradient = computed(() => {
   <div :class="['mb-12', alignClasses]">
     <!-- Title with Gradient -->
     <h2
-      :class="['font-bold bg-clip-text text-transparent py-2', subtitle ? 'mb-3' : 'mb-4', sizeClasses, activeGradient]"
+      :class="[
+        'font-bold text-hero bg-clip-text text-transparent py-2',
+        subtitle ? 'mb-3' : 'mb-4',
+        sizeClasses,
+        activeGradient,
+      ]"
     >
       {{ title }}
     </h2>

@@ -275,6 +275,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/enrollment/{courseIdentifier}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Enroll user in a course (Protected) */
+        post: operations["postEnrollmentByCourseIdentifier"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/enrollment/{courseIdentifier}/check": {
         parameters: {
             query?: never;
@@ -1214,6 +1231,68 @@ export interface operations {
                             instructorName: string | null;
                             instructorAvatar: string | null;
                         }[];
+                    };
+                };
+            };
+        };
+    };
+    postEnrollmentByCourseIdentifier: {
+        parameters: {
+            query?: never;
+            header: {
+                authorization: string;
+                "content-type"?: string;
+            };
+            path: {
+                courseIdentifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    source?: "purchase" | "free" | "coupon" | "gift" | "admin_grant";
+                };
+                "application/x-www-form-urlencoded": {
+                    /** @enum {string} */
+                    source?: "purchase" | "free" | "coupon" | "gift" | "admin_grant";
+                };
+                "multipart/form-data": {
+                    /** @enum {string} */
+                    source?: "purchase" | "free" | "coupon" | "gift" | "admin_grant";
+                };
+            };
+        };
+        responses: {
+            /** @description Response for status 200 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        ok: boolean;
+                        status: number;
+                        message: string;
+                        data?: unknown;
+                        errors?: {
+                            code: number;
+                            message: string;
+                        }[];
+                        meta?: {
+                            [key: string]: unknown;
+                        };
+                    } & {
+                        data: {
+                            id: string;
+                            userId: string;
+                            courseId: string;
+                            source: string;
+                            enrolledAt: number;
+                            accessExpiresAt: number | null;
+                            status: string;
+                        };
                     };
                 };
             };

@@ -240,7 +240,16 @@ export const infantProgram: ProgramData = {
     },
   ],
 
-  gallery: [...getSampleImages(1920, 1080, 8)],
+  gallery: [
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+  ],
 
   faqs: [
     {

@@ -85,8 +85,8 @@ const gridClass = computed(() => {
             v-for="(plan, index) in sortedPricing"
             :key="index"
             :class="[
-              'relative hover:shadow-2xl transition-all duration-300 overflow-visible w-full max-w-sm',
-              plan.recommended ? `ring-2 ring-${themeColor} scale-105 md:scale-110 shadow-xl` : 'hover:scale-105',
+              'relative hover:shadow-xl transition-all duration-300 overflow-visible w-full max-w-sm',
+              plan.recommended ? `ring-2 ring-${themeColor} scale-105 md:scale-110 shadow-xl` : 'hover:scale-100',
               pricing.length === 4 && index === 3 ? 'md:col-span-2 lg:col-span-1 md:justify-self-center' : '',
             ]"
           >

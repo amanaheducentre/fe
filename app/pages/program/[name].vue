@@ -113,7 +113,7 @@ onMounted(() => {
         title="Keunggulan Program"
         :features="program.features"
         :benefits="hasBenefits ? program.benefits : undefined"
-        :image="hasGallery ? program.gallery[0] : undefined"
+        :image="hasGallery ? program.gallery[0]![0] : undefined"
         image-position="right"
         :theme-color="program.themeColor"
         :use-secondary-color="true"
@@ -124,7 +124,7 @@ onMounted(() => {
     <section v-if="hasFacilities && hasGallery" class="program-section">
       <ProgramImageSection
         :title="program.facilities.title"
-        :image="(program.gallery.length > 1 ? program.gallery[1] : program.gallery[0]) || ''"
+        :image="(program.gallery.length > 1 ? program.gallery[1]![0] : program.gallery[0]![0]) || ''"
         image-position="left"
         :features="program.facilities.items"
         background-color="bg-gray-50 dark:bg-gray-900"
@@ -172,7 +172,7 @@ onMounted(() => {
           <div v-if="hasGallery && program.gallery.length > 2" class="lg:sticky lg:top-24">
             <div class="relative rounded-2xl overflow-hidden shadow-2xl">
               <NuxtImg
-                :src="program.gallery[2]"
+                :src="program.gallery[0]![2]"
                 alt="Kegiatan Harian"
                 class="w-full h-100 lg:h-150 object-cover"
                 loading="lazy"
@@ -189,7 +189,7 @@ onMounted(() => {
       <ProgramSchedule
         title="Jadwal Operasional"
         :schedules="program.schedule"
-        :image="hasGallery && program.gallery.length > 3 ? program.gallery[3] : undefined"
+        :image="hasGallery && program.gallery.length > 3 ? program.gallery[3]![0] : undefined"
         :theme-color="program.themeColor"
         :use-secondary-color="true"
       />
@@ -215,7 +215,7 @@ onMounted(() => {
             >
               <div class="relative rounded-2xl overflow-hidden shadow-2xl">
                 <NuxtImg
-                  :src="program.caregiverInfo.photo || program.gallery[4]"
+                  :src="program.caregiverInfo.photo || program.gallery[4]![0]"
                   alt="Pengasuh & Pendidik"
                   class="w-full h-100 lg:h-125 object-cover"
                   loading="lazy"
@@ -327,7 +327,7 @@ onMounted(() => {
       <div class="absolute inset-0 z-0">
         <NuxtImg
           v-if="hasGallery && program.gallery.length > 5"
-          :src="program.gallery[5]"
+          :src="program.gallery[5]![0]"
           alt="Background"
           class="w-full h-full object-cover"
           loading="lazy"

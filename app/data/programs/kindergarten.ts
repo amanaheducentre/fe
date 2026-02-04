@@ -214,7 +214,16 @@ export const kindergartenProgram: ProgramData = {
     },
   ],
 
-  gallery: [...getSampleImages(1920, 1080, 12)],
+  gallery: [
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+  ],
 
   faqs: [
     {
