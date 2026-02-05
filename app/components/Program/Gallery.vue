@@ -6,6 +6,8 @@ interface Props {
   useSecondaryColor?: boolean;
 }
 
+const { isMobile } = useDevice();
+
 const props = withDefaults(defineProps<Props>(), {
   title: "Galeri Foto",
   themeColor: "primary",
@@ -27,15 +29,33 @@ const props = withDefaults(defineProps<Props>(), {
         />
 
         <!-- Gallery Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div
             v-for="(imageList, index) in images"
             :key="index"
             class="gallery-item relative overflow-hidden rounded-lg group"
           >
-            <figure class="hover-gallery">
+            <figure v-if="!isMobile" class="hover-gallery">
               <NuxtImg v-for="image in imageList" :src="image" class="rounded-lg" />
             </figure>
+            <UCarousel
+              v-else
+              v-slot="{ item }"
+              loop
+              :autoplay="{ delay: 3000 }"
+              wheel-gestures
+              :prev="{ variant: 'solid' }"
+              :next="{ variant: 'solid' }"
+              :items="imageList"
+              :ui="{
+                item: 'ps-0',
+                prev: 'sm:start-8',
+                next: 'sm:end-8',
+                container: 'ms-0',
+              }"
+            >
+              <NuxtImg :src="item" class="rounded-lg" />
+            </UCarousel>
           </div>
         </div>
       </div>
