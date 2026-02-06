@@ -38,6 +38,34 @@ const items = computed<BreadcrumbItem[]>(() => [
 
 const benefits = ref([`Modul Belajar`, "Forum Tanya Jawab", "Sertifikat", "Akses Selamanya"]);
 
+async function purchaseCourse() {
+  // TODO
+  // Need to configure payment gateway first
+
+  // await useFetch("/api/payment", {
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //     id: course.value?.id,
+  //     amount: course.value?.priceCurrent,
+  //     product: course.value?.slug,
+  //     desc: course.value?.description,
+  //   }),
+  //   server: false,
+  // }).then((res) => {
+  //   console.log(res);
+  // });
+
+  try {
+    const { data: enrollmentRes } = await useFetch<EnrollmentPostRes["data"]>("/api/enrollment/" + courseId.value, {
+      method: "POST",
+      server: false,
+    });
+  } catch (e: any) {
+  } finally {
+    reloadWindow();
+  }
+}
+
 const handleScroll = () => {
   scrollPosition.value = window.scrollY || window.pageYOffset;
 };
@@ -292,7 +320,7 @@ onBeforeUnmount(() => {
                   </div>
 
                   <div class="flex w-full justify-center pt-2 sm:pt-4">
-                    <NuxtLink class="w-full">
+                    <NuxtLink @click="purchaseCourse" class="w-full">
                       <UButton
                         class="font-bold w-full justify-center"
                         :size="isMobile ? 'lg' : 'xl'"
