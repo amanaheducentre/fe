@@ -3,12 +3,12 @@ import { getSampleImages } from "~/utils/lorem";
 
 export const homeschoolingProgram: ProgramData = {
   id: "homeschooling",
-  name: "Homeschooling Amanah",
+  name: "PKBM Nararya (Nararya Homeschooling)",
   slug: "homeschooling",
   category: "homeschooling",
-  tagline: "Pendidikan Fleksibel dengan Standar Unggul",
+  tagline: "Freedom to Flourish",
   description:
-    "Program homeschooling setara SD-SMP-SMA (usia 7-18 tahun) dengan kurikulum nasional dan internasional, pembelajaran personalized, mentoring intensif, dan ijazah resmi. Cocok untuk anak yang membutuhkan fleksibilitas waktu, metode belajar berbeda, atau memiliki passion khusus yang ingin dikembangkan.",
+    "Program homeschooling setara SD-SMP-SMA (usia 7-18 tahun) dengan kurikulum montessori, pembelajaran personalized, mentoring intensif, dan ijazah resmi. Diperuntukkan untuk anak-anak yang mempunyai kesulitan belajar.",
   ageRange: "7-18 tahun",
   heroImage: "",
   heroVideo: "https://github.com/amanaheducentre/fe/raw/refs/heads/main/public/video/teaser.mp4",
@@ -50,26 +50,24 @@ export const homeschoolingProgram: ProgramData = {
 
   benefits: [
     "Jadwal belajar fleksibel",
-    "Pembelajaran sesuai passion anak",
+    "Pembelajaran sesuai kebutuhan dan bakat minat anak",
     "Ijazah resmi setara sekolah formal",
     "Mentor personal untuk guidance",
     "Pengembangan talenta & minat",
-    "Quality time lebih banyak dengan keluarga",
+    "Lingkungan belajar yang ramah inklusi",
   ],
 
   facilities: {
     title: "Fasilitas & Support System",
     items: [
-      "Learning hub dengan co-working space",
-      "Perpustakaan digital & physical books",
-      "Science lab untuk eksperimen",
-      "Makerspace untuk project-based learning",
-      "Sports facilities untuk PE",
-      "Recording studio & art room",
-      "Computer lab dengan software lengkap",
-      "Online learning platform 24/7",
-      "Parent support group & workshop",
-      "Career counseling & university prep",
+      "Ruangan ber-AC",
+      "Kelas One-on-One",
+      "Ruangan aman dan nyaman untuk belajar",
+      "Perpustakaan",
+      "Material montessori yang lengkap",
+      "Tenaga pengajar yang ber-dedikasi tinggi",
+      "Pembinaan bakat dan minat sesuai dengan kebutuhan anak",
+      "Group wali murid daily report",
     ],
   },
 
@@ -80,28 +78,23 @@ export const homeschoolingProgram: ProgramData = {
       description: "Anak belajar mandiri dengan modul & video pembelajaran sesuai jadwal pribadi",
     },
     {
-      time: "2x per minggu",
-      activity: "Face-to-Face Session",
-      description: "Pertemuan di learning hub untuk diskusi, lab work, dan collaborative project",
+      time: "Harian",
+      activity: "Extrakurikuler",
+      description: "Dance, Archery, Swimming, Coding and Robotic, Cooking, Gardening, and Photography",
     },
     {
       time: "1x per minggu",
-      activity: "Mentoring Session",
-      description: "One-on-one mentoring untuk review progress, Q&A, dan goal setting",
-    },
-    {
-      time: "1x per minggu",
-      activity: "Socialization Activity",
-      description: "Club activities, sports, field trip, atau community service",
+      activity: "Pembelajaran Agama",
+      description: "",
     },
     {
       time: "Monthly",
-      activity: "Assessment & Testing",
+      activity: "Project Showcase",
       description: "Ujian bulanan untuk evaluasi pemahaman dan progress akademik",
     },
     {
       time: "Quarterly",
-      activity: "Project Showcase",
+      activity: "Rapotan",
       description: "Presentasi project dan portfolio kepada parents & peers",
     },
   ],
@@ -110,30 +103,23 @@ export const homeschoolingProgram: ProgramData = {
     {
       title: "Full Homeschooling",
       days: ["Senin - Jumat"],
-      time: "Flexible (2x face-to-face per minggu)",
-      description: "Program penuh dengan all subjects sesuai kurikulum nasional",
+      time: "Jam 08:00 - 14:00",
+      description: "Program penuh dengan all subjects sesuai kurikulum montessori",
     },
     {
-      title: "Hybrid Program",
-      days: ["Senin - Jumat"],
-      time: "3 hari home + 2 hari learning hub",
+      title: "Online Class Program",
+      days: ["Flexibel"],
+      time: "3 hari",
       description: "Kombinasi self-paced learning di rumah dan structured class di learning hub",
-    },
-    {
-      title: "Subject-Based",
-      days: ["Flexible"],
-      time: "Per mata pelajaran",
-      description: "Ambil mata pelajaran tertentu saja (untuk anak sekolah formal yang butuh enrichment)",
     },
   ],
 
   caregiverInfo: {
-    ratio: "1:5 untuk face-to-face, 1:1 untuk mentoring",
+    ratio: "2:15 untuk face-to-face, 1:1 untuk mentoring (NDD)",
     qualifications: [
+      "",
       "Sarjana/Master sesuai bidang mata pelajaran",
-      "Sertifikat homeschooling educator",
-      "Pengalaman mengajar minimal 5 tahun",
-      "Fasih bahasa Inggris (untuk bilingual program)",
+      "Fasih bahasa Inggris",
       "Terlatih differentiated instruction",
       "Mentor: profesional/akademisi berpengalaman",
     ],
@@ -144,22 +130,24 @@ export const homeschoolingProgram: ProgramData = {
   pricing: [
     {
       name: "SD (Kelas 1-6)",
-      price: "Rp 3.500.000",
+      price: "Rp 6.500.000",
       period: "per bulan",
       features: [
-        "All subjects kurikulum nasional",
-        "2x face-to-face per minggu",
-        "1x mentoring per minggu",
+        "All subjects kurikulum nasional dan Australian montessori",
+        "5x face-to-face per minggu",
+        "Program extrakurikuler",
+        "Ibadah sesuai agama",
+        "Assesment per-1/3/6 bulan",
+        "Aman dan nyaman untuk anak inklusi",
         "Modul & learning materials",
         "Online platform access",
-        "Monthly assessment",
         "Progress report semester",
         "Ijazah resmi setara SD",
       ],
     },
     {
       name: "SMP (Kelas 7-9)",
-      price: "Rp 4.200.000",
+      price: "Rp 7.500.000",
       period: "per bulan",
       features: [
         "All subjects kurikulum nasional",
@@ -172,11 +160,10 @@ export const homeschoolingProgram: ProgramData = {
         "Progress report semester",
         "Ijazah resmi setara SMP",
       ],
-      recommended: true,
     },
     {
       name: "SMA (Kelas 10-12)",
-      price: "Rp 5.000.000",
+      price: "Rp 8.500.000",
       period: "per bulan",
       features: [
         "All subjects kurikulum nasional + peminatan",
@@ -189,19 +176,6 @@ export const homeschoolingProgram: ProgramData = {
         "Monthly assessment",
         "Progress report semester",
         "Ijazah resmi setara SMA",
-      ],
-    },
-    {
-      name: "Registration Fee",
-      price: "Rp 2.500.000",
-      period: "sekali bayar",
-      features: [
-        "Placement test & assessment",
-        "Learning style analysis",
-        "Personalized learning plan",
-        "Starter learning kit",
-        "Student ID & materials",
-        "Parent orientation",
       ],
     },
   ],
@@ -221,12 +195,12 @@ export const homeschoolingProgram: ProgramData = {
     {
       question: "Apakah ijazah homeschooling diakui?",
       answer:
-        "Ya, ijazah homeschooling kami setara dengan ijazah sekolah formal dan diakui oleh Kemendikbud. Lulusan dapat melanjutkan ke jenjang berikutnya atau perguruan tinggi baik dalam maupun luar negeri. Kami terdaftar resmi sebagai PKBM (Pusat Kegiatan Belajar Masyarakat).",
+        "Ijazah homeschooling kami setara dengan ijazah sekolah formal dan diakui oleh Kemendikbud. Lulusan dapat melanjutkan ke jenjang berikutnya atau perguruan tinggi baik dalam maupun luar negeri. Kami terdaftar resmi sebagai PKBM (Pusat Kegiatan Belajar Masyarakat).",
     },
     {
       question: "Berapa lama waktu belajar per hari?",
       answer:
-        "Fleksibel tergantung pace anak. Rata-rata SD: 3-4 jam/hari, SMP: 4-5 jam/hari, SMA: 5-6 jam/hari. Anak dapat belajar kapan saja dengan modul online. Face-to-face session 2x per minggu masing-masing 3 jam.",
+        "Fleksibel tergantung kebutuhan anak. Rata-rata SD: 3-4 jam/hari, SMP: 4-5 jam/hari, SMA: 5-6 jam/hari. Anak dapat belajar kapan saja dengan modul online. Face-to-face session 2x per minggu masing-masing 3 jam.",
     },
     {
       question: "Bagaimana dengan sosialisasi anak?",
