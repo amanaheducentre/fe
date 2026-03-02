@@ -135,6 +135,11 @@ export const preschoolProgram: ProgramData = {
     [...getSampleImages(1920, 1080, 4)],
     [...getSampleImages(1920, 1080, 4)],
     [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
+    [...getSampleImages(1920, 1080, 4)],
   ],
 
   faqs: [
