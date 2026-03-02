@@ -2,13 +2,13 @@ import type { ProgramData } from "~~/shared/types/program";
 import { getSampleImages } from "~/utils/lorem";
 
 export const preschoolProgram: ProgramData = {
-  id: "preschool",
-  name: "Pre-School",
-  slug: "preschool",
+  id: "kb-amanah-preschool",
+  name: "KB Amanah Preschool",
+  slug: "kb-amanah-preschool",
   category: "preschool",
-  tagline: "Fondasi Kuat untuk Masa Depan Cemerlang",
+  tagline: "Montessori for Little Learners",
   description:
-    "Program pre-school untuk anak usia 3-4 tahun yang mempersiapkan anak memasuki jenjang kindergarten dengan pembelajaran holistik, stimulasi kognitif, sosial-emosional, dan pembentukan karakter Islami yang kuat.",
+    "KB Amanah Preschool hadir sebagai pilihan terbaik untuk anak usia 3–4 tahun dengan pendekatan Montessori yang menekankan kemandirian, konsentrasi, dan pembelajaran sesuai tahap perkembangan anak. Proses belajar dikemas seperti playdate yang menyenangkan, sehingga anak merasa nyaman, percaya diri, dan bahagia saat belajar. Setiap anak diobservasi secara cermat agar stimulasi yang diberikan tepat dan bermakna. Dilengkapi kegiatan internal dan eksternal seperti keagamaan, renang, musik, menari, sains, art & craft, hingga memasak. KB Amanah Preschool menjadi ruang tumbuh yang aman, kreatif, dan penuh cinta untuk langkah awal masa depan anak.",
   ageRange: "3-4 tahun",
   heroImage: "",
   heroVideo: "https://github.com/amanaheducentre/fe/raw/refs/heads/main/public/video/teaser.mp4",
@@ -16,190 +16,118 @@ export const preschoolProgram: ProgramData = {
 
   features: [
     {
-      icon: "i-heroicons-book-open",
-      title: "Pre-Reading & Pre-Math",
-      description: "Pengenalan huruf, angka, bentuk, dan konsep dasar matematika melalui metode bermain.",
+      icon: "i-heroicons-academic-cap",
+      title: "Direktris Berpengalaman",
+      description:
+        "Dipimpin oleh direktris berpengalaman di bidang pendidikan anak usia dini dengan spesialisasi pendekatan Montessori dan pengelolaan profesional.",
     },
     {
       icon: "i-heroicons-light-bulb",
-      title: "Critical Thinking",
-      description: "Melatih kemampuan berpikir kritis, problem solving, dan logical reasoning sejak dini.",
+      title: "Kurikulum Berbasis Montessori",
+      description:
+        "Menekankan kemandirian, konsentrasi, dan pembelajaran konkret sesuai minat serta kesiapan anak tanpa paksaan.",
     },
     {
       icon: "i-heroicons-heart",
-      title: "Karakter Islami",
-      description: "Pembentukan akhlak mulia, doa harian, hafalan surah pendek, dan adab-adab Islami.",
+      title: "Belajar Seperti Playdate",
+      description:
+        "Suasana belajar santai, hangat, dan menyenangkan seperti bermain bersama teman sehingga anak merasa aman dan bebas bereksplorasi.",
     },
     {
-      icon: "i-heroicons-users",
-      title: "Social Skills",
-      description: "Belajar bekerja sama, empati, resolusi konflik, dan komunikasi yang baik dengan teman.",
+      icon: "i-heroicons-eye",
+      title: "Observasi Perkembangan",
+      description:
+        "Setiap anak dipantau melalui observasi berkala sesuai tahap perkembangan untuk memastikan stimulasi yang tepat dan personal.",
     },
     {
-      icon: "i-heroicons-paint-brush",
-      title: "Seni & Kreativitas",
-      description: "Eksplorasi seni visual, musik, tari, dan drama untuk mengembangkan kreativitas.",
-    },
-    {
-      icon: "i-heroicons-globe-alt",
-      title: "Bilingual Exposure",
-      description: "Pengenalan bahasa Inggris sederhana melalui lagu, games, dan daily conversation.",
+      icon: "i-heroicons-sparkles",
+      title: "Kegiatan Internal & Eksternal",
+      description:
+        "Keagamaan, musik, menari, sains, art & craft, memasak, renang, dan outing edukatif untuk memperkaya pengalaman belajar anak.",
     },
   ],
 
   benefits: [
-    "Siap masuk TK dengan percaya diri",
-    "Kemampuan literasi & numerasi dasar kuat",
-    "Karakter dan akhlak terpuji",
-    "Kemandirian dan tanggung jawab tinggi",
-    "Kemampuan sosial yang baik",
-    "Cinta belajar dan rasa ingin tahu tinggi",
+    "Anak lebih mandiri sejak dini",
+    "Perkembangan sesuai tahap usia",
+    "Mendukung orang tua bekerja dengan tenang",
+    "Anak lebih siap untuk jenjang pendidikan selanjutnya",
   ],
 
   facilities: {
-    title: "Fasilitas Pembelajaran",
+    title: "Fasilitas Montessori & Lingkungan Belajar",
     items: [
-      "Ruang kelas modern ber-AC dengan smart board",
-      "Learning corners: literacy, math, science, art",
-      "Perpustakaan dengan koleksi buku anak lengkap",
-      "Science lab sederhana untuk eksperimen",
-      "Music & movement room",
-      "Outdoor playground dengan safety standard",
-      "Computer lab dengan educational games",
-      "Mini mosque untuk praktik ibadah",
+      "Alat peraga Montessori lengkap sesuai usia",
+      "5 Area Montessori: Practical Life, Sensorial, Bahasa, Matematika, Budaya",
+      "Ruangan indoor nyaman & area outdoor aman dan luas",
+      "Seluruh ruangan ber-AC dan dilengkapi CCTV",
+      "Toilet & kamar mandi ramah anak untuk toilet training",
     ],
   },
 
   dailyActivities: [
     {
-      time: "07:30 - 08:00",
-      activity: "Morning Assembly",
-      description: "Berbaris, doa pagi, tilawah bersama, dan pledge",
+      time: "07:00 - 08:00",
+      activity: "Penyambutan & Penerimaan Siswa",
+      description:
+        "Anak disambut hangat oleh guru untuk membantu transisi dari rumah ke sekolah dengan rasa aman dan nyaman.",
     },
     {
       time: "08:00 - 09:00",
-      activity: "Circle Time & Theme Introduction",
-      description: "Diskusi tema, show and tell, building vocabulary",
+      activity: "Circle Time, Motorik & Bahasa Inggris",
+      description: "Membangun kedekatan, melatih sosial, motorik, serta pengenalan Bahasa Inggris secara menyenangkan.",
     },
     {
       time: "09:00 - 09:30",
-      activity: "Snack & Break Time",
-      description: "Makan camilan sehat, toilet break, free play",
+      activity: "Kegiatan Ekstrakurikuler",
+      description: "Keagamaan, musik, menari, sains, atau kegiatan tematik sesuai jadwal.",
     },
     {
-      time: "09:30 - 10:30",
-      activity: "Learning Centers",
-      description: "Rotasi pembelajaran di berbagai center (literacy, math, science)",
+      time: "09:30 - 11:00",
+      activity: "Stimulasi Area Montessori",
+      description:
+        "Aktivitas pilihan di area Practical Life, Sensorial, Bahasa, Matematika, dan Budaya sesuai minat dan tahap perkembangan.",
     },
     {
-      time: "10:30 - 11:15",
-      activity: "Specials Class",
-      description: "Kelas khusus: PE, Music, Art, atau Computer (bergantian per hari)",
+      time: "11:00 - 11:30",
+      activity: "Snack Time & Toilet Training",
+      description: "Melatih kemandirian, kebiasaan hidup sehat, serta adab makan.",
     },
     {
-      time: "11:15 - 12:00",
-      activity: "Lunch Time",
-      description: "Makan siang bersama, praktik adab makan Islami",
-    },
-    {
-      time: "12:00 - 13:00",
-      activity: "Quiet Time & Rest",
-      description: "Istirahat dengan cerita audio atau aktivitas tenang",
-    },
-    {
-      time: "13:00 - 14:00",
-      activity: "English Fun Time",
-      description: "Pembelajaran bahasa Inggris melalui games & songs",
-    },
-    {
-      time: "14:00 - 14:45",
-      activity: "Project Work",
-      description: "Craft, eksperimen sains, atau project tematik",
-    },
-    {
-      time: "14:45 - 15:00",
-      activity: "Review & Dismissal",
-      description: "Review hari ini, doa pulang, persiapan home activity",
+      time: "11:30 - 12:00",
+      activity: "Persiapan Pulang",
+      description: "Merapikan area belajar, refleksi ringan, dan bersiap pulang dengan suasana tenang.",
     },
   ],
 
   schedule: [
     {
-      title: "Regular Program",
+      title: "Program KB Amanah Preschool",
       days: ["Senin - Jumat"],
-      time: "07:30 - 15:00",
-      description: "Program reguler dengan full curriculum",
-    },
-    {
-      title: "Extended Program",
-      days: ["Senin - Jumat"],
-      time: "07:30 - 17:00",
-      description: "Program diperpanjang dengan enrichment activities",
-    },
-    {
-      title: "Saturday Enrichment",
-      days: ["Sabtu"],
-      time: "08:00 - 12:00",
-      description: "Cooking class, field trip, atau workshop khusus (optional)",
+      time: "07:00 - 12:00 WIB",
+      description: "Program reguler berbasis Montessori dengan kegiatan harian terstruktur dan menyenangkan.",
     },
   ],
 
   caregiverInfo: {
-    ratio: "1:8 (1 teacher + 1 assistant untuk 8-12 anak)",
+    ratio: "Maksimal 15 anak dengan 2 pendamping (guru/direktris)",
     qualifications: [
-      "Sarjana Pendidikan (S.Pd) PAUD/PG-PAUD",
-      "Sertifikat Montessori atau metode pembelajaran modern",
-      "Pengalaman mengajar minimal 3 tahun",
-      "Terlatih child psychology & behavior management",
-      "Hafal Juz 30 (untuk teacher Islami studies)",
+      "Berpengalaman dalam pendidikan anak usia dini",
+      "Memahami pendekatan Montessori",
+      "Mampu melakukan observasi perkembangan anak",
+      "Pendampingan personal dan penuh perhatian",
     ],
     description:
-      "Tim pengajar kami adalah lulusan perguruan tinggi bidang pendidikan dengan pengalaman mengajar preschool. Mereka menggabungkan pendekatan pembelajaran modern dengan nilai-nilai Islami untuk mengembangkan potensi setiap anak secara holistik.",
+      "Setiap kelas didampingi oleh 2 guru/direktris dengan maksimal 15 anak, sehingga setiap anak mendapatkan perhatian personal, observasi menyeluruh, serta rasa aman dan nyaman selama proses belajar.",
   },
 
   pricing: [
     {
-      name: "Regular Program",
-      price: "Rp 3.500.000",
-      period: "per bulan",
-      features: [
-        "Senin - Jumat (07:30-15:00)",
-        "Full curriculum + specials class",
-        "2x makan + 2x snack",
-        "Learning materials & buku",
-        "Field trip bulanan",
-        "Progress report semester",
-        "Parent-teacher conference",
-      ],
+      name: "Informasi Biaya",
+      price: "Hubungi Admin",
+      period: "",
+      features: ["Detail biaya pendaftaran", "Informasi SPP bulanan", "Keterangan kegiatan tambahan"],
       recommended: true,
-    },
-    {
-      name: "Extended Program",
-      price: "Rp 4.200.000",
-      period: "per bulan",
-      features: [
-        "Senin - Jumat (07:30-17:00)",
-        "Full curriculum + enrichment",
-        "2x makan + 3x snack",
-        "Learning materials & buku",
-        "Field trip bulanan",
-        "After school activities",
-        "Progress report semester",
-        "Parent-teacher conference",
-      ],
-    },
-    {
-      name: "Registration Fee",
-      price: "Rp 3.000.000",
-      period: "sekali bayar",
-      features: [
-        "Biaya pendaftaran & assessment",
-        "Seragam lengkap (3 stel)",
-        "Tas, sepatu, topi sekolah",
-        "Learning kit & stationery",
-        "Buku pelajaran 1 tahun",
-        "ID card & name tag",
-      ],
     },
   ],
 
@@ -207,101 +135,80 @@ export const preschoolProgram: ProgramData = {
     [...getSampleImages(1920, 1080, 4)],
     [...getSampleImages(1920, 1080, 4)],
     [...getSampleImages(1920, 1080, 4)],
-    [...getSampleImages(1920, 1080, 4)],
-    [...getSampleImages(1920, 1080, 4)],
-    [...getSampleImages(1920, 1080, 4)],
-    [...getSampleImages(1920, 1080, 4)],
-    [...getSampleImages(1920, 1080, 4)],
   ],
 
   faqs: [
     {
-      question: "Apa perbedaan Pre-School dengan Toddler Class?",
+      question: "Usia berapa anak bisa masuk KB Amanah Preschool?",
       answer:
-        "Pre-School lebih terstruktur dengan kurikulum formal yang mempersiapkan anak masuk TK. Ada pembelajaran literacy, numeracy, dan character building yang lebih intensif. Toddler Class masih fokus pada play-based learning dan pengembangan dasar.",
+        "KB Amanah Preschool menerima anak usia 3–4 tahun dengan pendekatan sesuai tahap perkembangan masing-masing anak.",
     },
     {
-      question: "Apakah anak harus sudah bisa membaca?",
+      question: "Kurikulum apa yang digunakan?",
       answer:
-        "Tidak harus. Pre-School adalah tahap mempersiapkan anak untuk belajar membaca (pre-reading skills) seperti phonics awareness, letter recognition, dan print concepts. Setiap anak punya pace berbeda dan kami respect itu.",
+        "Menggunakan kurikulum berbasis Montessori yang menekankan kemandirian, pembelajaran konkret, dan aktivitas sesuai kesiapan anak.",
     },
     {
-      question: "Berapa rasio guru dan murid?",
+      question: "Bagaimana sistem pendampingan di kelas?",
       answer:
-        "Kami menjaga rasio 1:8 dengan 1 head teacher dan 1 assistant teacher per kelas maksimal 12 anak. Ini memastikan setiap anak mendapat perhatian personal yang cukup.",
+        "Setiap kelas maksimal 15 anak dan didampingi oleh 2 guru/direktris untuk perhatian yang lebih personal dan optimal.",
     },
     {
-      question: "Bagaimana metode pembelajaran yang digunakan?",
+      question: "Apakah anak harus sudah bisa membaca atau menulis?",
       answer:
-        "Kami menggabungkan berbagai pendekatan: learning centers, project-based learning, thematic approach, dan integrated Islamic values. Pembelajaran tetap fun dan hands-on sesuai tahap perkembangan anak.",
+        "Tidak. Anak tidak dituntut bisa membaca, menulis, atau berhitung. Semua proses dilakukan sesuai kesiapan dan perkembangan anak.",
     },
     {
-      question: "Apakah ada PR (homework)?",
-      answer:
-        "Ada home activity ringan yang bersifat reinforcement, bukan PR formal. Misalnya: membaca buku bersama orang tua, practice tracing, atau simple craft. Fokusnya adalah family involvement, bukan beban anak.",
+      question: "Jam sekolah berlangsung pukul berapa?",
+      answer: "Jam kegiatan belajar berlangsung dari 07.00 – 12.00 WIB.",
     },
     {
-      question: "Bagaimana sistem penilaian?",
+      question: "Bagaimana sekolah memantau perkembangan anak?",
       answer:
-        "Kami menggunakan authentic assessment melalui observasi, portfolio, dan anecdotal records. Progress report diberikan tiap semester dengan parent-teacher conference untuk diskusi perkembangan anak secara detail.",
-    },
-    {
-      question: "Apakah lulusan Pre-School bisa langsung masuk SD?",
-      answer:
-        "Pre-School diperuntukkan bagi anak 3-4 tahun dan dirancang sebagai persiapan masuk TK (Kindergarten), bukan langsung SD. Untuk persiapan SD, kami punya program Kindergarten (TK) untuk usia 5-6 tahun.",
-    },
-    {
-      question: "Apa saja program Islami yang diajarkan?",
-      answer:
-        "Anak akan belajar doa harian, adab Islami (makan, tidur, ke toilet), hafalan surah pendek, praktek wudhu dan shalat sederhana, kisah nabi, dan akhlak terpuji melalui cerita dan role play.",
+        "Guru melakukan observasi rutin dan memberikan laporan perkembangan sesuai tahap usia anak secara berkala.",
     },
   ],
 
   testimonials: [
     {
-      name: "Ibu Dewi Lestari",
-      role: "Ibu dari Zahra (4 tahun)",
+      name: "Ibu Nurul Hidayah",
+      role: "Ibu dari Ahmad (lulusan TK B)",
       rating: 5,
       comment:
-        "Alhamdulillah Zahra jadi suka belajar sejak masuk Pre-School Amanah. Sekarang sudah bisa mengenal semua huruf dan angka, hafalannya juga bertambah. Teacher-nya sabar dan metode mengajarnya kreatif!",
+        "Alhamdulillah Ahmad lulus TK dengan prestasi bagus. Sekarang kelas 1 SD dan sudah bisa baca-tulis dengan lancar, hafalannya juga 12 surah. Terima kasih TK Amanah sudah mempersiapkan Ahmad dengan baik!",
     },
     {
-      name: "Bapak Hendra Gunawan",
-      role: "Ayah dari Farhan (3.5 tahun)",
+      name: "Bapak Rizki Prasetyo",
+      role: "Ayah dari Kenzie (TK A)",
       rating: 5,
       comment:
-        "Sekolah yang bagus dengan balanced program: akademik, karakter, dan agama. Farhan jadi lebih mandiri, sopan, dan percaya diri. Field trip nya juga edukatif. Highly recommended!",
+        "Sekolah TK terbaik yang pernah saya temukan. Balanced antara akademik, agama, dan pengembangan karakter. Kenzie yang dulu pemalu sekarang berani tampil dan presentasi. Guru-gurunya sangat dedicated!",
     },
     {
-      name: "Ibu Siti Nurhaliza",
-      role: "Ibu dari Aisyah (4 tahun)",
+      name: "Ibu Laila Sari",
+      role: "Ibu dari Fatimah (TK B)",
       rating: 5,
       comment:
-        "Aisyah senang sekali sekolah di sini. Dia excited cerita apa yang dipelajari setiap hari. Fasilitasnya lengkap, guru-gurunya qualified, dan yang penting nilai Islaminya kuat. Puas banget!",
+        "Program tahfidz-nya luar biasa! Fatimah sekarang hafal 14 surah dan suka banget muroja'ah. Fasilitasnya juga modern, curriculum-nya jelas terstruktur. Worth every penny!",
     },
   ],
 
   whatsapp: {
     number: "6281234567890",
-    message:
-      "Halo Admin Amanah Edu Centre, saya tertarik mendaftarkan anak saya ke program Pre-School. Mohon info lebih lanjut.",
+    message: "Halo Admin KB Amanah Preschool, saya tertarik mendaftarkan anak saya. Mohon informasi lebih lanjut.",
   },
 
-  // SEO
-  metaTitle: "Pre-School Program - Persiapan TK Usia 3-4 Tahun | Amanah Edu Centre",
+  metaTitle: "KB Amanah Preschool - Montessori for Little Learners Usia 3-4 Tahun",
   metaDescription:
-    "Program pre-school Islami untuk anak 3-4 tahun dengan kurikulum holistik: literasi, numerasi, karakter, dan nilai agama. Pengajar bersertifikat, fasilitas modern. Daftar sekarang!",
-  ogImage: "/img/programs/preschool/og-image.jpg",
+    "KB Amanah Preschool menghadirkan kurikulum Montessori untuk anak usia 3-4 tahun dengan pendekatan playdate yang menyenangkan, observasi perkembangan personal, dan fasilitas lengkap.",
+  ogImage: "/img/programs/kb-amanah-preschool/og-image.jpg",
   keywords: [
-    "preschool",
-    "pre-school jakarta",
-    "PAUD 3-4 tahun",
-    "sekolah pra TK",
-    "preschool Islami",
-    "early childhood education",
-    "pre-kindergarten",
-    "sekolah anak 3 tahun",
-    "preschool terbaik",
-    "amanah edu centre",
+    "KB Amanah Preschool",
+    "Montessori untuk anak 3-4 tahun",
+    "preschool montessori",
+    "sekolah anak usia dini",
+    "montessori indonesia",
+    "kb usia 3 tahun",
+    "montessori for little learners",
   ],
 };
